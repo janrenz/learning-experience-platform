@@ -1,5 +1,5 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <img src="../assets/WHOA-Logo.png" alt="WHO Academy Logo" />
   </div>
 </template>

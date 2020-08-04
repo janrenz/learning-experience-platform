@@ -1,7 +1,12 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <img
+      alt="Mickey Mouse"
+      src="https://media.giphy.com/media/cFSbwZr4i0hVe/giphy.gif"
+    />
+    <HelloWorld
+      msg="Welcome to the WHO Academy LXP Landing page AKA Disney Land :)"
+    />
   </div>
 </template>
 
