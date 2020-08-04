@@ -51,8 +51,8 @@ pipeline {
                     }
                     steps {
                         script {
-                            // External image push registry info eg quy.io/WHOAcademy/learning-exp-plat:1.0.1
-                            env.TARGET_NAMESPACE = "WHOAcademy"
+                            // External image push registry info eg quy.io/whoacademy/learning-exp-plat:1.0.1
+                            env.TARGET_NAMESPACE = "whoacademy"
                             env.IMAGE_REPOSITORY = "quay.io"
                             // app name for master is just learning-experience-platform or something
                             env.APP_NAME = "${NAME}".replace("/", "-").toLowerCase()
@@ -99,7 +99,7 @@ pipeline {
 
                 echo '### Install deps ###'
                 // sh 'npm install'
-                sh 'npm  --registry http://${SONATYPE_NEXUS_SERVICE_SERVICE_HOST}:${SONATYPE_NEXUS_SERVICE_SERVICE_PORT}/repository/labs-npm ci'
+                sh 'npm i --registry http://${SONATYPE_NEXUS_SERVICE_SERVICE_HOST}:${SONATYPE_NEXUS_SERVICE_SERVICE_PORT}/repository/labs-npm'
 
                 echo '### Running linter ###'
                 sh 'npm run lint'
@@ -257,7 +257,7 @@ pipeline {
                             git commit -m "🚀 AUTOMATED COMMIT - Deployment new app version ${VERSION} 🚀" || rc=$?
                             git remote set-url origin  https://${GIT_CREDS_USR}:${GIT_CREDS_PSW}@${ARGOCD_CONFIG_REPO}
                             git push -u origin ${ARGOCD_CONFIG_REPO_BRANCH}
-                            
+
                             # Give ArgoCD a moment to gather it's thoughts and roll out a deployment before Jenkins races on to test things
                             # issue here is an asynchronous pipline (argo) intreacting with a synchronous job ie jenkins
                             sleep 20
