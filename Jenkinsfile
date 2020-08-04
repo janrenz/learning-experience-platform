@@ -98,7 +98,8 @@ pipeline {
                 sh 'printenv'
 
                 echo '### Install deps ###'
-                // sh 'npm install'
+                // Removing the lock as jenkins 💩👖 when it's being used, lots of `notarget No matching version found for xyz.version.tar.gz`
+                sh 'rm -rf package-lock.json'
                 sh 'npm i --registry http://${SONATYPE_NEXUS_SERVICE_SERVICE_HOST}:${SONATYPE_NEXUS_SERVICE_SERVICE_PORT}/repository/labs-npm'
 
                 echo '### Running linter ###'
