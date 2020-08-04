@@ -257,6 +257,10 @@ pipeline {
                             git commit -m "🚀 AUTOMATED COMMIT - Deployment new app version ${VERSION} 🚀" || rc=$?
                             git remote set-url origin  https://${GIT_CREDS_USR}:${GIT_CREDS_PSW}@${ARGOCD_CONFIG_REPO}
                             git push -u origin ${ARGOCD_CONFIG_REPO_BRANCH}
+                            
+                            # Give ArgoCD a moment to gather it's thoughts and roll out a deployment before Jenkins races on to test things
+                            # issue here is an asynchronous pipline (argo) intreacting with a synchronous job ie jenkins
+                            sleep 20
                         '''
                     }
                 }
