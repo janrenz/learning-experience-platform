@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
+      <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>
+      <button @click="signUp">Sign me Up</button>
     </div>
     <router-view />
   </div>
@@ -30,3 +31,20 @@
   }
 }
 </style>
+
+<script>
+import keycloak from "./keycloak";
+
+export default {
+  methods: {
+    signUp() {
+      keycloak.init();
+      keycloak.register({
+        redirectUri:
+          "http://learning-experience-platform-labs-staging.apps.who.emea-2.rht-labs.com",
+        action: "register"
+      });
+    }
+  }
+};
+</script>

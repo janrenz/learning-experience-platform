@@ -1,0 +1,8 @@
+{
+  "SSO": {
+    "url": "https://keycloak-keycloak.apps.who.emea-2.rht-labs.com/auth",
+    "realm": "myrealm",
+    "clientId": "myclient",
+    "redirectUri" : "localhost:8080"
+  }
+}

@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 
 Vue.config.productionTip = false;
+// todo, only load the mount the vue when we return from `/config/appconfig.json`
 
 new Vue({
   router,
