@@ -4,11 +4,18 @@ replicas: 2
 # Docker deets
 image_repository: quay.io
 image_name: learning-experience-platform
-image_namespace: WHOAcademy
+image_namespace: whoacademy
 # likely over written by the Argo definition
-app_tag: latest
+app_tag: 0.1.3
 
 # OCP route
 route: true
 # custom end point injected by config map. This is likely to changed
-config_map: '{ "productService": "products.myhost.com", "userProfile": "profiles.myhost.com"}'
+config_map: '{
+  "SSO": {
+    "url": "https://keycloak-keycloak.apps.who.emea-2.rht-labs.com/auth",
+    "realm": "myrealm",
+    "clientId": "myclient",
+    "redirectUri" : "http://localhost:8080"
+  }
+}'
