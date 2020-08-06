@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar.vue render when created  1`] = `
+<div>
+  <nav
+    class="navbar lxp-navbar navbar-light navbar-expand-lg"
+  >
+    <div
+      class="navbar-brand lxp-navbar-brand"
+    >
+      <router-link-stub
+        to="/"
+      >
+        <img
+          src="@/assets/whoa-logo-greyscale.svg"
+        />
+      </router-link-stub>
+    </div>
+     
+    <button
+      aria-controls="nav-collapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      class="navbar-toggler collapsed"
+      type="button"
+    >
+      <span
+        class="navbar-toggler-icon"
+      />
+    </button>
+     
+    <transition-stub
+      css="true"
+      enteractiveclass="collapsing"
+      enterclass=""
+      entertoclass="collapse show"
+      leaveactiveclass="collapsing"
+      leaveclass="collapse show"
+      leavetoclass="collapse"
+    >
+      <div
+        class="navbar-collapse collapse"
+        id="nav-collapse"
+        style="display: none;"
+      >
+        <ul
+          class="navbar-nav ml-auto"
+        >
+          <li
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              target="_self"
+            >
+              <router-link-stub
+                to="/about"
+              >
+                About
+              </router-link-stub>
+            </a>
+          </li>
+           
+          <li
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              target="_self"
+            >
+              Courses
+            </a>
+          </li>
+           
+          <li
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              target="_self"
+            >
+              Career
+            </a>
+          </li>
+           
+          <li
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              target="_self"
+            >
+              Literature
+            </a>
+          </li>
+           
+          <li
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              target="_self"
+            >
+              Language Preferences
+            </a>
+          </li>
+           
+          <li
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              target="_self"
+            >
+              <a
+                class="btn my-2 my-sm-0 btn-outline-secondary btn-sm"
+                href="#"
+                role="button"
+                tabindex="0"
+                target="_self"
+              >
+                Sign Up / Login
+          
+              </a>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </transition-stub>
+  </nav>
+</div>
+`;

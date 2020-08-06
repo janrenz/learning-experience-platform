@@ -11,5 +11,7 @@ module.exports = {
         suiteName: "jest tests"
       }
     ]
-  ]
+  ],
+  transformIgnorePatterns: ["/node_modules/(?!@babel)"],
+  snapshotSerializers: ["jest-serializer-vue"]
 };

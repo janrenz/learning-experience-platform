@@ -21,12 +21,12 @@
           <b-nav-item href="#">Language Preferences</b-nav-item>
           <b-nav-item>
             <b-button
+              href="#"
               variant="outline-secondary"
               @click="signUp"
               size="sm"
               class="my-2 my-sm-0"
-            >
-              Sign Up / Login
+              >Sign Up / Login
             </b-button>
           </b-nav-item>
         </b-navbar-nav>
