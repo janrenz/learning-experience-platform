@@ -14,6 +14,7 @@
     "package": "mkdir -p package-contents && cp -vr dist Dockerfile nginx.conf package-contents && zip -r package-contents.zip package-contents"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "bootstrap": "^4.5.1",
     "bootstrap-vue": "^2.16.0",
     "core-js": "^3.6.5",

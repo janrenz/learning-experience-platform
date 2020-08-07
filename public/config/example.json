@@ -4,5 +4,6 @@
     "realm": "myrealm",
     "clientId": "myclient",
     "redirectUri" : "http://localhost:8080"
-  }
+  },
+  "coursesAPI": "https://lxp-course-service-labs-test.apps.who.emea-2.rht-labs.com/auth"
 }

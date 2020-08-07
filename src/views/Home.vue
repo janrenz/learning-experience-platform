@@ -7,17 +7,28 @@
     <HelloWorld
       msg="Welcome to the WHO Academy LXP Landing page AKA Disney Land :)"
     />
+
+    <pre>
+      {{ allCourses }}
+    </pre>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "Home",
   components: {
     HelloWorld
+  },
+  computed: { ...mapGetters(["allCourses"]) },
+  mounted() {
+    this.$nextTick(() => {
+      this.$store.dispatch("getAllCourses");
+    });
   }
 };
 </script>

@@ -15,10 +15,11 @@ fetch("/config/all.json").then(response => {
     Vue.prototype.$keycloak = new Keycloak(config.SSO);
     Vue.prototype.$keycloak.init();
     Vue.prototype.$config = config;
-    new Vue({
+    const app = new Vue({
       router,
       store,
       render: h => h(App)
     }).$mount("#app");
+    app.$store.commit("SET_CONFIG", config);
   });
 });
