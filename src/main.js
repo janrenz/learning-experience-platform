@@ -3,12 +3,14 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import * as Keycloak from "keycloak-js";
+import BootstrapVue from "bootstrap-vue";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
+Vue.use(BootstrapVue);
 Vue.config.productionTip = false;
-// todo, only load the mount the vue when we return from `/config/all.json`
 
 fetch("/config/all.json").then(response => {
-  // assuming config is json
   response.json().then(config => {
     Vue.prototype.$keycloak = new Keycloak(config.SSO);
     Vue.prototype.$keycloak.init();
