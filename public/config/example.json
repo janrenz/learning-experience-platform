@@ -5,5 +5,5 @@
     "clientId": "myclient",
     "redirectUri" : "http://localhost:8080"
   },
-  "coursesAPI": "https://lxp-course-service-labs-test.apps.who.emea-2.rht-labs.com/auth"
+  "coursesAPI": "http://localhost:8086/courses.json"
 }

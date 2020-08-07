@@ -12,6 +12,7 @@ export default new Vuex.Store({
     config: {}
   },
   getters: {
+    allConfig: state => state.config,
     allCourses: state => state.courses
   },
   mutations,

@@ -36,15 +36,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "NavBar",
   props: {
     msg: String
   },
+  computed: { ...mapGetters(["allConfig"]) },
   methods: {
     signUp() {
       this.$keycloak.register({
-        redirectUri: this.$config.SSO.redirectUri,
+        redirectUri: this.allConfig.SSO.redirectUri,
         action: "register"
       });
     }

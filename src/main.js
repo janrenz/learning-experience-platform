@@ -14,7 +14,6 @@ fetch("/config/all.json").then(response => {
   response.json().then(config => {
     Vue.prototype.$keycloak = new Keycloak(config.SSO);
     Vue.prototype.$keycloak.init();
-    Vue.prototype.$config = config;
     const app = new Vue({
       router,
       store,
