@@ -33,15 +33,11 @@
 </style>
 
 <script>
-import keycloak from "./keycloak";
-
 export default {
   methods: {
     signUp() {
-      keycloak.init();
-      keycloak.register({
-        redirectUri:
-          "http://learning-experience-platform-labs-staging.apps.who.emea-2.rht-labs.com",
+      this.$keycloak.register({
+        redirectUri: this.$config.SSO.redirectUri,
         action: "register"
       });
     }

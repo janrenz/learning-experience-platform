@@ -223,7 +223,8 @@ pipeline {
                     steps {
                         // TODO - if SANDBOX, create release in rando ns
                         sh '''
-                            helm upgrade --force --install ${APP_NAME} \
+                            helm uninstall ${APP_NAME} || rc=$?
+                            helm upgrade --install ${APP_NAME} \
                                 --namespace=${TARGET_NAMESPACE} \
                                 http://${SONATYPE_NEXUS_SERVICE_SERVICE_HOST}:${SONATYPE_NEXUS_SERVICE_SERVICE_PORT}/repository/${NEXUS_REPO_HELM}/${APP_NAME}-${VERSION}.tgz
                         '''
