@@ -3,7 +3,8 @@
     "url": "https://keycloak-keycloak.apps.who.emea-2.rht-labs.com/auth",
     "realm": "myrealm",
     "clientId": "myclient",
-    "redirectUri" : "http://localhost:8080"
+    "redirectUri" : "http://localhost:8080/onboarding"
   },
-  "coursesAPI": "http://localhost:8086/courses.json"
+  "coursesAPI": "http://localhost:8086/courses.json",
+  "topicsAPI": "http://localhost:8086/topics.json"
 }
