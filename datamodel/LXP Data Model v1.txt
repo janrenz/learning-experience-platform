@@ -1,0 +1,460 @@
+-- ************************************** `CareerRoleSkills`
+
+CREATE TABLE `CareerRoleSkills`
+(
+ `careerRoleSkillId` integer NOT NULL ,
+ `skillId`           integer NOT NULL ,
+ `userCareerRoleId`  integer NOT NULL ,
+
+PRIMARY KEY (`careerRoleSkillId`),
+KEY `fkIdx_269` (`skillId`),
+CONSTRAINT `FK_269` FOREIGN KEY `fkIdx_269` (`skillId`) REFERENCES `RefSkills` (`skillId`),
+KEY `fkIdx_276` (`userCareerRoleId`),
+CONSTRAINT `FK_276` FOREIGN KEY `fkIdx_276` (`userCareerRoleId`) REFERENCES `UserCareerRoles` (`userCareerRoleId`)
+);
+
+
+-- ************************************** `CourseCompleteSkillData`
+
+CREATE TABLE `CourseCompleteSkillData`
+(
+ `courseCompleteSkillId`          bigint NOT NULL ,
+ `courseCompleteSkillCreatedDate` datetime NOT NULL ,
+ `courseCompleteSkillLastModDate` datetime NOT NULL ,
+ `skillId`                        integer NOT NULL ,
+ `skillLevelId`                   integer NOT NULL ,
+ `courseId`                       bigint NOT NULL ,
+
+PRIMARY KEY (`courseCompleteSkillId`),
+KEY `fkIdx_198` (`skillId`),
+CONSTRAINT `FK_198` FOREIGN KEY `fkIdx_198` (`skillId`) REFERENCES `RefSkills` (`skillId`),
+KEY `fkIdx_201` (`skillLevelId`),
+CONSTRAINT `FK_201` FOREIGN KEY `fkIdx_201` (`skillLevelId`) REFERENCES `RefSkillLevels` (`skillLevelId`),
+KEY `fkIdx_213` (`courseId`),
+CONSTRAINT `FK_213` FOREIGN KEY `fkIdx_213` (`courseId`) REFERENCES `Courses` (`courseId`)
+);
+
+
+-- ************************************** `CourseLanguageData`
+
+CREATE TABLE `CourseLanguageData`
+(
+ `courseLanguageId`          bigint NOT NULL ,
+ `courseId`                  bigint NOT NULL ,
+ `courseLanguagesId`         integer NOT NULL ,
+ `courseLanguageCreatedDate` datetime NOT NULL ,
+ `courseLanguageLastModDate` datetime NOT NULL ,
+
+PRIMARY KEY (`courseLanguageId`),
+KEY `fkIdx_137` (`courseId`),
+CONSTRAINT `FK_137` FOREIGN KEY `fkIdx_137` (`courseId`) REFERENCES `Courses` (`courseId`),
+KEY `fkIdx_140` (`courseLanguagesId`),
+CONSTRAINT `FK_140` FOREIGN KEY `fkIdx_140` (`courseLanguagesId`) REFERENCES `RefLanguage` (`languageId`)
+);
+
+
+-- ************************************** `CourseLearnerData`
+
+CREATE TABLE `CourseLearnerData`
+(
+ `courseLearnerId`          bigint NOT NULL ,
+ `userCourseRegDate`        datetime NOT NULL ,
+ `courseUsersId`            bigint NOT NULL ,
+ `userCourseCompletionDate` datetime NULL ,
+ `courseLanguageId`         bigint NOT NULL ,
+
+PRIMARY KEY (`courseLearnerId`),
+KEY `fkIdx_313` (`courseUsersId`),
+CONSTRAINT `FK_313` FOREIGN KEY `fkIdx_313` (`courseUsersId`) REFERENCES `CourseUsersData` (`courseUsersId`),
+KEY `fkIdx_317` (`courseLanguageId`),
+CONSTRAINT `FK_317` FOREIGN KEY `fkIdx_317` (`courseLanguageId`) REFERENCES `CourseLanguageData` (`courseLanguageId`)
+);
+
+
+-- ************************************** `CourseModule`
+
+CREATE TABLE `CourseModule`
+(
+ `courseModuleId`            bigint NOT NULL ,
+ `courseModuleTitle`         varchar(45) NOT NULL ,
+ `courseModuleLength`        integer NOT NULL ,
+ `courseModuleDescription`   varchar(100) NOT NULL ,
+ `courseModuleContentRef`    varchar(2000) NOT NULL ,
+ `courseModuleAssessmentRef` varchar(2000) NULL ,
+ `courseId`                  bigint NOT NULL ,
+ `courseModuleAssessmentReq` tinyint NOT NULL ,
+
+PRIMARY KEY (`courseModuleId`),
+KEY `fkIdx_98` (`courseId`),
+CONSTRAINT `FK_98` FOREIGN KEY `fkIdx_98` (`courseId`) REFERENCES `Courses` (`courseId`)
+);
+
+
+-- ************************************** `CourseReqSkillsData`
+
+CREATE TABLE `CourseReqSkillsData`
+(
+ `courseReqSkillId`          bigint NOT NULL ,
+ `courseReqSkillsId`         integer NOT NULL ,
+ `courseReqSkillLevelId`     integer NOT NULL ,
+ `courseReqSkillCreatedDate` datetime NOT NULL ,
+ `courseReqSkillLastModDate` datetime NOT NULL ,
+ `courseId`                  bigint NOT NULL ,
+
+PRIMARY KEY (`courseReqSkillId`),
+KEY `fkIdx_156` (`courseReqSkillsId`),
+CONSTRAINT `FK_156` FOREIGN KEY `fkIdx_156` (`courseReqSkillsId`) REFERENCES `RefSkills` (`skillId`),
+KEY `fkIdx_159` (`courseReqSkillLevelId`),
+CONSTRAINT `FK_159` FOREIGN KEY `fkIdx_159` (`courseReqSkillLevelId`) REFERENCES `RefSkillLevels` (`skillLevelId`),
+KEY `fkIdx_210` (`courseId`),
+CONSTRAINT `FK_210` FOREIGN KEY `fkIdx_210` (`courseId`) REFERENCES `Courses` (`courseId`)
+);
+
+
+-- ************************************** `Courses`
+
+CREATE TABLE `Courses`
+(
+ `courseId`           bigint NOT NULL ,
+ `courseTitle`        varchar(45) NOT NULL ,
+ `courseLength`       integer NOT NULL ,
+ `courseDescription`  varchar(100) NOT NULL ,
+ `courseCreationDate` datetime NOT NULL ,
+ `courseLastModDate`  datetime NOT NULL ,
+
+PRIMARY KEY (`courseId`)
+);
+
+
+-- ************************************** `CourseTopics`
+
+CREATE TABLE `CourseTopics`
+(
+ `courseTopicId`          bigint NOT NULL ,
+ `courseTopicName`        varchar(45) NOT NULL ,
+ `courseTopicDescription` varchar(100) NOT NULL ,
+ `ParentcourseTopicId`    bigint NOT NULL ,
+ `courseNameSynonyms`     varchar(100) NOT NULL ,
+
+PRIMARY KEY (`courseTopicId`),
+KEY `fkIdx_73` (`ParentcourseTopicId`),
+CONSTRAINT `FK_73` FOREIGN KEY `fkIdx_73` (`ParentcourseTopicId`) REFERENCES `CourseTopics` (`courseTopicId`)
+);
+
+
+-- ************************************** `CourseTopicsData`
+
+CREATE TABLE `CourseTopicsData`
+(
+ `courseTopicId`          bigint NOT NULL ,
+ `courseTopicsId`         bigint NOT NULL ,
+ `courseTopicCreatedDate` datetime NOT NULL ,
+ `courseTopicLastModDate` datetime NOT NULL ,
+ `courseId`               bigint NOT NULL ,
+
+PRIMARY KEY (`courseTopicId`),
+KEY `fkIdx_148` (`courseTopicsId`),
+CONSTRAINT `FK_148` FOREIGN KEY `fkIdx_148` (`courseTopicsId`) REFERENCES `CourseTopics` (`courseTopicId`),
+KEY `fkIdx_221` (`courseId`),
+CONSTRAINT `FK_221` FOREIGN KEY `fkIdx_221` (`courseId`) REFERENCES `Courses` (`courseId`)
+);
+
+
+-- ************************************** `CourseUsersData`
+
+CREATE TABLE `CourseUsersData`
+(
+ `courseUsersId`         bigint NOT NULL ,
+ `courseId`              bigint NOT NULL ,
+ `courseUserRoleId`      integer NOT NULL ,
+ `courseUserId`          bigint NOT NULL ,
+ `courseUserCreatedDate` datetime NOT NULL ,
+ `courseUserLastModDate` datetime NOT NULL ,
+
+PRIMARY KEY (`courseUsersId`),
+KEY `fkIdx_122` (`courseId`),
+CONSTRAINT `FK_122` FOREIGN KEY `fkIdx_122` (`courseId`) REFERENCES `Courses` (`courseId`),
+KEY `fkIdx_126` (`courseUserRoleId`),
+CONSTRAINT `FK_126` FOREIGN KEY `fkIdx_126` (`courseUserRoleId`) REFERENCES `UserSystemRoles` (`userSystemRoleId`),
+KEY `fkIdx_129` (`courseUserId`),
+CONSTRAINT `FK_129` FOREIGN KEY `fkIdx_129` (`courseUserId`) REFERENCES `UserInfo` (`userId`)
+);
+
+
+-- ************************************** `RefCountry`
+
+CREATE TABLE `RefCountry`
+(
+ `countryId`   integer NOT NULL ,
+ `countryName` varchar(20) NOT NULL ,
+ `countryCode` varchar(5) NOT NULL ,
+
+PRIMARY KEY (`countryId`)
+);
+
+
+-- ************************************** `RefCourseReviewRatings`
+
+CREATE TABLE `RefCourseReviewRatings`
+(
+ `courseReviewRatingId` integer NOT NULL ,
+ `courseReviewRating`   tinyint NOT NULL ,
+
+PRIMARY KEY (`courseReviewRatingId`)
+);
+
+
+-- ************************************** `RefGenderInfo`
+
+CREATE TABLE `RefGenderInfo`
+(
+ `genderId`   bigint NOT NULL ,
+ `genderName` varchar(10) NOT NULL ,
+
+PRIMARY KEY (`genderId`)
+);
+
+
+-- ************************************** `RefLanguage`
+
+CREATE TABLE `RefLanguage`
+(
+ `languageId`   integer NOT NULL ,
+ `languageName` varchar(10) NOT NULL ,
+ `languageCode` varchar(5) NOT NULL ,
+
+PRIMARY KEY (`languageId`)
+);
+
+
+-- ************************************** `RefLanguageProfLevels`
+
+CREATE TABLE `RefLanguageProfLevels`
+(
+ `languageProfId`   integer NOT NULL ,
+ `languageProfName` varchar(10) NOT NULL ,
+ `languageProfDesc` varchar(45) NOT NULL ,
+
+PRIMARY KEY (`languageProfId`)
+);
+
+
+-- ************************************** `RefSkillLevels`
+
+CREATE TABLE `RefSkillLevels`
+(
+ `skillLevelId`          integer NOT NULL ,
+ `skillLevelName`        varchar(10) NOT NULL ,
+ `skillLevelDescription` varchar(45) NOT NULL ,
+
+PRIMARY KEY (`skillLevelId`)
+);
+
+
+-- ************************************** `RefSkills`
+
+CREATE TABLE `RefSkills`
+(
+ `skillId`   integer NOT NULL ,
+ `skillName` varchar(45) NOT NULL ,
+
+PRIMARY KEY (`skillId`)
+);
+
+
+-- ************************************** `UserBiodata`
+
+CREATE TABLE `UserBiodata`
+(
+ `userBiodataId`        bigint NOT NULL ,
+ `addressStreetNumber`  varchar(5) NOT NULL ,
+ `addressStreetName`    varchar(20) NOT NULL ,
+ `addressApartmentName` varchar(20) NULL ,
+ `addressState`         varchar(10) NOT NULL ,
+ `addressCounty`        varchar(10) NULL ,
+ `countryId`            integer NOT NULL ,
+ `userId`               bigint NOT NULL ,
+ `dateOfBirth`          date NOT NULL ,
+ `genderId`             bigint NOT NULL ,
+ `pinCode`              varchar(20) NOT NULL ,
+
+PRIMARY KEY (`userBiodataId`),
+KEY `fkIdx_207` (`userId`),
+CONSTRAINT `FK_207` FOREIGN KEY `fkIdx_207` (`userId`) REFERENCES `UserInfo` (`userId`),
+KEY `fkIdx_239` (`genderId`),
+CONSTRAINT `FK_239` FOREIGN KEY `fkIdx_239` (`genderId`) REFERENCES `RefGenderInfo` (`genderId`),
+KEY `fkIdx_51` (`countryId`),
+CONSTRAINT `FK_51` FOREIGN KEY `fkIdx_51` (`countryId`) REFERENCES `RefCountry` (`countryId`)
+);
+
+
+-- ************************************** `UserCareerRoleData`
+
+CREATE TABLE `UserCareerRoleData`
+(
+ `userCareerRoleId`          bigint NOT NULL ,
+ `userCareerRoleCreatedDate` datetime NOT NULL ,
+ `userCareerRolesId`         integer NOT NULL ,
+ `userId`                    bigint NOT NULL ,
+
+PRIMARY KEY (`userCareerRoleId`),
+KEY `fkIdx_229` (`userCareerRolesId`),
+CONSTRAINT `FK_229` FOREIGN KEY `fkIdx_229` (`userCareerRolesId`) REFERENCES `UserCareerRoles` (`userCareerRoleId`),
+KEY `fkIdx_232` (`userId`),
+CONSTRAINT `FK_232` FOREIGN KEY `fkIdx_232` (`userId`) REFERENCES `UserInfo` (`userId`)
+);
+
+
+-- ************************************** `UserCareerRoles`
+
+CREATE TABLE `UserCareerRoles`
+(
+ `userCareerRoleId`          integer NOT NULL ,
+ `userCareerRoleName`        varchar(45) NOT NULL ,
+ `userCareerRoleDescription` varchar(100) NOT NULL ,
+
+PRIMARY KEY (`userCareerRoleId`)
+);
+
+
+-- ************************************** `UserCourseData`
+
+CREATE TABLE `UserCourseData`
+(
+ `userCourseId`          bigint NOT NULL ,
+ `courseId`              bigint NOT NULL ,
+ `usersCourseReview`     varchar(100) NOT NULL ,
+ `isCourseComplete`      tinyint NOT NULL ,
+ `userCourseCreatedDate` datetime NOT NULL ,
+ `courseReviewRatingId`  integer NOT NULL ,
+
+PRIMARY KEY (`userCourseId`),
+KEY `fkIdx_180` (`courseId`),
+CONSTRAINT `FK_180` FOREIGN KEY `fkIdx_180` (`courseId`) REFERENCES `Courses` (`courseId`),
+KEY `fkIdx_190` (`courseReviewRatingId`),
+CONSTRAINT `FK_190` FOREIGN KEY `fkIdx_190` (`courseReviewRatingId`) REFERENCES `RefCourseReviewRatings` (`courseReviewRatingId`)
+);
+
+
+-- ************************************** `UserCourseModuleData`
+
+CREATE TABLE `UserCourseModuleData`
+(
+ `userCourseModuleId`    bigint NOT NULL ,
+ `userCourseModulesId`   bigint NOT NULL ,
+ `learnerId`             bigint NOT NULL ,
+ `userModuleCreatedDate` datetime NOT NULL ,
+ `isModuleComplete`      tinyint NULL ,
+ `userModuleScore`       integer NULL ,
+
+PRIMARY KEY (`userCourseModuleId`),
+KEY `fkIdx_167` (`userCourseModulesId`),
+CONSTRAINT `FK_167` FOREIGN KEY `fkIdx_167` (`userCourseModulesId`) REFERENCES `CourseModule` (`courseModuleId`),
+KEY `fkIdx_170` (`learnerId`),
+CONSTRAINT `FK_170` FOREIGN KEY `fkIdx_170` (`learnerId`) REFERENCES `UserInfo` (`userId`)
+);
+
+
+-- ************************************** `UserCourseTopicData`
+
+CREATE TABLE `UserCourseTopicData`
+(
+ `userCourseTopicId`          bigint NOT NULL ,
+ `userId`                     bigint NOT NULL ,
+ `courseTopicId`              bigint NOT NULL ,
+ `userCourseTopicCreatedDate` datetime NOT NULL ,
+
+PRIMARY KEY (`userCourseTopicId`),
+KEY `fkIdx_297` (`userId`),
+CONSTRAINT `FK_297` FOREIGN KEY `fkIdx_297` (`userId`) REFERENCES `UserInfo` (`userId`),
+KEY `fkIdx_300` (`courseTopicId`),
+CONSTRAINT `FK_300` FOREIGN KEY `fkIdx_300` (`courseTopicId`) REFERENCES `CourseTopics` (`courseTopicId`)
+);
+
+
+-- ************************************** `UserCredentials`
+
+CREATE TABLE `UserCredentials`
+(
+ `userCredentialId` bigint NOT NULL ,
+ `oneTimePassword`  varchar(10) NULL ,
+ `userName`         varchar(20) NOT NULL ,
+ `userId`           bigint NOT NULL ,
+
+PRIMARY KEY (`userCredentialId`),
+KEY `fkIdx_33` (`userId`),
+CONSTRAINT `FK_33` FOREIGN KEY `fkIdx_33` (`userId`) REFERENCES `UserInfo` (`userId`)
+);
+
+
+-- ************************************** `UserInfo`
+
+CREATE TABLE `UserInfo`
+(
+ `userId`         bigint NOT NULL ,
+ `firstName`      varchar(20) NOT NULL ,
+ `lastName`       varchar(20) NOT NULL ,
+ `middleName`     varchar(20) NULL ,
+ `emailAddress1`  varchar(45) NOT NULL ,
+ `emailAddress2`  varchar(45) NULL ,
+ `phoneNumber`    varchar(20) NOT NULL ,
+ `altPhoneNumber` varchar(20) NULL ,
+
+PRIMARY KEY (`userId`)
+);
+
+-- ************************************** `UserLanguagePrefData`
+
+CREATE TABLE `UserLanguagePrefData`
+(
+ `userLanguagePrefId`         bigint NOT NULL ,
+ `userId`                     bigint NOT NULL ,
+ `languageId`                 integer NOT NULL ,
+ `languageProfId`             integer NOT NULL ,
+ `userLanguageRefCreatedDate` datetime NOT NULL ,
+ `userLanguageRefLastModDate` datetime NOT NULL ,
+
+PRIMARY KEY (`userLanguagePrefId`),
+KEY `fkIdx_245` (`userId`),
+CONSTRAINT `FK_245` FOREIGN KEY `fkIdx_245` (`userId`) REFERENCES `UserInfo` (`userId`),
+KEY `fkIdx_248` (`languageId`),
+CONSTRAINT `FK_248` FOREIGN KEY `fkIdx_248` (`languageId`) REFERENCES `RefLanguage` (`languageId`),
+KEY `fkIdx_257` (`languageProfId`),
+CONSTRAINT `FK_257` FOREIGN KEY `fkIdx_257` (`languageProfId`) REFERENCES `RefLanguageProfLevels` (`languageProfId`)
+);
+
+
+-- ************************************** `UserSkillsData`
+
+CREATE TABLE `UserSkillsData`
+(
+ `userSkillId`  bigint NOT NULL ,
+ `skillId`      integer NOT NULL ,
+ `skillLevelId` integer NOT NULL ,
+ `userId`       bigint NOT NULL ,
+
+PRIMARY KEY (`userSkillId`),
+KEY `fkIdx_285` (`skillId`),
+CONSTRAINT `FK_285` FOREIGN KEY `fkIdx_285` (`skillId`) REFERENCES `RefSkills` (`skillId`),
+KEY `fkIdx_288` (`skillLevelId`),
+CONSTRAINT `FK_288` FOREIGN KEY `fkIdx_288` (`skillLevelId`) REFERENCES `RefSkillLevels` (`skillLevelId`),
+KEY `fkIdx_291` (`userId`),
+CONSTRAINT `FK_291` FOREIGN KEY `fkIdx_291` (`userId`) REFERENCES `UserInfo` (`userId`)
+);
+
+
+-- ************************************** `UserSystemRoles`
+
+CREATE TABLE `UserSystemRoles`
+(
+ `userSystemRoleId`          integer NOT NULL ,
+ `userSystemRoleName`        varchar(20) NOT NULL ,
+ `userSystemRoleDescription` varchar(100) NOT NULL ,
+
+PRIMARY KEY (`userSystemRoleId`)
+);
+
+
+
+
+
