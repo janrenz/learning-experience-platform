@@ -21,6 +21,7 @@
           <b-nav-item href="#">Language Preferences</b-nav-item>
           <b-nav-item>
             <b-button
+              id="lxp-signup"
               href="#"
               variant="outline-secondary"
               @click="signUp"
