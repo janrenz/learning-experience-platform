@@ -5,6 +5,6 @@
     "clientId": "myclient",
     "redirectUri" : "http://localhost:8080/onboarding"
   },
-  "coursesAPI": "http://localhost:8086/courses.json",
-  "topicsAPI": "http://localhost:8086/topics.json"
+  "coursesAPI": "http://localhost:8086",
+  "topicsAPI": "http://localhost:8086"
 }

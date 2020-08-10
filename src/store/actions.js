@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   getAllCourses({ commit, state }) {
     return axios
-      .get(state.config.coursesAPI)
+      .get(`${state.config.coursesAPI}/api/courses`)
       .then(response => {
         commit("GET_ALL_COURSES", response.data);
       })
@@ -14,7 +14,7 @@ export default {
   },
   getAllTopics({ commit, state }) {
     return axios
-      .get(state.config.topicsAPI)
+      .get(`${state.config.topicsAPI}/api/topics`)
       .then(response => {
         commit("GET_ALL_TOPICS", response.data);
       })
