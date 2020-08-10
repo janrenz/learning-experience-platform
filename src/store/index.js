@@ -9,11 +9,13 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     courses: [],
-    config: {}
+    config: {},
+    topics: [],
   },
   getters: {
     allConfig: state => state.config,
-    allCourses: state => state.courses
+    allCourses: state => state.courses,
+    allTopics: state => state.topics
   },
   mutations,
   actions,
