@@ -21,6 +21,7 @@
           <b-nav-item href="#">Language Preferences</b-nav-item>
           <b-nav-item>
             <b-button
+              id="lxp-signup"
               href="#"
               variant="outline-secondary"
               @click="signUp"
@@ -36,15 +37,17 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "NavBar",
   props: {
     msg: String
   },
+  computed: { ...mapGetters(["allConfig"]) },
   methods: {
     signUp() {
       this.$keycloak.register({
-        redirectUri: this.$config.SSO.redirectUri,
+        redirectUri: this.allConfig.SSO.redirectUri,
         action: "register"
       });
     }
