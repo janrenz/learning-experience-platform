@@ -12,7 +12,7 @@
         variant="info"
         pill
       >
-        {{ t.displayName }} +
+        {{ t.name }} +
       </b-button>
     </div>
   </div>
