@@ -3,7 +3,7 @@
     <b-row>
       <b-col md="6">
         <b-card-body align="left">
-          <p>Category</p>
+          <p class="card-label">Category</p>
           <b-card-title>{{ course.title }}</b-card-title>
           <b-card-text>
             <p>⭐️⭐️⭐️⭐️★ 123 Reviews</p>

@@ -8,13 +8,15 @@
       msg="Latest health knowledge and evidence to health practitioners worldwide"
     />
     <br />
-    <b-card-group columns>
-      <CourseCard
-        v-for="(c, index) in allCourses"
-        :key="index"
-        :course="c"
-      ></CourseCard>
-    </b-card-group>
+    <div id="courses-section">
+      <b-card-group columns>
+        <CourseCard
+          v-for="(c, index) in allCourses"
+          :key="index"
+          :course="c"
+        ></CourseCard>
+      </b-card-group>
+    </div>
   </div>
 </template>
 
