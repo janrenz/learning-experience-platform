@@ -14,7 +14,7 @@ export default {
   },
   getAllTopics({ commit, state }) {
     return axios
-      .get(`${state.config.topicsAPI}/api/topics`)
+      .get(`${state.config.topicsAPI}/api/course-topics`)
       .then(response => {
         commit("GET_ALL_TOPICS", response.data);
       })

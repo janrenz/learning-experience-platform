@@ -31,7 +31,6 @@ export default {
     addInterest(t, index) {
       t.active = !t.active;
       this.$store.commit("SET_TOPIC", t, index);
-      console.info("name is ", t, index);
       // TODO - Connect to our profile service....
     }
   }
