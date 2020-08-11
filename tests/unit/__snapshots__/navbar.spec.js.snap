@@ -121,6 +121,7 @@ exports[`NavBar.vue render when created  1`] = `
               <a
                 class="btn my-2 my-sm-0 btn-outline-secondary btn-sm"
                 href="#"
+                id="lxp-signup"
                 role="button"
                 tabindex="0"
                 target="_self"
