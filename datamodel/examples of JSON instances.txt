@@ -1,0 +1,661 @@
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ 
+
+
+
+{
+  "RefCourseReviewRatings": {
+    "id": 2,
+    "courseReviewRating": 3
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ 
+
+
+
+{
+  "RefSkills": {
+    "id": 11132407,
+    "skillName": "Python"
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ 
+
+
+
+{
+  "RefSkillLevels": {
+    "id": 25363,
+    "skillLevelName": "Intermediate",
+    "skillLevelDescription" : "The user has some expertise and self-confidence but cannot deal with comlpex problems if not guided"
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ 
+
+
+
+{
+  "RefLanguage": {
+    "id": 234324,
+    "languageName": "English",
+    "languageCode" : "EN"
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "RefLanguageProfLevels": {
+    "id": 435,
+    "languageProfName": "C1",
+    "languageProfDesc": "The user has advanced knowledge of the language, both written and spoken, missing anything but full fluency and comlpeteness of vocabulary compared to a native speaker"
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "RefCountry": {
+    "id" : 3786,
+    "countryName" : "San Marino Republic",
+    "countryCode" : "SMR"
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "RefGenderInfo": {
+    "id": 0,
+    "genderName": "Male"
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "UserSystemRoles": {
+    "id": 8,
+    "userSystemRoleName": "Content Creator",
+    "userSystemRoleDescription": "The user has created at least one module in one course"
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "UserCareerRoles": {
+    "id": 32,
+    "userCareerRoleName": "ML engineer",
+    "userCareerRoleDescription": "The user is supposed to research, implement, train, fine-tune, test and deploy machine learning algorithms and models"
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "CareerRoleSkills": {
+    "id": 7,
+    "RefSkills": {
+      "id": 11132407,
+      "skillName": "Python"
+    },
+    "UserCareerRoles": {
+      "id": 32,
+      "userCareerRoleName": "ML engineer",
+      "userCareerRoleDescription": "The user is supposed to research, implement, train, fine-tune, test and deploy machine learning algorithms and models"
+    }
+  }
+}
+
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+{
+  "Courses": {
+    "id": 8,
+    "courseTitle": "Practical Ways to Fool Facial Recognition",
+    "courseLength": 10800,
+    "courseDescription": "Have you ever thought about fooling facial recognition by showing a picture? well, you don't even have to take a picture of a real, existing person, so you do not have to comply with GDPR... by using neural networks!",
+    "creationDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200"
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+{
+  "UserInfo": {
+    "id": 3,
+    "firstName": "Mattia",
+    "lastName": "Sarti",
+    "middleName": null,
+    "emailAddress1": "nmattia1@gmail.com",
+    "emailAddress2": null,
+    "phoneNumber": "+393333333333",
+    "altPhoneNumber": null
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "UserCredentials": {
+    "id": 323,
+    "oneTimePassword": "60Ty&-1b=0D",
+    "userName": "tia_95",
+    "UserInfo": {
+      "id": 3,
+      "firstName": "Mattia",
+      "lastName": "Sarti",
+      "middleName": null,
+      "emailAddress1": "nmattia1@gmail.com",
+      "emailAddress2": null,
+      "phoneNumber": "+393333333333",
+      "altPhoneNumber": null
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "CourseModule": {
+    "id": 798,
+    "courseModuleTitle": "Implementational Details of GANs",
+    "courseModuleLength": 3600,
+    "courseModuleDescription": "How to implement GANs from skratch in python, mocking the original paper",
+    "courseModuleContentRef": "https://www.youtube.com/watch?v=cxB4ACaaR4I",
+    "courseModuleAssessmentRef": null,
+    "courseModuleAssessmentReq": false,
+    "Courses": {
+      "id": 8,
+      "courseTitle": "Practical Ways to Fool Facial Recognition",
+      "courseLength": 10800,
+      "courseDescription": "Have you ever thought about fooling facial recognition by showing a picture? well, you don't even have to take a picture of a real, existing person, so you do not have to comply with GDPR... by using neural networks!",
+      "creationDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+      "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200"
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "CourseLanguageData": {
+    "id": 32524,
+    "createdDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "RefLanguage": {
+      "id": 234324,
+      "languageName": "English",
+      "languageCode": "EN"
+    },
+    "Courses": {
+      "id": 8,
+      "courseTitle": "Practical Ways to Fool Facial Recognition",
+      "courseLength": 10800,
+      "courseDescription": "Have you ever thought about fooling facial recognition by showing a picture? well, you don't even have to take a picture of a real, existing person, so you do not have to comply with GDPR... by using neural networks!",
+      "creationDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+      "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200"
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "CourseTopics": {
+    "id": 907132,
+    "courseTopicName": "GANs",
+    "courseTopicDescription": "Generative Adversarival Networks, that are Neural Networks capable of learning in an adversarial way according to a minimax paradigm",
+    "courseNameSynonyms": "GAN - Generative Adversarival Networks - Generative Adversarival Network",
+    "CourseTopics": {
+      "id": 907130,
+      "courseTopicName": "NNs",
+      "courseTopicDescription": "Neural Networks are data driven computational models that remind - in a simplified way - of how the human brain works",
+      "courseNameSynonyms": "NN - Neural Networks - Neural Network",
+      "CourseTopics": null
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "CourseReqSkillsData": {
+    "id": 324,
+    "createdDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "RefSkills": {
+      "id": 11132407,
+      "skillName": "Python"
+    },
+    "RefSkillLevels": {
+      "id": 25363,
+      "skillLevelName": "Intermediate",
+      "skillLevelDescription": "The user has some expertise and self-confidence but cannot deal with comlpex problems if not guided"
+    },
+    "Courses": {
+      "id": 8,
+      "courseTitle": "Practical Ways to Fool Facial Recognition",
+      "courseLength": 10800,
+      "courseDescription": "Have you ever thought about fooling facial recognition by showing a picture? well, you don't even have to take a picture of a real, existing person, so you do not have to comply with GDPR... by using neural networks!",
+      "creationDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+      "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200"
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "UserCourseData": {
+    "id": 5678793,
+    "usersCourseReview": "I've loved this course with all of my hearth",
+    "isCourseComplete": 1,
+    "createdDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "RefCourseReviewRatings": {
+      "id": 2,
+      "courseReviewRating": 3
+    },
+    "Courses": {
+      "id": 8,
+      "courseTitle": "Practical Ways to Fool Facial Recognition",
+      "courseLength": 10800,
+      "courseDescription": "Have you ever thought about fooling facial recognition by showing a picture? well, you don't even have to take a picture of a real, existing person, so you do not have to comply with GDPR... by using neural networks!",
+      "creationDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+      "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200"
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "CourseCompleteSkillData": {
+    "id": 565442,
+    "createdDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "RefSkills": {
+      "id": 11132407,
+      "skillName": "Python"
+    },
+    "RefSkillLevels": {
+      "id": 25363,
+      "skillLevelName": "Intermediate",
+      "skillLevelDescription": "The user has some expertise and self-confidence but cannot deal with comlpex problems if not guided"
+    },
+    "Courses": {
+      "id": 8,
+      "courseTitle": "Practical Ways to Fool Facial Recognition",
+      "courseLength": 10800,
+      "courseDescription": "Have you ever thought about fooling facial recognition by showing a picture? well, you don't even have to take a picture of a real, existing person, so you do not have to comply with GDPR... by using neural networks!",
+      "creationDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+      "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200"
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "UserCourseTopicData": {
+    "id": 2310934,
+    "createdDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "UserInfo": {
+      "id": 3,
+      "firstName": "Mattia",
+      "lastName": "Sarti",
+      "middleName": null,
+      "emailAddress1": "nmattia1@gmail.com",
+      "emailAddress2": null,
+      "phoneNumber": "+393333333333",
+      "altPhoneNumber": null
+    },
+    "CourseTopics": {
+      "id": 907132,
+      "courseTopicName": "GANs",
+      "courseTopicDescription": "Generative Adversarival Networks, that are Neural Networks capable of learning in an adversarial way according to a minimax paradigm",
+      "courseNameSynonyms": "GAN - Generative Adversarival Networks - Generative Adversarival Network",
+      "CourseTopics": {
+        "id": 907130,
+        "courseTopicName": "NNs",
+        "courseTopicDescription": "Neural Networks are data driven computational models that remind - in a simplified way - of how the human brain works",
+        "courseNameSynonyms": "NN - Neural Networks - Neural Network",
+        "CourseTopics": null
+      }
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "UserSkillsData": {
+    "id": 3423589,
+    "RefSkills": {
+      "id": 11132407,
+      "skillName": "Python"
+    },
+    "RefSkillLevels": {
+      "id": 25363,
+      "skillLevelName": "Intermediate",
+      "skillLevelDescription": "The user has some expertise and self-confidence but cannot deal with comlpex problems if not guided"
+    },
+    "UserInfo": {
+      "id": 3,
+      "firstName": "Mattia",
+      "lastName": "Sarti",
+      "middleName": null,
+      "emailAddress1": "nmattia1@gmail.com",
+      "emailAddress2": null,
+      "phoneNumber": "+393333333333",
+      "altPhoneNumber": null
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "CourseLearnerData": {
+    "id": 6704541,
+    "regDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "completionDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "UserCourseData": {
+      "id": 5678793,
+      "usersCourseReview": "I've loved this course with all of my hearth",
+      "isCourseComplete": 1,
+      "createdDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+      "RefCourseReviewRatings": {
+        "id": 2,
+        "courseReviewRating": 3
+      },
+      "Courses": {
+        "id": 8,
+        "courseTitle": "Practical Ways to Fool Facial Recognition",
+        "courseLength": 10800,
+        "courseDescription": "Have you ever thought about fooling facial recognition by showing a picture? well, you don't even have to take a picture of a real, existing person, so you do not have to comply with GDPR... by using neural networks!",
+        "creationDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+        "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200"
+      }
+    },
+    "CourseLanguageData": {
+      "id": 32524,
+      "createdDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+      "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+      "RefLanguage": {
+        "id": 234324,
+        "languageName": "English",
+        "languageCode": "EN"
+      },
+      "Courses": {
+        "id": 8,
+        "courseTitle": "Practical Ways to Fool Facial Recognition",
+        "courseLength": 10800,
+        "courseDescription": "Have you ever thought about fooling facial recognition by showing a picture? well, you don't even have to take a picture of a real, existing person, so you do not have to comply with GDPR... by using neural networks!",
+        "creationDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+        "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200"
+      }
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "UserLanguagePrefData": {
+    "id": 23490432,
+    "createdDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "UserInfo": {
+      "id": 3,
+      "firstName": "Mattia",
+      "lastName": "Sarti",
+      "middleName": null,
+      "emailAddress1": "nmattia1@gmail.com",
+      "emailAddress2": null,
+      "phoneNumber": "+393333333333",
+      "altPhoneNumber": null
+    },
+    "RefLanguage": {
+      "id": 234324,
+      "languageName": "English",
+      "languageCode": "EN"
+    },
+    "RefLanguageProfLevels": {
+      "id": 435,
+      "languageProfName": "C1",
+      "languageProfDesc": "The user has advanced knowledge of the language, both written and spoken, missing anything but full fluency and comlpeteness of vocabulary compared to a native speaker"
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "UserCareerRoleData": {
+    "id": 43415987,
+    "createdDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "UserInfo": {
+      "id": 3,
+      "firstName": "Mattia",
+      "lastName": "Sarti",
+      "middleName": null,
+      "emailAddress1": "nmattia1@gmail.com",
+      "emailAddress2": null,
+      "phoneNumber": "+393333333333",
+      "altPhoneNumber": null
+    },
+    "UserCareerRoles": {
+      "id": 32,
+      "userCareerRoleName": "ML engineer",
+      "userCareerRoleDescription": "The user is supposed to research, implement, train, fine-tune, test and deploy machine learning algorithms and models"
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "UserCourseModuleData": {
+    "id": 78435925,
+    "createdDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "isModuleComplete": 1,
+    "userModuleScore": 10,
+    "CourseModule": {
+      "id": 798,
+      "courseModuleTitle": "Implementational Details of GANs",
+      "courseModuleLength": 3600,
+      "courseModuleDescription": "How to implement GANs from skratch in python, mocking the original paper",
+      "courseModuleContentRef": "https://www.youtube.com/watch?v=cxB4ACaaR4I",
+      "courseModuleAssessmentRef": null,
+      "courseModuleAssessmentReq": false,
+      "Courses": {
+        "id": 8,
+        "courseTitle": "Practical Ways to Fool Facial Recognition",
+        "courseLength": 10800,
+        "courseDescription": "Have you ever thought about fooling facial recognition by showing a picture? well, you don't even have to take a picture of a real, existing person, so you do not have to comply with GDPR... by using neural networks!",
+        "creationDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+        "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200"
+      }
+    },
+    "createdDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "UserInfo": {
+      "id": 3,
+      "firstName": "Mattia",
+      "lastName": "Sarti",
+      "middleName": null,
+      "emailAddress1": "nmattia1@gmail.com",
+      "emailAddress2": null,
+      "phoneNumber": "+393333333333",
+      "altPhoneNumber": null
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "CourseUsersData": {
+    "id": 453568,
+    "createdDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "Courses": {
+      "id": 8,
+      "courseTitle": "Practical Ways to Fool Facial Recognition",
+      "courseLength": 10800,
+      "courseDescription": "Have you ever thought about fooling facial recognition by showing a picture? well, you don't even have to take a picture of a real, existing person, so you do not have to comply with GDPR... by using neural networks!",
+      "creationDate": "Fri Aug 07 2020 08:57:49 GMT+0200",
+      "lastModDate": "Fri Aug 07 2020 08:57:49 GMT+0200"
+    },
+    "UserInfo": {
+      "id": 3,
+      "firstName": "Mattia",
+      "lastName": "Sarti",
+      "middleName": null,
+      "emailAddress1": "nmattia1@gmail.com",
+      "emailAddress2": null,
+      "phoneNumber": "+393333333333",
+      "altPhoneNumber": null
+    },
+    "UserSystemRoles": {
+      "id": 8,
+      "userSystemRoleName": "Content Creator",
+      "userSystemRoleDescription": "The user has created at least one module in one course"
+    }
+  }
+}
+
+
+
+~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~ o ~~~~
+
+
+
+{
+  "UserBiodata": {
+    "id": 34249823712,
+    "addressStreetNumber": "99B",
+    "addressStreetName": "Pasta Boulevard",
+    "addressApartmentName": null,
+    "addressState": "Spaghetti Land",
+    "addressCounty": "Pizza World",
+    "dateOfBirth": "Fri Aug 07 2020 08:57:49 GMT+0200",
+    "pinCode": 99999,
+    "RefGenderInfo": {
+      "id": 0,
+      "genderName": "Male"
+    },
+    "RefCountry": {
+      "id": 3786,
+      "countryName": "San Marino Republic",
+      "countryCode": "SMR"
+    },
+    "UserInfo": {
+      "id": 3,
+      "firstName": "Mattia",
+      "lastName": "Sarti",
+      "middleName": null,
+      "emailAddress1": "nmattia1@gmail.com",
+      "emailAddress2": null,
+      "phoneNumber": "+393333333333",
+      "altPhoneNumber": null
+    }
+  }
+}
