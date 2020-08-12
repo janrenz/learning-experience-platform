@@ -1,5 +1,5 @@
 <template>
-  <b-card no-body class="overflow-hidden">
+  <b-card no-body class="overflow-hidden" :id="index">
     <b-row>
       <b-col md="6">
         <b-card-body align="left">
@@ -35,7 +35,8 @@
 export default {
   name: "CourseCard",
   props: {
-    course: Object
+    course: Object,
+    index: String
   }
 };
 </script>

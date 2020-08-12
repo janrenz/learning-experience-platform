@@ -14,6 +14,7 @@
           v-for="(c, index) in allCourses"
           :key="index"
           :course="c"
+          :index="`course-card-${index}`"
         ></CourseCard>
       </b-card-group>
     </div>
