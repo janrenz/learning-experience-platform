@@ -12,6 +12,7 @@ Vue.config.productionTip = false;
 
 fetch("/config/all.json").then(response => {
   response.json().then(config => {
+    // probs still needed to interact with logout etc
     Vue.prototype.$keycloak = new Keycloak(config.SSO);
     Vue.prototype.$keycloak
       .init({
@@ -24,25 +25,21 @@ fetch("/config/all.json").then(response => {
           store,
           render: h => h(App)
         }).$mount("#app");
+
         app.$store.commit("SET_CONFIG", config);
-        
+
         if (authenticated) {
-          console.info(
-            "INIT - KC idTokenParsed = ",
-            Vue.prototype.$keycloak.idTokenParsed
-            // Vue.prototype.$keycloak.isAuthenticated?
-          );
-          // 1. onRegistration( POST /api/v1/profiles {keycloack_id: Vue.prototype.$keycloak.idTokenParsed.sub})
-          console.info("INIT - KC idToken = ", Vue.prototype.$keycloak.idToken);
-          Vue.prototype.$keycloak.loadUserInfo().then(profile => {
-            console.info("INIT - user profile ", profile);
+          console.info("INIT - Keycloak user authenticated");
+          app.$store.commit("SET_AUTH", {
+            token: Vue.prototype.$keycloak.idToken,
+            parsedToken: Vue.prototype.$keycloak.idTokenParsed
           });
         } else {
-          console.info("INIT - KC user non authenticated ");
+          console.info("INIT - KC user not authenticated");
         }
       })
       .catch(err => {
-        console.error("INIT - KC already auth'd = ", err);
+        console.error("ERROR Connecting to Keycloak service", err);
       });
   });
 });

@@ -15,5 +15,8 @@ export default {
   },
   SET_TOPIC(state, topic, index) {
     Vue.set(state.topics, index, topic);
+  },
+  SET_AUTH(state, auth) {
+    state.auth = auth;
   }
 };
