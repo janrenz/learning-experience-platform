@@ -6,5 +6,6 @@
     "redirectUri" : "http://localhost:8080/onboarding"
   },
   "coursesAPI": "http://localhost:8086",
-  "topicsAPI": "http://localhost:8086"
+  "topicsAPI": "http://localhost:8086",
+  "profilesAPI": "http://localhost:3000"
 }

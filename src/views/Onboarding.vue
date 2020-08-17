@@ -1,31 +1,24 @@
 <template>
   <div class="about">
-    <h2>Select a minimum of 3 interests</h2>
-    <p>Suggested interests based on you profile:</p>
-
-    <div>
-      <b-button
-        v-for="(t, index) in allTopics"
-        :key="index"
-        @click="addInterest(t, index)"
-        :pressed="t.active"
-        variant="info"
-        pill
-      >
-        {{ t.name }} +
-      </b-button>
-    </div>
+    <Interests></Interests>
   </div>
 </template>
 
 <script>
+import Interests from "@/components/Onboarding/Interests.vue";
 import { mapGetters } from "vuex";
 export default {
-  computed: { ...mapGetters(["allTopics"]) },
+  computed: { ...mapGetters(["allTopics", "allProfile"]) },
+  components: { Interests },
   mounted() {
     this.$nextTick(() => {
       this.$store.dispatch("getAllTopics");
+      this.$store.dispatch("createProfile", this.$keycloak.idTokenParsed.sub);
     });
+
+    // 1. POST /api/v1/profiles {keycloak_id =  123}
+    // 1.1 - success so all good
+    // 1.2 - duplicate key. GET current profile so we don't overwrite it
   },
   methods: {
     addInterest(t, index) {

@@ -11,9 +11,11 @@ export default new Vuex.Store({
     courses: [],
     config: {},
     topics: [],
-    auth: {}
+    auth: {},
+    profile: {}
   },
   getters: {
+    allProfile: state => state.profile,
     allConfig: state => state.config,
     allAuth: state => state.auth,
     allCourses: state => state.courses,

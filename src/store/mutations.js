@@ -18,5 +18,8 @@ export default {
   },
   SET_AUTH(state, auth) {
     state.auth = auth;
+  },
+  SET_CURRENT_PROFILE(state, profile) {
+    state.profile = profile;
   }
 };
