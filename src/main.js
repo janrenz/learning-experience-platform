@@ -19,6 +19,13 @@ fetch("/config/all.json").then(response => {
         checkLoginIframe: false
       })
       .then(authenticated => {
+        const app = new Vue({
+          router,
+          store,
+          render: h => h(App)
+        }).$mount("#app");
+        app.$store.commit("SET_CONFIG", config);
+        
         if (authenticated) {
           console.info(
             "INIT - KC idTokenParsed = ",
@@ -37,11 +44,5 @@ fetch("/config/all.json").then(response => {
       .catch(err => {
         console.error("INIT - KC already auth'd = ", err);
       });
-    const app = new Vue({
-      router,
-      store,
-      render: h => h(App)
-    }).$mount("#app");
-    app.$store.commit("SET_CONFIG", config);
   });
 });
