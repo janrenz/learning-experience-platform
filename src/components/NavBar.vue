@@ -46,10 +46,17 @@ export default {
   computed: { ...mapGetters(["allConfig"]) },
   methods: {
     signUp() {
-      this.$keycloak.register({
-        redirectUri: this.allConfig.SSO.redirectUri,
-        action: "register"
-      });
+      this.$keycloak
+        .login({
+          redirectUri: this.allConfig.SSO.redirectUri,
+          action: "register"
+        })
+        .then(result => {
+          console.info("AUTH", result);
+        })
+        .catch(err => {
+          console.error("AUTH", err);
+        });
     }
   }
 };

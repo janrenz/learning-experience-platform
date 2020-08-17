@@ -13,7 +13,30 @@ Vue.config.productionTip = false;
 fetch("/config/all.json").then(response => {
   response.json().then(config => {
     Vue.prototype.$keycloak = new Keycloak(config.SSO);
-    Vue.prototype.$keycloak.init();
+    Vue.prototype.$keycloak
+      .init({
+        onLoad: "check-sso",
+        checkLoginIframe: false
+      })
+      .then(authenticated => {
+        if (authenticated) {
+          console.info(
+            "INIT - KC idTokenParsed = ",
+            Vue.prototype.$keycloak.idTokenParsed
+            // Vue.prototype.$keycloak.isAuthenticated?
+          );
+          // 1. onRegistration( POST /api/v1/profiles {keycloack_id: Vue.prototype.$keycloak.idTokenParsed.sub})
+          console.info("INIT - KC idToken = ", Vue.prototype.$keycloak.idToken);
+          Vue.prototype.$keycloak.loadUserInfo().then(profile => {
+            console.info("INIT - user profile ", profile);
+          });
+        } else {
+          console.info("INIT - KC user non authenticated ");
+        }
+      })
+      .catch(err => {
+        console.error("INIT - KC already auth'd = ", err);
+      });
     const app = new Vue({
       router,
       store,
