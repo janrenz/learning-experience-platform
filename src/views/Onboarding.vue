@@ -22,8 +22,18 @@ export default {
   components: { Interests, Skills },
   mounted() {
     this.$nextTick(() => {
-      this.$store.dispatch("getAllTopics");
-      this.$store.dispatch("createProfile", this.$keycloak.idTokenParsed.sub);
+      // Check the keycloak object is present
+      // if not redirect to home page
+      if (
+        this.$keycloak &&
+        this.$keycloak.idTokenParsed &&
+        this.$keycloak.idTokenParsed.sub
+      ) {
+        this.$store.dispatch("getAllTopics");
+        this.$store.dispatch("createProfile", this.$keycloak.idTokenParsed.sub);
+      } else {
+        this.$router.push({ name: "Home" });
+      }
     });
 
     // 1. POST /api/v1/profiles {keycloak_id =  123}
