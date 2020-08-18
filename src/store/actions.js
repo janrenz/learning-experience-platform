@@ -32,7 +32,11 @@ export default {
         commit("SET_CURRENT_PROFILE", response.data);
       })
       .catch(err => {
-        if (err.response && err.response.data.code === 11000) {
+        if (
+          err.response &&
+          err.response.data &&
+          err.response.data.code === 11000
+        ) {
           console.info("Duplicate keycloak_id found, user already registered");
           // TODO - return journey
           // 1. GET  /api/v1/profiles/${keycloack_id} info and preload any previously saved info?
