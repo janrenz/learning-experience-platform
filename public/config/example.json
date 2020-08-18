@@ -7,5 +7,6 @@
   },
   "coursesAPI": "http://localhost:8086",
   "topicsAPI": "http://localhost:8086",
-  "profilesAPI": "http://localhost:3000"
+  "profilesAPI": "http://localhost:3000",
+  "skillsAPI": "http://localhost:8086"
 }

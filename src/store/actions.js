@@ -23,6 +23,17 @@ export default {
         console.error("Oops something went wrong", err);
       });
   },
+  getAllSkills({ commit, state }, role_slug = "") {
+    return axios
+      .get(`${state.config.skillsAPI}/api/skills?role_slug=${role_slug}`)
+      .then(response => {
+        commit("GET_ALL_SKILLS", response.data);
+      })
+      .catch(err => {
+        // TODO - Error handling :)
+        console.error("Oops something went wrong", err);
+      });
+  },
   createProfile({ commit, state }, keycloak_id) {
     return axios
       .post(`${state.config.profilesAPI}/api/v1/profiles`, {

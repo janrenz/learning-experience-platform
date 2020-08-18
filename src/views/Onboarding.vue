@@ -4,7 +4,13 @@
       v-if="step === 1"
       @interestsSubmitted="submitInterest"
     ></Interests>
-    <Skills v-else></Skills>
+    <Skills v-else-if="step === 2" @skillsSubmitted="submitSkill"></Skills>
+    <div style="margin: 100px;" v-else>
+      <h2>Welcome to the WHO Academy!</h2>
+      <b-button @click="$router.push({ name: 'Home' })">
+        Start Learning
+      </b-button>
+    </div>
   </div>
 </template>
 
@@ -22,8 +28,18 @@ export default {
   components: { Interests, Skills },
   mounted() {
     this.$nextTick(() => {
-      this.$store.dispatch("getAllTopics");
-      this.$store.dispatch("createProfile", this.$keycloak.idTokenParsed.sub);
+      // Check the keycloak object is present
+      // if not redirect to home page
+      if (
+        this.$keycloak &&
+        this.$keycloak.idTokenParsed &&
+        this.$keycloak.idTokenParsed.sub
+      ) {
+        this.$store.dispatch("getAllTopics");
+        this.$store.dispatch("createProfile", this.$keycloak.idTokenParsed.sub);
+      } else {
+        this.$router.push({ name: "Home" });
+      }
     });
 
     // 1. POST /api/v1/profiles {keycloak_id =  123}
@@ -37,6 +53,9 @@ export default {
       // TODO - Connect to our profile service....
     },
     submitInterest() {
+      this.step++;
+    },
+    submitSkill() {
       this.step++;
     }
   }
