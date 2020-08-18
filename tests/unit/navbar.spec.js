@@ -1,18 +1,31 @@
 import { mount, createLocalVue } from "@vue/test-utils";
+import Vuex from "vuex";
 import HelloWorld from "@/components/NavBar.vue";
 import BootstrapVue from "bootstrap-vue";
 
 // create an extended `Vue` constructor
 const localVue = createLocalVue();
 
+// Use Vuex
+localVue.use(Vuex);
+
 // install plugins as normal
 localVue.use(BootstrapVue);
 
 describe("NavBar.vue", () => {
-  let wrapper;
+  let wrapper, store;
+
   beforeEach(() => {
+    store = new Vuex.Store({
+      state: {
+        auth: {
+          authenticated: false
+        }
+      }
+    });
     wrapper = mount(HelloWorld, {
       localVue,
+      store,
       stubs: ["router-link"]
     });
   });

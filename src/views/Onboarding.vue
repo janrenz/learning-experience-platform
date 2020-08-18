@@ -1,15 +1,25 @@
 <template>
   <div class="about">
-    <Interests></Interests>
+    <Interests
+      v-if="step === 1"
+      @interestsSubmitted="submitInterest"
+    ></Interests>
+    <Skills v-else></Skills>
   </div>
 </template>
 
 <script>
 import Interests from "@/components/Onboarding/Interests.vue";
+import Skills from "@/components/Onboarding/Skills.vue";
 import { mapGetters } from "vuex";
 export default {
+  data() {
+    return {
+      step: 1
+    };
+  },
   computed: { ...mapGetters(["allTopics", "allProfile"]) },
-  components: { Interests },
+  components: { Interests, Skills },
   mounted() {
     this.$nextTick(() => {
       this.$store.dispatch("getAllTopics");
@@ -25,6 +35,9 @@ export default {
       t.active = !t.active;
       this.$store.commit("SET_TOPIC", t, index);
       // TODO - Connect to our profile service....
+    },
+    submitInterest() {
+      this.step++;
     }
   }
 };

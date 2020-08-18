@@ -129,6 +129,8 @@ exports[`NavBar.vue render when created  1`] = `
                 Sign Up / Login
           
               </a>
+               
+              <!---->
             </a>
           </li>
         </ul>
