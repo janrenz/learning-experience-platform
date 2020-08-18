@@ -4,7 +4,13 @@
       v-if="step === 1"
       @interestsSubmitted="submitInterest"
     ></Interests>
-    <Skills v-else></Skills>
+    <Skills v-else-if="step === 2" @skillsSubmitted="submitSkill"></Skills>
+    <div style="margin: 100px;" v-else>
+      <h2>Welcome to the WHO Academy!</h2>
+      <b-button @click="$router.push({ name: 'Home' })">
+        Start Learning
+      </b-button>
+    </div>
   </div>
 </template>
 
@@ -15,7 +21,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      step: 2
+      step: 1
     };
   },
   computed: { ...mapGetters(["allTopics", "allProfile"]) },
@@ -47,6 +53,9 @@ export default {
       // TODO - Connect to our profile service....
     },
     submitInterest() {
+      this.step++;
+    },
+    submitSkill() {
       this.step++;
     }
   }
