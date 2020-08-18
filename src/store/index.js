@@ -10,10 +10,14 @@ export default new Vuex.Store({
   state: {
     courses: [],
     config: {},
-    topics: []
+    topics: [],
+    auth: {},
+    profile: {}
   },
   getters: {
+    allProfile: state => state.profile,
     allConfig: state => state.config,
+    allAuth: state => state.auth,
     allCourses: state => state.courses,
     allTopics: state => state.topics
   },

@@ -22,5 +22,37 @@ export default {
         // TODO - Error handling :)
         console.error("Oops something went wrong", err);
       });
+  },
+  createProfile({ commit, state }, keycloak_id) {
+    return axios
+      .post(`${state.config.profilesAPI}/api/v1/profiles`, {
+        keycloak_id
+      })
+      .then(response => {
+        commit("SET_CURRENT_PROFILE", response.data);
+      })
+      .catch(err => {
+        if (err.response && err.response.data.code === 11000) {
+          console.info("Duplicate keycloak_id found, user already registered");
+          // TODO - return journey
+          // 1. GET  /api/v1/profiles/${keycloack_id} info and preload any previously saved info?
+          // redirect to dashboard
+        } else {
+          console.error("Oops something went wrong", err);
+        }
+      });
+  },
+  updateProfile({ commit, state }, profile) {
+    return axios
+      .put(
+        `${state.config.profilesAPI}/api/v1/profiles/${profile.keycloak_id}`,
+        profile
+      )
+      .then(response => {
+        commit("SET_CURRENT_PROFILE", response.data);
+      })
+      .catch(err => {
+        console.error("Oops something went wrong", err);
+      });
   }
 };

@@ -15,5 +15,11 @@ export default {
   },
   SET_TOPIC(state, topic, index) {
     Vue.set(state.topics, index, topic);
+  },
+  SET_AUTH(state, auth) {
+    state.auth = auth;
+  },
+  SET_CURRENT_PROFILE(state, profile) {
+    state.profile = profile;
   }
 };

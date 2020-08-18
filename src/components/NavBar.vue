@@ -21,6 +21,7 @@
           <b-nav-item href="#">Language Preferences</b-nav-item>
           <b-nav-item>
             <b-button
+              v-if="!isAuthenticated"
               id="lxp-signup"
               href="#"
               variant="outline-secondary"
@@ -28,6 +29,16 @@
               size="sm"
               class="my-2 my-sm-0"
               >Sign Up / Login
+            </b-button>
+            <b-button
+              v-if="isAuthenticated"
+              id="lxp-signup"
+              href="#"
+              variant="outline-secondary"
+              @click="signUp"
+              size="sm"
+              class="my-2 my-sm-0"
+              >Logout
             </b-button>
           </b-nav-item>
         </b-navbar-nav>
@@ -43,12 +54,22 @@ export default {
   props: {
     msg: String
   },
-  computed: { ...mapGetters(["allConfig"]) },
+  computed: {
+    ...mapGetters(["allConfig"]),
+    isAuthenticated: function() {
+      return this.$store.state.auth.authenticated;
+    }
+  },
   methods: {
     signUp() {
-      this.$keycloak.register({
+      this.$keycloak.login({
         redirectUri: this.allConfig.SSO.redirectUri,
         action: "register"
+      });
+    },
+    logOut() {
+      this.$keycloak.logout({
+        redirectUri: window.location.origin
       });
     }
   }
