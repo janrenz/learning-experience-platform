@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Facial Recognition",
+    "slug": "facial-recognition"
+  },
+  {
+    "id": 2,
+    "name": "Machine Learning",
+    "slug": "machine-learning"
+  },
+  {
+    "id": 3,
+    "name": "Facial Recognition",
+    "slug": "facial-recognition"
+  },
+  {
+    "id": 4,
+    "name": "Machine Learning",
+    "slug": "machine-learning"
+  },
+  {
+    "id": 5,
+    "name": "Facial Recognition",
+    "slug": "facial-recognition"
+  },
+  {
+    "id": 6,
+    "name": "Machine Learning",
+    "slug": "machine-learning"
+  },
+  {
+    "id": 7,
+    "name": "Facial Recognition",
+    "slug": "facial-recognition"
+  },
+  {
+    "id": 8,
+    "name": "Machine Learning",
+    "slug": "machine-learning"
+  },
+  {
+    "id": 9,
+    "name": "Facial Recognition",
+    "slug": "facial-recognition"
+  },
+  {
+    "id": 10,
+    "name": "Machine Learning",
+    "slug": "machine-learning"
+  },
+  {
+    "id": 11,
+    "name": "Facial Recognition",
+    "slug": "facial-recognition"
+  },
+  {
+    "id": 12,
+    "name": "Machine Learning",
+    "slug": "machine-learning"
+  },
+  {
+    "id": 13,
+    "name": "Facial Recognition",
+    "slug": "facial-recognition"
+  },
+  {
+    "id": 14,
+    "name": "Machine Learning",
+    "slug": "machine-learning"
+  },
+  {
+    "id": 15,
+    "name": "Facial Recognition",
+    "slug": "facial-recognition"
+  },
+  {
+    "id": 16,
+    "name": "Machine Learning",
+    "slug": "machine-learning"
+  }
+]

@@ -11,6 +11,7 @@ export default new Vuex.Store({
     courses: [],
     config: {},
     topics: [],
+    skills: [],
     auth: {},
     profile: {}
   },
@@ -19,7 +20,8 @@ export default new Vuex.Store({
     allConfig: state => state.config,
     allAuth: state => state.auth,
     allCourses: state => state.courses,
-    allTopics: state => state.topics
+    allTopics: state => state.topics,
+    allSkills: state => state.skills
   },
   mutations,
   actions,

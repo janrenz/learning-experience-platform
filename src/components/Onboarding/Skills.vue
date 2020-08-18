@@ -1,23 +1,35 @@
 <template>
   <div>
-    <h2>Select a minimum of 3 Skills</h2>
-    <p>Suggested interests based on you profile:</p>
+    <h2>Select a minimum of 3 skills</h2>
+    <p>Please choose skills from the below list:</p>
 
     <b-button
-      v-for="(t, index) in allTopics"
+      v-for="(t, index) in allSkills"
       :key="index"
-      @click="addInterest(t, index)"
+      @click="addSkill(t, index)"
       :pressed="t.active"
       variant="info"
       pill
+      style="margin: 5px;"
     >
       {{ t.name }} +
     </b-button>
     <div>
       <br />
-      <b-button @click="submitInterests" :disabled="disableBtn" variant="dark">
+      <b-button @click="submitSkills" :disabled="disableBtn" variant="dark">
         Submit
       </b-button>
+      <div style="margin: 30px;">
+        <b-alert
+          :show="selectedSkills.length === 1 || selectedSkills.length === 2"
+          variant="warning"
+        >
+          Please select minimum of 3
+        </b-alert>
+        <b-alert :show="this.selectedSkills.length > 15" variant="warning">
+          Please select no more than 15
+        </b-alert>
+      </div>
     </div>
   </div>
 </template>
@@ -26,32 +38,32 @@
 import { mapGetters } from "vuex";
 export default {
   computed: {
-    ...mapGetters(["allTopics"]),
-    selectedTopics() {
-      return this.allTopics.filter(t => t.active === true);
+    ...mapGetters(["allSkills"]),
+    selectedSkills() {
+      return this.allSkills.filter(t => t.active === true);
     },
     disableBtn() {
-      return this.selectedTopics.length < 3;
+      return this.selectedSkills.length < 3 || this.selectedSkills.length > 15;
     }
   },
   mounted() {
     this.$nextTick(() => {
-      this.$store.dispatch("getAllTopics");
+      this.$store.dispatch("getAllSkills");
     });
   },
   methods: {
-    addInterest(t, index) {
+    addSkill(t, index) {
       t.active = !t.active;
-      this.$store.commit("SET_TOPIC", t, index);
+      this.$store.commit("SET_SKILL", t, index);
     },
-    submitInterests() {
+    submitSkills() {
       this.$store
         .dispatch("updateProfile", {
           keycloak_id: this.$keycloak.idTokenParsed.sub,
-          skills: this.selectedTopics
+          skills: this.selectedSkills
         })
         .then(() => {
-          this.$emit("submitInterests");
+          this.$emit("skillsSubmitted");
         });
     }
   }

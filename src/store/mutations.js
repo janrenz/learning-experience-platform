@@ -21,5 +21,14 @@ export default {
   },
   SET_CURRENT_PROFILE(state, profile) {
     state.profile = profile;
+  },
+  GET_ALL_SKILLS(state, skills) {
+    skills.forEach(t => {
+      Vue.set(t, "active", false);
+    });
+    state.skills = skills;
+  },
+  SET_SKILL(state, skill, index) {
+    Vue.set(state.skills, index, skill);
   }
 };
