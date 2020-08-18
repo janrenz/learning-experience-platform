@@ -24,6 +24,7 @@ export default {
   },
   GET_ALL_SKILLS(state, skills) {
     skills.forEach(t => {
+      Vue.set(t, "rating", "");
       Vue.set(t, "active", false);
     });
     state.skills = skills;

@@ -23,9 +23,9 @@ export default {
         console.error("Oops something went wrong", err);
       });
   },
-  getAllSkills({ commit, state }) {
+  getAllSkills({ commit, state }, role_slug = "") {
     return axios
-      .get(`${state.config.skillsAPI}/api/skills`)
+      .get(`${state.config.skillsAPI}/api/skills?role_slug=${role_slug}`)
       .then(response => {
         commit("GET_ALL_SKILLS", response.data);
       })

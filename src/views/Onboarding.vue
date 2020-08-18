@@ -15,7 +15,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      step: 1
+      step: 2
     };
   },
   computed: { ...mapGetters(["allTopics", "allProfile"]) },

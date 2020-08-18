@@ -2,18 +2,39 @@
   <div>
     <h2>Select a minimum of 3 skills</h2>
     <p>Please choose skills from the below list:</p>
-
-    <b-button
+    <b-dropdown
       v-for="(t, index) in allSkills"
       :key="index"
-      @click="addSkill(t, index)"
-      :pressed="t.active"
-      variant="info"
+      :variant="`${t.active ? 'primary' : 'outline-primary'}`"
       pill
       style="margin: 5px;"
+      :text="`${t.name} +`"
+      no-caret
     >
-      {{ t.name }} +
-    </b-button>
+      <b-dropdown-item
+        href="javascript:;"
+        @click="addSkill(t, index, false, '')"
+        v-if="t.active === true"
+      >
+        <span style="color: red;">CLEAR</span>
+      </b-dropdown-item>
+      <b-dropdown-item
+        href="javascript:;"
+        @click="addSkill(t, index, true, 'Novice')"
+      >
+        Novice
+      </b-dropdown-item>
+      <b-dropdown-item
+        href="javascript:;"
+        @click="addSkill(t, index, true, 'Intermediate')"
+        >Intermediate</b-dropdown-item
+      >
+      <b-dropdown-item
+        href="javascript:;"
+        @click="addSkill(t, index, true, 'Master')"
+        >Master</b-dropdown-item
+      >
+    </b-dropdown>
     <div>
       <br />
       <b-button @click="submitSkills" :disabled="disableBtn" variant="dark">
@@ -48,12 +69,14 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
+      // TODO: pass role_slug
       this.$store.dispatch("getAllSkills");
     });
   },
   methods: {
-    addSkill(t, index) {
-      t.active = !t.active;
+    addSkill(t, index, active, rating) {
+      t.active = active;
+      t.rating = rating;
       this.$store.commit("SET_SKILL", t, index);
     },
     submitSkills() {
