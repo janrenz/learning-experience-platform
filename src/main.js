@@ -30,10 +30,13 @@ fetch("/config/all.json").then(response => {
 
         if (authenticated) {
           console.info("INIT - Keycloak user authenticated");
-          app.$store.commit("SET_AUTH", {
-            token: Vue.prototype.$keycloak.idToken,
-            parsedToken: Vue.prototype.$keycloak.idTokenParsed,
-            authenticated
+          Vue.prototype.$keycloak.loadUserProfile().then(profile => {
+            app.$store.commit("SET_AUTH", {
+              token: Vue.prototype.$keycloak.idToken,
+              parsedToken: Vue.prototype.$keycloak.idTokenParsed,
+              profile,
+              authenticated
+            });
           });
         } else {
           console.info("INIT - KC user not authenticated");
