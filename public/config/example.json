@@ -1,6 +1,6 @@
 {
   "SSO": {
-    "url": "https://keycloak-keycloak.apps.who.emea-2.rht-labs.com/auth",
+    "url": "https://sso-keycloak-template.apps.who.emea-2.rht-labs.com/auth",
     "realm": "myrealm",
     "clientId": "myclient",
     "redirectUri" : "http://localhost:8080/onboarding"

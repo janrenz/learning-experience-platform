@@ -59,18 +59,26 @@
 import { mapGetters } from "vuex";
 export default {
   computed: {
-    ...mapGetters(["allSkills"]),
+    ...mapGetters(["allSkills", "allAuth"]),
     selectedSkills() {
       return this.allSkills.filter(t => t.active === true);
     },
     disableBtn() {
       return this.selectedSkills.length < 3 || this.selectedSkills.length > 15;
+    },
+    roleSlug() {
+      // TODO: Refactor the code
+      return this.allAuth.profile.attributes &&
+        this.allAuth.profile.attributes.role_slugs &&
+        this.allAuth.profile.attributes.role_slugs.length > 0
+        ? this.allAuth.profile.attributes.role_slugs[0]
+        : "";
     }
   },
   mounted() {
     this.$nextTick(() => {
       // TODO: pass role_slug
-      this.$store.dispatch("getAllSkills");
+      this.$store.dispatch("getAllSkills", this.roleSlug);
     });
   },
   methods: {
