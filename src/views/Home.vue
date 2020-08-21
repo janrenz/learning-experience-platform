@@ -36,13 +36,13 @@ export default {
   components: {
     NavBar,
     HelloWorld,
-    CourseCard,
+    CourseCard
   },
   computed: { ...mapGetters(["allCourses"]) },
   mounted() {
     this.$nextTick(() => {
       this.$store.dispatch("getAllCourses");
     });
-  },
+  }
 };
 </script>

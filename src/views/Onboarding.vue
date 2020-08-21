@@ -1,15 +1,15 @@
 <template>
   <div class="about h-100">
-    <Interests
-      v-if="step === 1"
-      :step="step"
-      @interestsSubmitted="submitInterest"
-    ></Interests>
     <Skills
-      v-else-if="step === 2"
+      v-if="step === 1"
       :step="step"
       @skillsSubmitted="submitSkill"
     ></Skills>
+    <Interests
+      v-else-if="step === 2"
+      :step="step"
+      @interestsSubmitted="submitInterest"
+    ></Interests>
     <div style="margin: 100px;" v-else>
       <h2>Welcome to the WHO Academy!</h2>
       <b-button @click="$router.push({ name: 'Home' })">
@@ -26,7 +26,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      step: 1,
+      step: 1
     };
   },
   computed: { ...mapGetters(["allTopics", "allProfile"]) },
@@ -62,7 +62,7 @@ export default {
     },
     submitSkill() {
       this.step++;
-    },
-  },
+    }
+  }
 };
 </script>

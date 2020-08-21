@@ -25,6 +25,7 @@
             :pressed="t.active"
             variant="info"
             pill
+            class="ob-btn__pill"
           >
             {{ t.name }}
             <span> <b-icon icon="plus" style="color:#828282"></b-icon></span>
@@ -42,7 +43,10 @@
               @mouseleave="t.hover = false"
               :pressed="t.active"
               variant="info"
-              :class="{ 'ob-interest__btn-hover': t.hover }"
+              :class="{
+                'ob-interest__btn-hover': t.hover,
+                'ob-btn__pill': true
+              }"
               pill
             >
               {{ t.name }}
@@ -84,7 +88,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import OnboardingLayout from "./OnboardingLayout";
+import OnboardingLayout from "../Layout/OnboardingLayout";
 
 export default {
   props: ["step"],
@@ -92,14 +96,14 @@ export default {
   computed: {
     ...mapGetters(["allTopics"]),
     selectedTopics() {
-      return this.allTopics.filter((t) => t.active === true);
+      return this.allTopics.filter(t => t.active === true);
     },
     disableBtn() {
       return this.selectedTopics.length < 3 || this.selectedTopics.length > 15;
     },
     availableTopics() {
-      return this.allTopics.filter((t) => !t.active);
-    },
+      return this.allTopics.filter(t => !t.active);
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -115,13 +119,13 @@ export default {
       this.$store
         .dispatch("updateProfile", {
           keycloak_id: this.$keycloak.idTokenParsed.sub,
-          interests: this.selectedTopics,
+          interests: this.selectedTopics
         })
         .then(() => {
           this.$emit("interestsSubmitted");
         });
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">
@@ -153,28 +157,6 @@ export default {
       font-size: 14px;
       line-height: 16px;
       color: #757575;
-    }
-    .btn.btn-info {
-      margin: 5px;
-      color: rgb(130, 130, 130);
-      font-size: 10px;
-      line-height: 0;
-      font-weight: 500;
-      background: rgb(239, 239, 239);
-      border: none;
-      padding: 4px 12px;
-      text-transform: uppercase;
-      span {
-        font-weight: 600;
-        font-size: 11px;
-        display: inline-block;
-        padding-left: 5px;
-      }
-      &.active,
-      &:hover,
-      &:focus {
-        box-shadow: none;
-      }
     }
     .ob-interest__selected {
       .btn {
@@ -217,6 +199,33 @@ export default {
         color: #9b9b9b;
       }
     }
+  }
+}
+
+.ob-btn__pill.btn.btn-info {
+  margin: 5px;
+  color: rgb(130, 130, 130);
+  font-size: 10px;
+  line-height: 0;
+  font-weight: 500;
+  background: rgb(239, 239, 239);
+  border: none;
+  padding: 4px 12px;
+  text-transform: uppercase;
+  span {
+    font-weight: 600;
+    font-size: 11px;
+    display: inline-block;
+    padding-left: 5px;
+  }
+  &:active {
+    background: #efefef;
+    color: rgb(130, 130, 130);
+  }
+  &.active,
+  &:hover,
+  &:focus {
+    box-shadow: none !important;
   }
 }
 </style>

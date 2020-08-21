@@ -1,5 +1,5 @@
 <template>
-  <div class="h-100">
+  <div class="h-100 ob-skills">
     <b-container fluid class="ob-container h-100">
       <b-row class="h-100">
         <b-col cols="4" class="h-100 p-0">
@@ -35,9 +35,9 @@ export default {
   data() {
     return {
       progress_value: 25,
-      total_steps: 2,
+      total_steps: 2
     };
-  },
+  }
 };
 </script>
 <style lang="scss">
