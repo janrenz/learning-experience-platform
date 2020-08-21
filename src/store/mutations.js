@@ -10,6 +10,7 @@ export default {
   GET_ALL_TOPICS(state, topics) {
     topics.forEach(t => {
       Vue.set(t, "active", false);
+      Vue.set(t, "hover", false);
     });
     state.topics = topics;
   },
