@@ -10,6 +10,7 @@ export default {
   GET_ALL_TOPICS(state, topics) {
     topics.forEach(t => {
       Vue.set(t, "active", false);
+      Vue.set(t, "hover", false);
     });
     state.topics = topics;
   },
@@ -26,6 +27,7 @@ export default {
     skills.forEach(t => {
       Vue.set(t, "rating", "");
       Vue.set(t, "active", false);
+      Vue.set(t, "hover", false);
     });
     state.skills = skills;
   },
