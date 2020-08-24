@@ -36,7 +36,7 @@
             :class="{
               'ob-interest__selected mt-5 mb-2': true,
               visible: selectedTopics.length,
-              invisible: !selectedTopics.length,
+              invisible: !selectedTopics.length
             }"
           >
             <p class="mb-2">Your interests:</p>
@@ -50,7 +50,7 @@
               variant="info"
               :class="{
                 'ob-interest__btn-hover': t.hover,
-                'ob-btn__pill': true,
+                'ob-btn__pill': true
               }"
               pill
             >
@@ -106,20 +106,20 @@ export default {
   components: { OnboardingLayout, OnboardingSuccess },
   data() {
     return {
-      isCompleted: false,
+      isCompleted: false
     };
   },
   computed: {
     ...mapGetters(["allTopics"]),
     selectedTopics() {
-      return this.allTopics.filter((t) => t.active === true);
+      return this.allTopics.filter(t => t.active === true);
     },
     disableBtn() {
       return this.selectedTopics.length < 3 || this.selectedTopics.length > 15;
     },
     availableTopics() {
-      return this.allTopics.filter((t) => !t.active);
-    },
+      return this.allTopics.filter(t => !t.active);
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -135,13 +135,13 @@ export default {
       this.$store
         .dispatch("updateProfile", {
           keycloak_id: this.$keycloak.idTokenParsed.sub,
-          interests: this.selectedTopics,
+          interests: this.selectedTopics
         })
         .then(() => {
           this.isCompleted = true;
         });
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">

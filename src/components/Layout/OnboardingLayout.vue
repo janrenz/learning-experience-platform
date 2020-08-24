@@ -36,14 +36,14 @@ export default {
   props: ["step"],
   data() {
     return {
-      total_steps: 2,
+      total_steps: 2
     };
   },
   computed: {
     progressValue() {
       return ((this.step - 1) / this.total_steps) * 100;
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">
