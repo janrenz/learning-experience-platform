@@ -21,7 +21,7 @@
             </div>
           </div>
         </b-col>
-        <b-col cols="8" class="p-0">
+        <b-col cols="8" class="p-0 h-100">
           <div class="ob-right__div h-100">
             <slot name="right-section"></slot>
           </div>
@@ -36,14 +36,14 @@ export default {
   props: ["step"],
   data() {
     return {
-      total_steps: 2
+      total_steps: 2,
     };
   },
   computed: {
     progressValue() {
       return ((this.step - 1) / this.total_steps) * 100;
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -73,6 +73,15 @@ export default {
   }
   .ob-right__div {
     padding: 70px 120px;
+    overflow-y: auto;
+  }
+}
+
+@media only screen and (min-width: 990px) and (max-width: 1200px) {
+  .ob-container {
+    .ob-right__div {
+      padding: 70px;
+    }
   }
 }
 </style>

@@ -18,21 +18,26 @@
           <p class="ob-interest__sc">
             Suggested interests based on you profile:
           </p>
-          <b-button
-            v-for="(t, index) in availableTopics"
-            :key="index"
-            @click="addInterest(t, index)"
-            :pressed="t.active"
-            variant="info"
-            pill
-            class="ob-btn__pill"
-          >
-            {{ t.name }}
-            <span> <b-icon icon="plus" style="color:#828282"></b-icon></span>
-          </b-button>
+          <div>
+            <b-button
+              v-for="(t, index) in availableTopics"
+              :key="index"
+              @click="addInterest(t, index)"
+              :pressed="t.active"
+              variant="info"
+              pill
+              class="ob-btn__pill"
+            >
+              {{ t.name }}
+              <span> <b-icon icon="plus" style="color:#828282"></b-icon></span>
+            </b-button>
+          </div>
           <div
-            class="ob-interest__selected mt-5 mb-2"
-            v-if="selectedTopics.length"
+            :class="{
+              'ob-interest__selected mt-5 mb-2': true,
+              visible: selectedTopics.length,
+              invisible: !selectedTopics.length,
+            }"
           >
             <p class="mb-2">Your interests:</p>
             <b-button
@@ -45,7 +50,7 @@
               variant="info"
               :class="{
                 'ob-interest__btn-hover': t.hover,
-                'ob-btn__pill': true
+                'ob-btn__pill': true,
               }"
               pill
             >
@@ -101,20 +106,20 @@ export default {
   components: { OnboardingLayout, OnboardingSuccess },
   data() {
     return {
-      isCompleted: false
+      isCompleted: false,
     };
   },
   computed: {
     ...mapGetters(["allTopics"]),
     selectedTopics() {
-      return this.allTopics.filter(t => t.active === true);
+      return this.allTopics.filter((t) => t.active === true);
     },
     disableBtn() {
       return this.selectedTopics.length < 3 || this.selectedTopics.length > 15;
     },
     availableTopics() {
-      return this.allTopics.filter(t => !t.active);
-    }
+      return this.allTopics.filter((t) => !t.active);
+    },
   },
   mounted() {
     this.$nextTick(() => {
@@ -130,13 +135,13 @@ export default {
       this.$store
         .dispatch("updateProfile", {
           keycloak_id: this.$keycloak.idTokenParsed.sub,
-          interests: this.selectedTopics
+          interests: this.selectedTopics,
         })
         .then(() => {
           this.isCompleted = true;
         });
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss">
@@ -180,6 +185,7 @@ export default {
     }
   }
   .ob-interest__cta {
+    margin-top: 7%;
     .ob-interest__alert {
       span {
         font-size: 12px;
@@ -214,6 +220,16 @@ export default {
   &:hover,
   &:focus {
     box-shadow: none !important;
+  }
+}
+@media only screen and (min-width: 990px) and (max-width: 1200px) {
+  .ob-interest {
+    .ob-interes__main {
+      height: auto;
+    }
+    .ob-interest__cta {
+      margin-top: 10%;
+    }
   }
 }
 </style>
