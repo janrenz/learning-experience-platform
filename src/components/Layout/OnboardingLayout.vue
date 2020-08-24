@@ -9,12 +9,14 @@
             <div class="ob-left__loader">
               <b-progress
                 height="6px"
-                :value="progress_value"
+                :value="progressValue"
                 variant="secondary"
                 class="mb-2"
               ></b-progress>
               <p class="ob-left__value">
-                {{ progress_value }}% completed ({{ step }}/{{ total_steps }})
+                {{ progressValue }}% completed ({{ step - 1 }}/{{
+                  total_steps
+                }})
               </p>
             </div>
           </div>
@@ -34,9 +36,13 @@ export default {
   props: ["step"],
   data() {
     return {
-      progress_value: 25,
       total_steps: 2
     };
+  },
+  computed: {
+    progressValue() {
+      return ((this.step - 1) / this.total_steps) * 100;
+    }
   }
 };
 </script>

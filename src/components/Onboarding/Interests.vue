@@ -1,6 +1,6 @@
 <template>
   <div class="h-100 ob-interest">
-    <OnboardingLayout :step="step">
+    <OnboardingLayout :step="step" v-if="!isCompleted">
       <template v-slot:left-section>
         <div class="h-75">
           <h2 class="ob-interest__title">Learning interests</h2>
@@ -60,13 +60,16 @@
           </div>
         </div>
         <div class="ob-interest__cta">
-          <b-button class="mr-4">Skip</b-button>
-          <b-button class="mr-3" :disabled="disableBtn" @click="submitInterests"
+          <b-button class="mr-4 ob-btn">Skip</b-button>
+          <b-button
+            class="mr-3 ob-btn ob-btn-primary"
+            :disabled="disableBtn"
+            @click="submitInterests"
             >Next</b-button
           >
           <div
             class="ob-interest__alert d-inline-block"
-            v-if="selectedTopics.length < 3"
+            v-if="selectedTopics.length < 3 || selectedTopics.length > 15"
           >
             <img
               src="@/assets/images/warning.svg"
@@ -75,24 +78,32 @@
               height="20"
               class="mr-2"
             />
-            <span
+            <span v-if="selectedTopics.length < 3"
               >{{ 3 - selectedTopics.length }} more interests need to be
               selected</span
             >
+            <span v-else>Please select no more than 15 interests</span>
           </div>
         </div>
       </template>
     </OnboardingLayout>
+    <OnboardingSuccess v-else :step="step + 1"></OnboardingSuccess>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import OnboardingLayout from "../Layout/OnboardingLayout";
+import OnboardingSuccess from "../Onboarding/OnboardingSuccess";
 
 export default {
   props: ["step"],
-  components: { OnboardingLayout },
+  components: { OnboardingLayout, OnboardingSuccess },
+  data() {
+    return {
+      isCompleted: false
+    };
+  },
   computed: {
     ...mapGetters(["allTopics"]),
     selectedTopics() {
@@ -122,7 +133,7 @@ export default {
           interests: this.selectedTopics
         })
         .then(() => {
-          this.$emit("interestsSubmitted");
+          this.isCompleted = true;
         });
     }
   }
@@ -169,29 +180,6 @@ export default {
     }
   }
   .ob-interest__cta {
-    .btn {
-      background: #d7d5d5;
-      border: none;
-      padding: 10px 36px;
-      text-align: center;
-      letter-spacing: 1.25px;
-      text-transform: uppercase;
-      color: #757575;
-      font-size: 14px;
-      line-height: 16px;
-      font-weight: 500;
-      &.disabled {
-        color: #c4c4c4;
-        background: rgba(117, 117, 117, 0.2);
-        opacity: 1;
-      }
-      &.active,
-      &:hover,
-      &:focus {
-        color: #757575;
-        box-shadow: none;
-      }
-    }
     .ob-interest__alert {
       span {
         font-size: 12px;

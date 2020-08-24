@@ -5,17 +5,7 @@
       :step="step"
       @skillsSubmitted="submitSkill"
     ></Skills>
-    <Interests
-      v-else-if="step === 2"
-      :step="step"
-      @interestsSubmitted="submitInterest"
-    ></Interests>
-    <div style="margin: 100px;" v-else>
-      <h2>Welcome to the WHO Academy!</h2>
-      <b-button @click="$router.push({ name: 'Home' })">
-        Start Learning
-      </b-button>
-    </div>
+    <Interests v-else-if="step === 2" :step="step"></Interests>
   </div>
 </template>
 
@@ -56,9 +46,6 @@ export default {
       t.active = !t.active;
       this.$store.commit("SET_TOPIC", t, index);
       // TODO - Connect to our profile service....
-    },
-    submitInterest() {
-      this.step++;
     },
     submitSkill() {
       this.step++;

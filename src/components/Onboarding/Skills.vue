@@ -107,8 +107,11 @@
           </div>
         </div>
         <div class="ob-interest__cta">
-          <b-button class="mr-4">Skip</b-button>
-          <b-button class="mr-3" :disabled="disableBtn" @click="submitSkills"
+          <b-button class="mr-4 ob-btn">Skip</b-button>
+          <b-button
+            class="mr-3 ob-btn ob-btn-primary"
+            :disabled="disableBtn"
+            @click="submitSkills"
             >Next</b-button
           >
           <div
