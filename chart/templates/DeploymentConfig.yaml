@@ -38,11 +38,17 @@ spec:
         volumeMounts:
           - mountPath: "/opt/app-root/src/config"
             name: "{{ include "my-app.fullname" . }}-config"
-        readinessProbe:
+        livenessProbe:
           httpGet:
             path: /
             port: 8080
           initialDelaySeconds: 10
+          timeoutSeconds: 1
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 3
           timeoutSeconds: 1
       dnsPolicy: ClusterFirst
       restartPolicy: Always
