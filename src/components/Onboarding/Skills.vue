@@ -159,7 +159,6 @@ export default {
     },
     roleSlug() {
       // TODO: Refactor the code
-      console.log(this.allAuth.profile.attributes.role_slugs);
       return this.allAuth.profile.attributes &&
         this.allAuth.profile.attributes.role_slugs &&
         this.allAuth.profile.attributes.role_slugs.length > 0
