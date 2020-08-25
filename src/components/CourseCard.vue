@@ -1,33 +1,52 @@
 <template>
   <b-card no-body class="overflow-hidden" :id="index">
     <b-row>
-      <b-col md="8">
+      <b-col md="8" class="pr-0">
         <b-card-body align="left">
           <p class="card-label">Category</p>
           <b-card-title>{{ course.title }}</b-card-title>
           <b-card-text>
-            <p>⭐️⭐️⭐️⭐️★ 123 Reviews</p>
-            <p>
-              Estimated Time <br />
+            <p class="card__reviews">
+              <img
+                :src="
+                  require(`@/assets/images/${
+                    a == 5 ? 'star.svg' : 'star-filled.svg'
+                  }`)
+                "
+                v-for="a in [1, 2, 3, 4, 5]"
+                :key="a"
+                class="mr-1"
+                width="12"
+                height="12"
+              />
+              123 Reviews
+            </p>
+            <p class="card__time">
+              <span>Estimated Time</span>
               3 Months
             </p>
           </b-card-text>
         </b-card-body>
       </b-col>
       <b-col md="4">
-        <b-card-img
-          :src="require('@/assets/images/placeholder.svg')"
-          alt="disney"
-          class="rounded-0"
-          width="46"
-          height="46"
-        ></b-card-img>
-        <b-card-text align="right" class="padding-10">
-          <p>
-            Difficulty <br />
-            Moderate
-          </p>
-        </b-card-text>
+        <b-card-body class="h-100">
+          <div class="card-placeholder__div">
+            <b-card-img
+              :src="require('@/assets/images/placeholder.svg')"
+              alt="disney"
+              class="rounded-0"
+              width="46"
+              height="46"
+            ></b-card-img>
+          </div>
+          <b-card-text align="right" class="padding-10">
+            <p class="card__level">
+              Beginner
+              <br />
+              level
+            </p>
+          </b-card-text>
+        </b-card-body>
       </b-col>
     </b-row>
   </b-card>
@@ -57,13 +76,53 @@ export default {
     letter-spacing: 1.5px;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.87);
+    margin-bottom: 4px;
   }
   .card-title {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 18px;
     line-height: 30px;
     letter-spacing: 0.15px;
     color: rgba(0, 0, 0, 0.87);
+    margin-bottom: 30px;
+  }
+  .card-placeholder__div {
+    width: 74px;
+    height: 74px;
+    background: linear-gradient(0deg, #e5e5e5, #e5e5e5);
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    margin-bottom: 30px;
+  }
+  .card__reviews {
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.4px;
+    color: rgba(0, 0, 0, 0.54);
+  }
+  .card__time {
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.4px;
+    color: rgba(0, 0, 0, 0.54);
+    margin-bottom: 0;
+    span {
+      font-size: 10px;
+      line-height: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.87);
+      display: block;
+      margin-bottom: 4px;
+    }
+  }
+  .card__level {
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    letter-spacing: 0.4px;
+    color: rgba(0, 0, 0, 0.54);
   }
 }
 </style>
