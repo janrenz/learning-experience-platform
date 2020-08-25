@@ -1,6 +1,6 @@
 <template>
   <div class="h-100 ob-interest ob-skills">
-    <OnboardingLayout :step="step">
+    <OnboardingLayout :step="step" v-if="!isCompleted">
       <template v-slot:left-section>
         <div class="h-75">
           <h2 class="ob-interest__title">Skills and experience</h2>
@@ -43,7 +43,11 @@
                 <b-dropdown size="lg" no-caret>
                   <template v-slot:button-content>
                     <div>
-                      <label>{{ currentSkill.rating }}</label>
+                      <label>{{
+                        currentSkill.rating
+                          ? currentSkill.rating
+                          : "Please select"
+                      }}</label>
                       <span class="ob-dd__icon">
                         <b-icon
                           icon="chevron-down"
@@ -57,6 +61,7 @@
                     :key="index"
                     href="javascript:;"
                     @click="addRating(r)"
+                    :class="{ 'active-class': r == currentSkill.rating }"
                   >
                     {{ r }}
                   </b-dropdown-item>
@@ -79,8 +84,11 @@
           </b-modal>
 
           <div
-            class="ob-interest__selected mt-5 mb-2"
-            v-if="selectedSkills.length"
+            :class="{
+              'ob-interest__selected mt-5 mb-2': true,
+              visible: selectedSkills.length,
+              invisible: !selectedSkills.length
+            }"
           >
             <p class="mb-2">Your skills:</p>
             <b-button
@@ -116,7 +124,7 @@
           >
           <div
             class="ob-interest__alert d-inline-block"
-            v-if="selectedSkills.length < 3"
+            v-if="selectedSkills.length < 3 || selectedSkills.length > 15"
           >
             <img
               src="@/assets/images/warning.svg"
@@ -125,26 +133,34 @@
               height="20"
               class="mr-2"
             />
-            <span
+            <span v-if="selectedSkills.length < 3"
               >{{ 3 - selectedSkills.length }} more skills need to be
               selected</span
             >
+            <span v-else>Please select no more than 15 skills</span>
           </div>
         </div>
       </template>
     </OnboardingLayout>
+    <OnboardingSuccess
+      v-else
+      :step="step + 1"
+      @skillsSubmitted="() => this.$emit('skillsSubmitted')"
+    ></OnboardingSuccess>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import OnboardingLayout from "../Layout/OnboardingLayout";
+import OnboardingSuccess from "../Onboarding/OnboardingSuccess";
 
 export default {
   props: ["step"],
-  components: { OnboardingLayout },
+  components: { OnboardingLayout, OnboardingSuccess },
   data() {
     return {
+      isCompleted: false,
       currentSkill: "",
       ratingsArr: ["Novice", "Intermediate", "Master"]
     };
@@ -159,7 +175,6 @@ export default {
     },
     roleSlug() {
       // TODO: Refactor the code
-      console.log(this.allAuth.profile.attributes.role_slugs);
       return this.allAuth.profile.attributes &&
         this.allAuth.profile.attributes.role_slugs &&
         this.allAuth.profile.attributes.role_slugs.length > 0
@@ -198,7 +213,7 @@ export default {
           skills: this.selectedSkills
         })
         .then(() => {
-          this.$emit("skillsSubmitted");
+          this.isCompleted = true;
         });
     },
     addRating(rating) {
@@ -292,6 +307,20 @@ export default {
           }
           .dropdown-menu {
             width: 100%;
+            .active-class {
+              .dropdown-item {
+                color: #000;
+              }
+            }
+            .dropdown-item {
+              color: #9e9e9e;
+              &:focus,
+              &:active {
+                background: #fff;
+                outline: none;
+                color: #000;
+              }
+            }
           }
         }
       }
