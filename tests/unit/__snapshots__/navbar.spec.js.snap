@@ -106,7 +106,24 @@ exports[`NavBar.vue render when created  1`] = `
               href="#"
               target="_self"
             >
-              Language Preferences
+              Language Preference
+            </a>
+          </li>
+           
+          <li
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              target="_self"
+            >
+              <img
+                alt="Search"
+                height="18"
+                src="@/assets/images/search.svg"
+                width="18"
+              />
             </a>
           </li>
            
@@ -119,18 +136,16 @@ exports[`NavBar.vue render when created  1`] = `
               target="_self"
             >
               <a
-                class="btn my-2 my-sm-0 btn-outline-secondary btn-sm"
+                class="btn my-2 my-sm-0 ob-btn btn-outline-secondary btn-sm"
                 href="#"
                 id="lxp-signup"
                 role="button"
                 tabindex="0"
                 target="_self"
               >
-                Sign Up / Login
+                login / sign up
           
               </a>
-               
-              <!---->
             </a>
           </li>
         </ul>
