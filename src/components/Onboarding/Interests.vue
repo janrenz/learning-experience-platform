@@ -222,7 +222,7 @@ export default {
     box-shadow: none !important;
   }
 }
-@media only screen and (min-width: 990px) and (max-width: 1200px) {
+@media only screen and (min-width: 990px) and (max-width: 1320px) {
   .ob-interest {
     .ob-interes__main {
       height: auto;

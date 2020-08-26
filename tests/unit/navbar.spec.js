@@ -43,7 +43,9 @@ describe("NavBar.vue", () => {
 
   it("should contain login button ", () => {
     const navLinks = wrapper.findAll("a");
-    expect(navLinks.at(navLinks.length - 1).text()).toContain("Login");
+    expect(navLinks.at(navLinks.length - 1).text()).toContain(
+      "login / sign up"
+    );
     expect(navLinks.at(navLinks.length - 1).attributes("role")).toContain(
       "button"
     );
