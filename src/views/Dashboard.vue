@@ -31,12 +31,15 @@
           <b-row class="db-right__bottom">
             <b-col class="h-100">
               <b-row class="db-bottom__profile">
-                <b-col cols="6" class="h-100 pl-0">
-                  <div>
-                    <b-card>
-                      <b-row>
-                        <b-col md="8" class="pr-0">
-                          <b-card-body align="left" class="card-content__right">
+                <b-col cols="6" class="pl-0 db-complete__profile">
+                  <div class="h-100">
+                    <b-card class="h-100">
+                      <b-row class="h-100">
+                        <b-col md="8" class="pr-0 h-100">
+                          <b-card-body
+                            align="left"
+                            class="card-content__right h-100"
+                          >
                             <b-card-title
                               >WHO Academy Learning Experience Platform
                               Tutorial</b-card-title
@@ -77,9 +80,12 @@
                 <b-col cols="6" class="p-0 db-complete__profile">
                   <div class="h-100">
                     <b-card class="h-100">
-                      <b-row>
-                        <b-col md="8" class="pr-0">
-                          <b-card-body align="left" class="card-content__right">
+                      <b-row class="h-100">
+                        <b-col md="8" class="pr-0 h-100">
+                          <b-card-body
+                            align="left"
+                            class="card-content__right h-100"
+                          >
                             <b-card-title
                               >Complete your profile for a seamless
                               experience</b-card-title
@@ -165,15 +171,15 @@ export default {
       sliderItems: 3,
       tabs: [
         {
-          name: "Trending courses",
+          name: "RecomMended Courses",
           active: true
         },
         {
-          name: "Category I",
+          name: "Top picks of the month",
           active: false
         },
         {
-          name: "Category II",
+          name: "New courses availble",
           active: false
         }
       ]
@@ -224,7 +230,7 @@ export default {
     height: 30%;
     background: #efefef;
     margin-right: -20px;
-    padding: 3% 5%;
+    padding: 3%;
     .db-top__content {
       display: flex;
       align-items: center;
@@ -279,9 +285,9 @@ export default {
   .db-right__bottom {
     height: 70%;
     background: #ffffff;
-    overflow-y: auto;
+    overflow: hidden auto;
     .db-bottom__profile {
-      padding: 2% 3% 4% 5%;
+      padding: 2% 3% 4% 3%;
       .card-body {
         padding: 1rem;
         &.card-content__right {
@@ -321,21 +327,26 @@ export default {
       .db-complete__profile {
         min-height: 190px;
         .card-title {
-          margin-bottom: 25%;
+          height: calc(100% - 100px);
         }
       }
     }
     .ld-sec__tabs {
-      padding: 0 3% 0 4%;
+      padding: 0 3% 0 2%;
       .nav-tabs {
         width: 100%;
       }
       #custom-controls {
         .text-left {
-          left: -20px;
+          left: -30px;
         }
         .text-right {
-          right: 40px;
+          right: 20px;
+        }
+      }
+      .slider {
+        .col-md-4 {
+          padding-left: 0;
         }
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <b-card no-body class="overflow-hidden" :id="index">
     <b-row>
-      <b-col md="8" class="pr-0">
+      <b-col md="8" class="pr-0 courses-card__left">
         <b-card-body align="left">
           <p class="card-label">Category</p>
           <b-card-title>{{ course.title }}</b-card-title>
@@ -28,16 +28,18 @@
           </b-card-text>
         </b-card-body>
       </b-col>
-      <b-col md="4">
+      <b-col md="4" class="courses-card__right">
         <b-card-body class="h-100">
           <div class="card-placeholder__div">
-            <b-card-img
-              :src="require('@/assets/images/placeholder.svg')"
-              alt="disney"
-              class="rounded-0"
-              width="46"
-              height="46"
-            ></b-card-img>
+            <div>
+              <b-card-img
+                :src="require('@/assets/images/placeholder.svg')"
+                alt="disney"
+                class="rounded-0"
+                width="46"
+                height="46"
+              ></b-card-img>
+            </div>
           </div>
           <b-card-text align="right" class="padding-10">
             <p class="card__level">
@@ -87,13 +89,19 @@ export default {
     margin-bottom: 30px;
   }
   .card-placeholder__div {
-    width: 74px;
-    height: 74px;
-    background: linear-gradient(0deg, #e5e5e5, #e5e5e5);
+    height: 50%;
+    margin: 0 auto;
     display: flex;
     align-items: center;
-    border-radius: 4px;
-    margin-bottom: 30px;
+    justify-content: center;
+    & > div {
+      width: 74px;
+      height: 74px;
+      background: linear-gradient(0deg, #e5e5e5, #e5e5e5);
+      display: flex;
+      align-items: center;
+      border-radius: 4px;
+    }
   }
   .card__reviews {
     font-size: 12px;
@@ -117,12 +125,26 @@ export default {
       margin-bottom: 4px;
     }
   }
-  .card__level {
-    font-size: 12px;
-    line-height: 15px;
-    text-align: right;
-    letter-spacing: 0.4px;
-    color: rgba(0, 0, 0, 0.54);
+  .courses-card__right {
+    .card-body {
+      padding: 1.25em 0;
+      .card-text {
+        margin-top: 20%;
+      }
+      .card__level {
+        padding-right: 1.25em;
+        font-size: 12px;
+        line-height: 15px;
+        text-align: right;
+        letter-spacing: 0.4px;
+        color: rgba(0, 0, 0, 0.54);
+      }
+    }
+  }
+  .courses-card__left {
+    .card-body {
+      padding: 1.25em 0.75em;
+    }
   }
 }
 </style>

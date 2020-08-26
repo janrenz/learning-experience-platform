@@ -9,18 +9,22 @@
           <div class="ul-left__menu">
             <div class="ul-left__menu-content">
               <div class="ul-left__name">
-                <img src="@/assets/images/avatar.svg" alt="" class="mr-3" />
+                <img src="@/assets/images/avatar.svg" alt="" />
                 <label>Julie Harley</label>
               </div>
-              <ul>
-                <li v-for="(a, i) in menuArr" :key="i">
-                  <img :src="a.path" alt="menu" class="mr-3" />
+              <ul class="ul-menu__sec">
+                <li
+                  v-for="(a, i) in menuArr"
+                  :key="i"
+                  :class="{ 'ul-menu__name': true, active: a.active }"
+                >
+                  <img :src="a.path" alt="menu" />
                   {{ a.name }}
                 </li>
               </ul>
-              <div class="ul-left__name">
-                <img src="@/assets/images/settings.svg" alt="" class="mr-3" />
-                <label> Settings</label>
+              <div class="ul-left__name mb-2">
+                <img src="@/assets/images/settings.svg" alt="" />
+                <label class="ul-menu__name"> Settings</label>
               </div>
             </div>
           </div>
@@ -38,22 +42,22 @@ export default {
     return {
       menuArr: [
         {
-          path: "@/assets/images/dashboard.svg",
+          path: require("@/assets/images/dashboard.svg"),
           name: "Dashboard",
           active: true
         },
         {
-          path: "@/assets/images/calendar.svg",
+          path: require("@/assets/images/calendar.svg"),
           name: "Courses",
           active: false
         },
         {
-          path: "@/assets/images/message.svg",
+          path: require("@/assets/images/message.svg"),
           name: "Messages",
           active: false
         },
         {
-          path: "@/assets/images/calendar.svg",
+          path: require("@/assets/images/calendar.svg"),
           name: "Calendar",
           active: false
         }
@@ -79,22 +83,42 @@ export default {
         background: #ffffff;
         box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
         border-top-right-radius: 40px;
-        width: calc(100% - 20px);
+        width: calc(100% - 40px);
         position: absolute;
         top: 15%;
         z-index: 1;
         padding: 10% 20%;
         text-align: left;
 
-        ul {
+        .ul-menu__sec {
           list-style: none;
           padding-left: 0;
+          height: calc(100% - 100px);
           li {
-            margin-bottom: 30px;
+            margin-bottom: 15%;
           }
         }
+
+        .ul-menu__name {
+          text-transform: uppercase;
+          color: #757575;
+          &.active {
+            color: #000000;
+          }
+        }
+        img {
+          margin-right: 15%;
+        }
+        label,
+        li {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 21px;
+          letter-spacing: 0.1px;
+          color: rgba(0, 0, 0, 0.87);
+        }
         .ul-left__name {
-          margin-bottom: 15%;
+          margin-bottom: 17%;
         }
       }
     }
@@ -103,5 +127,10 @@ export default {
 .ul-right {
   background: #efefef;
   margin-left: -20px;
+}
+@media all and (min-width: 990px) and (max-width: 1100px) {
+  .ul-container .ul-left .ul-left__menu .ul-left__menu-content {
+    padding: 10% 15%;
+  }
 }
 </style>
