@@ -175,11 +175,12 @@ export default {
     },
     roleSlug() {
       // TODO: Refactor the code
-      return this.allAuth.profile.attributes &&
-        this.allAuth.profile.attributes.role_slugs &&
-        this.allAuth.profile.attributes.role_slugs.length > 0
-        ? this.allAuth.profile.attributes.role_slugs[0]
-        : "";
+      // return this.allAuth.profile.attributes &&
+      //   this.allAuth.profile.attributes.role_slugs &&
+      //   this.allAuth.profile.attributes.role_slugs.length > 0
+      //   ? this.allAuth.profile.attributes.role_slugs[0]
+      //   : "";
+      return "";
     },
     availableSkills() {
       return this.allSkills.filter(t => !t.active);
