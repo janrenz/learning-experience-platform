@@ -201,7 +201,7 @@ export default {
     });
     setTimeout(() => {
       this.initiateSlider(".slider-0");
-    }, 500);
+    }, 1000);
   },
   methods: {
     initiateSlider(container) {

@@ -71,6 +71,7 @@ export default {
   border: 1px solid #e5e5e5;
   box-sizing: border-box;
   border-radius: 4px;
+  height: 250px;
   .card-label {
     font-weight: normal;
     font-size: 10px;

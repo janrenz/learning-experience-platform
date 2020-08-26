@@ -194,7 +194,7 @@ export default {
     });
     setTimeout(() => {
       this.initiateSlider(".slider-0");
-    }, 500);
+    }, 1000);
   },
   computed: {
     ...mapGetters(["allCourses", "allAuth"])
