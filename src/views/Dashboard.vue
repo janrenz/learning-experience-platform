@@ -7,8 +7,9 @@
             <b-col cols="6" class="h-100 p-0 db-top__content">
               <div class="db-top__left text-left">
                 <h2>
-                  <b>Welcome</b> {{ allAuth.profile.firstName }}
-                  {{ allAuth.profile.lastName }} !
+                  <b>Welcome</b>
+                  {{ allAuth.profile && allAuth.profile.firstName }}
+                  {{ allAuth.profile && allAuth.profile.lastName }} !
                 </h2>
                 <p class="db-top__content">
                   Happy to have you on board, start learning now!
@@ -194,7 +195,7 @@ export default {
     });
     setTimeout(() => {
       this.initiateSlider(".slider-0");
-    }, 1000);
+    }, 500);
   },
   computed: {
     ...mapGetters(["allCourses", "allAuth"])
@@ -354,6 +355,7 @@ export default {
         }
       }
       .slider {
+        margin-right: -20px;
         .col-md-4 {
           padding-left: 0;
         }

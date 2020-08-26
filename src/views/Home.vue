@@ -201,7 +201,7 @@ export default {
     });
     setTimeout(() => {
       this.initiateSlider(".slider-0");
-    }, 1000);
+    }, 500);
   },
   methods: {
     initiateSlider(container) {
@@ -209,8 +209,6 @@ export default {
       this.slider = tns({
         container: container,
         items: this.sliderItems,
-        viewportMax: 320,
-        slideBy: "page",
         autoplay: false,
         controls: false,
         loop: false,
