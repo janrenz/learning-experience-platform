@@ -57,7 +57,7 @@ export default {
   components: { OnboardingLayout },
   methods: {
     onStartLearning() {
-      this.$router.push({ name: "Home" });
+      this.$router.push({ name: "Dashboard" });
     },
     onSkillsComplete() {
       this.$emit("skillsSubmitted");

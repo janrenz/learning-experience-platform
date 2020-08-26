@@ -6,7 +6,10 @@
           <b-row class="db-right__top">
             <b-col cols="6" class="h-100 p-0 db-top__content">
               <div class="db-top__left text-left">
-                <h2><b>Welcome</b> Julie!</h2>
+                <h2>
+                  <b>Welcome</b> {{ allAuth.profile.firstName }}
+                  {{ allAuth.profile.lastName }} !
+                </h2>
                 <p class="db-top__content">
                   Happy to have you on board, start learning now!
                 </p>
@@ -31,7 +34,7 @@
           <b-row class="db-right__bottom">
             <b-col class="h-100">
               <b-row class="db-bottom__profile">
-                <b-col cols="6" class="pl-0 db-complete__profile">
+                <b-col cols="6" class="pl-0 db-learning__exp">
                   <div class="h-100">
                     <b-card class="h-100">
                       <b-row class="h-100">
@@ -194,7 +197,7 @@ export default {
     }, 500);
   },
   computed: {
-    ...mapGetters(["allCourses"])
+    ...mapGetters(["allCourses", "allAuth"])
   },
   methods: {
     initiateSlider(container) {
@@ -324,8 +327,14 @@ export default {
           border-radius: 4px;
         }
       }
-      .db-complete__profile {
+      .db-complete__profile,
+      .db-learning__exp {
         min-height: 190px;
+        .card-title {
+          height: calc(100% - 50px);
+        }
+      }
+      .db-learning__exp {
         .card-title {
           height: calc(100% - 100px);
         }
