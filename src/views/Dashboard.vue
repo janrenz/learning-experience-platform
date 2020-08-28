@@ -359,6 +359,11 @@ export default {
         .col-md-4 {
           padding-left: 0;
         }
+        .course-card {
+          .card {
+            height: 250px;
+          }
+        }
       }
     }
   }

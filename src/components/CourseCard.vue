@@ -1,71 +1,73 @@
 <template>
-  <b-card no-body class="overflow-hidden text-left" :id="index">
-    <b-row class="h-100">
-      <b-col class="h-100">
-        <b-card-body class="h-100">
-          <div class="courses-card__sec1">
-            <b-row class="h-100">
-              <b-col md="8" class="courses-card__left">
-                <div>
-                  <p class="card-label">Category</p>
-                  <b-card-title>{{ course.title }}</b-card-title>
-                </div>
-              </b-col>
-              <b-col md="4" class="courses-card__right">
-                <div class="card-placeholder__div">
+  <div class="course-card">
+    <b-card no-body class="overflow-hidden text-left" :id="index">
+      <b-row class="h-100">
+        <b-col class="h-100">
+          <b-card-body class="h-100">
+            <div class="courses-card__sec1">
+              <b-row class="h-100">
+                <b-col md="8" class="courses-card__left">
                   <div>
-                    <b-card-img
-                      :src="require('@/assets/images/placeholder.svg')"
-                      alt="disney"
-                      class="rounded-0"
-                      width="46"
-                      height="46"
-                    ></b-card-img>
+                    <p class="card-label">Category</p>
+                    <b-card-title>{{ course.title }}</b-card-title>
                   </div>
-                </div>
-              </b-col>
-            </b-row>
-          </div>
-          <div class="courses-card__sec2">
-            <b-row class="h-100">
-              <b-col md="8" class="courses-card__left">
-                <b-card-text>
-                  <p class="card__reviews">
-                    <img
-                      :src="
-                        require(`@/assets/images/${
-                          a == 5 ? 'star.svg' : 'star-filled.svg'
-                        }`)
-                      "
-                      v-for="a in [1, 2, 3, 4, 5]"
-                      :key="a"
-                      class="mr-1"
-                      width="12"
-                      height="12"
-                    />
-                    123 Reviews
-                  </p>
-                  <p class="card__time">
-                    <span>Estimated Time</span>
-                    3 Months
-                  </p>
-                </b-card-text>
-              </b-col>
-              <b-col md="4" class="courses-card__right">
-                <b-card-text align="right" class="padding-10">
-                  <p class="card__level">
-                    Beginner
-                    <br />
-                    level
-                  </p>
-                </b-card-text>
-              </b-col>
-            </b-row>
-          </div>
-        </b-card-body>
-      </b-col>
-    </b-row>
-  </b-card>
+                </b-col>
+                <b-col md="4" class="courses-card__right">
+                  <div class="card-placeholder__div">
+                    <div>
+                      <b-card-img
+                        :src="require('@/assets/images/placeholder.svg')"
+                        alt="disney"
+                        class="rounded-0"
+                        width="46"
+                        height="46"
+                      ></b-card-img>
+                    </div>
+                  </div>
+                </b-col>
+              </b-row>
+            </div>
+            <div class="courses-card__sec2">
+              <b-row class="h-100">
+                <b-col md="8" class="courses-card__left">
+                  <b-card-text>
+                    <p class="card__reviews">
+                      <img
+                        :src="
+                          require(`@/assets/images/${
+                            a == 5 ? 'star.svg' : 'star-filled.svg'
+                          }`)
+                        "
+                        v-for="a in [1, 2, 3, 4, 5]"
+                        :key="a"
+                        class="mr-1"
+                        width="12"
+                        height="12"
+                      />
+                      123 Reviews
+                    </p>
+                    <p class="card__time">
+                      <span>Estimated Time</span>
+                      3 Months
+                    </p>
+                  </b-card-text>
+                </b-col>
+                <b-col md="4" class="courses-card__right">
+                  <b-card-text align="right" class="padding-10">
+                    <p class="card__level">
+                      Beginner
+                      <br />
+                      level
+                    </p>
+                  </b-card-text>
+                </b-col>
+              </b-row>
+            </div>
+          </b-card-body>
+        </b-col>
+      </b-row>
+    </b-card>
+  </div>
 </template>
 
 <script>
@@ -86,16 +88,24 @@ export default {
   box-sizing: border-box;
   border-radius: 4px;
   height: 230px;
+  margin-right: 10px;
   .card-body {
     .courses-card__sec1 {
       margin-bottom: 3%;
       height: 60%;
     }
+    .courses-card__sec2 {
+      height: 40%;
+      .row {
+        display: flex;
+        align-self: center;
+      }
+    }
     .courses-card__right {
       padding-right: 0;
-      .card-text {
-        margin-top: 20%;
-      }
+      // .card-text {
+      //   margin-top: 20%;
+      // }
       .card__level {
         padding-right: 1.25em;
         font-size: 12px;
