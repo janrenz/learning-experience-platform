@@ -50,6 +50,10 @@
       color: #c4c4c4 !important;
     }
   }
+  &.ob-btn-outline {
+    background: transparent !important;
+    border: 1px solid #757575;
+  }
 }
 </style>
 

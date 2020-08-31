@@ -11,133 +11,135 @@
         </div>
       </template>
       <template v-slot:right-section>
-        <div class="ob-interes__main">
-          <h2 class="ob-interest__title mb-3 w-40">
-            Select a minimum of 3 skills
-          </h2>
-          <p class="ob-interest__sc">
-            Suggested skills based on you profile:
-          </p>
-          <b-button
-            v-for="(t, index) in availableSkills"
-            :key="index"
-            @click="openRatings(t)"
-            variant="info"
-            pill
-            class="ob-btn__pill"
-          >
-            {{ t.name }}
-            <span> <b-icon icon="plus" style="color:#828282"></b-icon></span>
-          </b-button>
-          <b-modal id="rate-skills-modal" centered>
-            <template v-slot:modal-header>
-              <div></div>
-            </template>
-            <div class="ob-skills__rate">
-              <h2 class="mt-5 mb-5">Rate your skill</h2>
-              <b-button variant="info" pill class="ob-btn__pill">{{
-                currentSkill.name
-              }}</b-button>
-              <div class="ob-skills__dd mb-5">
-                <label>Level of expertise</label>
-                <b-dropdown size="lg" no-caret>
-                  <template v-slot:button-content>
-                    <div>
-                      <label>{{
-                        currentSkill.rating
-                          ? currentSkill.rating
-                          : "Please select"
-                      }}</label>
-                      <span class="ob-dd__icon">
-                        <b-icon
-                          icon="chevron-down"
-                          style="color:rgba(0, 0, 0, 0.87)"
-                        ></b-icon>
-                      </span>
-                    </div>
-                  </template>
-                  <b-dropdown-item
-                    v-for="(r, index) in ratingsArr"
-                    :key="index"
-                    href="javascript:;"
-                    @click="addRating(r)"
-                    :class="{ 'active-class': r == currentSkill.rating }"
-                  >
-                    {{ r }}
-                  </b-dropdown-item>
-                </b-dropdown>
-              </div>
-            </div>
-            <template v-slot:modal-footer>
-              <div>
-                <b-button class="mr-3 btn-secondary" @click="onCancel"
-                  >Cancel</b-button
-                >
-                <b-button
-                  class="btn-primary"
-                  @click="addSkill(true)"
-                  :disabled="currentSkill.rating == ''"
-                  >Add</b-button
-                >
-              </div>
-            </template>
-          </b-modal>
-
-          <div
-            :class="{
-              'ob-interest__selected mt-5 mb-2': true,
-              visible: selectedSkills.length,
-              invisible: !selectedSkills.length
-            }"
-          >
-            <p class="mb-2">Your skills:</p>
+        <div class="h-100 w-100 d-flex flex-wrap">
+          <div class="ob-interes__main">
+            <h2 class="ob-interest__title mb-3 w-40">
+              Select a minimum of 3 skills
+            </h2>
+            <p class="ob-interest__sc">
+              Suggested skills based on you profile:
+            </p>
             <b-button
-              v-for="(t, index) in selectedSkills"
+              v-for="(t, index) in availableSkills"
               :key="index"
-              @click="addSkill(false, t, index)"
-              @mouseover="t.hover = true"
-              @mouseleave="t.hover = false"
+              @click="openRatings(t)"
               variant="info"
-              :class="{
-                'ob-interest__btn-hover': t.hover,
-                'ob-btn__pill': true
-              }"
               pill
+              class="ob-btn__pill"
             >
               {{ t.name }}
-              <span>
-                <b-icon
-                  :icon="t.hover ? 'x' : 'check'"
-                  style="color:#ffffff"
-                ></b-icon>
-              </span>
+              <span> <b-icon icon="plus" style="color:#828282"></b-icon></span>
             </b-button>
-          </div>
-        </div>
-        <div class="ob-interest__cta">
-          <b-button class="mr-4 ob-btn">Skip</b-button>
-          <b-button
-            class="mr-3 ob-btn ob-btn-primary"
-            :disabled="disableBtn"
-            @click="submitSkills"
-            >Next</b-button
-          >
-          <div
-            class="ob-interest__alert d-inline-block"
-            v-if="selectedSkills.length < 3 || selectedSkills.length > 15"
-          >
-            <img
-              src="@/assets/images/warning.svg"
-              alt="warning"
-              width="20"
-              height="20"
-              class="mr-2"
-            />
-            <span v-if="selectedSkills.length < 3"
-              >{{ 3 - selectedSkills.length }} more skills need to be
-              selected</span
+            <b-modal id="rate-skills-modal" centered>
+              <template v-slot:modal-header>
+                <div></div>
+              </template>
+              <div class="ob-skills__rate">
+                <h2 class="mt-5 mb-5">Rate your skill</h2>
+                <b-button variant="info" pill class="ob-btn__pill">{{
+                  currentSkill.name
+                }}</b-button>
+                <div class="ob-skills__dd mb-5">
+                  <label>Level of expertise</label>
+                  <b-dropdown size="lg" no-caret>
+                    <template v-slot:button-content>
+                      <div>
+                        <label>{{
+                          currentSkill.rating
+                            ? currentSkill.rating
+                            : "Please select"
+                        }}</label>
+                        <span class="ob-dd__icon">
+                          <b-icon
+                            icon="chevron-down"
+                            style="color:rgba(0, 0, 0, 0.87)"
+                          ></b-icon>
+                        </span>
+                      </div>
+                    </template>
+                    <b-dropdown-item
+                      v-for="(r, index) in ratingsArr"
+                      :key="index"
+                      href="javascript:;"
+                      @click="addRating(r)"
+                      :class="{ 'active-class': r == currentSkill.rating }"
+                    >
+                      {{ r }}
+                    </b-dropdown-item>
+                  </b-dropdown>
+                </div>
+              </div>
+              <template v-slot:modal-footer>
+                <div>
+                  <b-button class="mr-3 btn-secondary" @click="onCancel"
+                    >Cancel</b-button
+                  >
+                  <b-button
+                    class="btn-primary"
+                    @click="addSkill(true)"
+                    :disabled="currentSkill.rating == ''"
+                    >Add</b-button
+                  >
+                </div>
+              </template>
+            </b-modal>
+
+            <div
+              :class="{
+                'ob-interest__selected mt-5 mb-2': true,
+                visible: selectedSkills.length,
+                invisible: !selectedSkills.length
+              }"
             >
-            <span v-else>Please select no more than 15 skills</span>
+              <p class="mb-2">Your skills:</p>
+              <b-button
+                v-for="(t, index) in selectedSkills"
+                :key="index"
+                @click="addSkill(false, t, index)"
+                @mouseover="t.hover = true"
+                @mouseleave="t.hover = false"
+                variant="info"
+                :class="{
+                  'ob-interest__btn-hover': t.hover,
+                  'ob-btn__pill': true
+                }"
+                pill
+              >
+                {{ t.name }}
+                <span>
+                  <b-icon
+                    :icon="t.hover ? 'x' : 'check'"
+                    style="color:#ffffff"
+                  ></b-icon>
+                </span>
+              </b-button>
+            </div>
+          </div>
+          <div class="ob-interest__cta">
+            <b-button class="mr-4 ob-btn">Skip</b-button>
+            <b-button
+              class="mr-3 ob-btn ob-btn-primary"
+              :disabled="disableBtn"
+              @click="submitSkills"
+              >Next</b-button
+            >
+            <div
+              class="ob-interest__alert d-inline-block"
+              v-if="selectedSkills.length < 3 || selectedSkills.length > 15"
+            >
+              <img
+                src="@/assets/images/warning.svg"
+                alt="warning"
+                width="20"
+                height="20"
+                class="mr-2"
+              />
+              <span v-if="selectedSkills.length < 3"
+                >{{ 3 - selectedSkills.length }} more skills need to be
+                selected</span
+              >
+              <span v-else>Please select no more than 15 skills</span>
+            </div>
           </div>
         </div>
       </template>

@@ -1,7 +1,7 @@
 <template>
   <OnboardingLayout :step="step">
     <template v-slot:left-section>
-      <div v-if="step == 2" class="ob-success__left">
+      <div v-if="step == 3" class="ob-success__left">
         <h2 class="ob-interest__title">Skills and experience</h2>
         <p class="ob-interest__content">
           Providing your skills list and experience level will help us curate
@@ -18,7 +18,7 @@
     </template>
     <template v-slot:right-section>
       <div class="ob-success h-100">
-        <div class="h-100 ob-skills__success" v-if="step == 2">
+        <div class="h-100 ob-skills__success" v-if="step == 3">
           <div class="d-flex h-100">
             <h2 class="ob-interest__content">
               Well done you have setup your skills, now we’d like to know what
