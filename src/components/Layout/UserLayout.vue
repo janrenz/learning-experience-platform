@@ -30,14 +30,52 @@
           </div>
         </b-col>
         <b-col cols="9" class="h-100 p-0 ul-right">
-          <slot name="right-section"></slot>
+          <b-container fluid class="h-100 ul-right__div p-0">
+            <b-row class="ul-right__top">
+              <b-col cols="6" class="h-100 p-0 ul-top__content">
+                <div class="ul-top__left text-left">
+                  <h2>
+                    <b>Welcome</b>
+                    {{ allAuth.profile && allAuth.profile.firstName }}
+                    {{ allAuth.profile && allAuth.profile.lastName }} !
+                  </h2>
+                  <p class="ul-top__content">
+                    Happy to have you on board, start learning now!
+                  </p>
+                  <p class="ul-top__subcontent">Explore courses ➞</p>
+                </div>
+              </b-col>
+              <b-col cols="6" class="h-100 p-0 ul-top__search">
+                <img src="@/assets/images/search.svg" alt="search" width="20" />
+                <div>
+                  <b-form-input
+                    v-model="search"
+                    placeholder="Search"
+                  ></b-form-input>
+                </div>
+                <img
+                  src="@/assets/images/notification.svg"
+                  alt="notification"
+                  width="16"
+                />
+              </b-col>
+            </b-row>
+            <b-row class="ul-right__bottom">
+              <slot name="right-section"></slot>
+            </b-row>
+          </b-container>
         </b-col>
       </b-row>
     </b-container>
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
+  computed: {
+    ...mapGetters(["allAuth"])
+  },
   data() {
     return {
       menuArr: [
@@ -61,7 +99,8 @@ export default {
           name: "Calendar",
           active: false
         }
-      ]
+      ],
+      search: ""
     };
   }
 };
@@ -127,6 +166,70 @@ export default {
 .ul-right {
   background: #efefef;
   margin-left: -20px;
+  .ul-right__div {
+    z-index: 0;
+    .ul-right__top {
+      height: 30%;
+      background: #efefef;
+      margin-right: -20px;
+      padding: 3%;
+      .ul-top__content {
+        display: flex;
+        align-items: center;
+        h2 {
+          font-size: 30px;
+          line-height: 21px;
+          letter-spacing: 0.1px;
+          color: #000000;
+          margin-bottom: 20px;
+        }
+        .ul-top__content {
+          margin-bottom: 25px;
+          font-size: 16px;
+          line-height: 21px;
+          letter-spacing: 0.1px;
+          color: #000000;
+        }
+        .ul-top__subcontent {
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 16px;
+          letter-spacing: 1.25px;
+          text-transform: uppercase;
+          color: #000000;
+          margin-bottom: 0;
+        }
+      }
+      .ul-top__search {
+        text-align: right;
+        & > div {
+          width: 50%;
+          display: inline-block;
+          margin: 0 15px 0 10px;
+          input.form-control {
+            display: inline-block;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #000;
+            border-radius: 0;
+            color: #757575;
+            padding: 0.25rem 0.75rem 0.25rem 0;
+            font-size: 14px;
+            line-height: 24px;
+            letter-spacing: 0.15px;
+            &:focus {
+              box-shadow: none;
+            }
+          }
+        }
+      }
+    }
+    .ul-right__bottom {
+      height: 70%;
+      background: #ffffff;
+      overflow: hidden auto;
+    }
+  }
 }
 @media all and (min-width: 990px) and (max-width: 1100px) {
   .ul-container .ul-left .ul-left__menu .ul-left__menu-content {
