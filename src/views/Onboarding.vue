@@ -1,15 +1,21 @@
 <template>
   <div class="about h-100">
-    <Skills
+    <EducationalBackground
       v-if="step === 1"
       :step="step"
-      @skillsSubmitted="submitSkill"
+      @backgroundSubmitted="incrementStep"
+    ></EducationalBackground>
+    <Skills
+      v-if="step === 2"
+      :step="step"
+      @skillsSubmitted="incrementStep"
     ></Skills>
-    <Interests v-else-if="step === 2" :step="step"></Interests>
+    <Interests v-else-if="step === 3" :step="step"></Interests>
   </div>
 </template>
 
 <script>
+import EducationalBackground from "@/components/Onboarding/EducationalBackground.vue";
 import Interests from "@/components/Onboarding/Interests.vue";
 import Skills from "@/components/Onboarding/Skills.vue";
 import { mapGetters } from "vuex";
@@ -20,7 +26,7 @@ export default {
     };
   },
   computed: { ...mapGetters(["allTopics", "allProfile"]) },
-  components: { Interests, Skills },
+  components: { Interests, Skills, EducationalBackground },
   mounted() {
     this.$nextTick(() => {
       // Check the keycloak object is present
@@ -47,7 +53,7 @@ export default {
       this.$store.commit("SET_TOPIC", t, index);
       // TODO - Connect to our profile service....
     },
-    submitSkill() {
+    incrementStep() {
       this.step++;
     }
   }

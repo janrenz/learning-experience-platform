@@ -36,12 +36,12 @@ export default {
   props: ["step"],
   data() {
     return {
-      total_steps: 2
+      total_steps: 3
     };
   },
   computed: {
     progressValue() {
-      return ((this.step - 1) / this.total_steps) * 100;
+      return Math.round(((this.step - 1) / this.total_steps) * 100);
     }
   }
 };
@@ -50,7 +50,7 @@ export default {
 .ob-container {
   .ob-left__div {
     background: rgba(196, 196, 196, 0.13);
-    padding: 80px 17%;
+    padding: 80px 16%;
     text-align: left;
 
     .ob-left__title {
@@ -72,8 +72,9 @@ export default {
     }
   }
   .ob-right__div {
-    padding: 70px 120px;
-    overflow-y: auto;
+    padding: 5% 10%;
+    // overflow-y: auto;
+    display: flex;
   }
 }
 
