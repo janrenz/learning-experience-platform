@@ -37,7 +37,11 @@ export default {
         this.$keycloak.idTokenParsed.sub
       ) {
         this.$store.dispatch("getAllTopics");
-        this.$store.dispatch("createProfile", this.$keycloak.idTokenParsed.sub);
+        // this.$store.dispatch("createProfile", this.$keycloak.idTokenParsed.sub);
+        // TODO update the get/create profile based on login/signup logic
+        this.$store.dispatch("updateProfile", {
+          keycloak_id: this.$keycloak.idTokenParsed.sub
+        });
       } else {
         this.$router.push({ name: "Home" });
       }
