@@ -141,17 +141,17 @@ export default {
       tabs: [
         {
           name: "RecomMended Courses",
-          active: true,
+          active: true
         },
         {
           name: "Top picks of the month",
-          active: false,
+          active: false
         },
         {
           name: "New courses availble",
-          active: false,
-        },
-      ],
+          active: false
+        }
+      ]
     };
   },
   mounted() {
@@ -163,7 +163,7 @@ export default {
     }, 500);
   },
   computed: {
-    ...mapGetters(["allCourses", "allAuth"]),
+    ...mapGetters(["allCourses", "allAuth"])
   },
   methods: {
     initiateSlider(container) {
@@ -176,7 +176,7 @@ export default {
         autoplay: false,
         controls: false,
         loop: false,
-        nav: false,
+        nav: false
       });
       this.getSliderInfo();
     },
@@ -191,8 +191,8 @@ export default {
     },
     onCard(c) {
       this.$router.push({ path: `course-detail/${c.id}` });
-    },
-  },
+    }
+  }
 };
 </script>
 <style lang="scss">
