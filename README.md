@@ -1,5 +1,9 @@
 # learning-experience-platform
 
+[![Test App Status](https://argocd-server-labs-ci-cd.apps.who.emea-2.rht-labs.com/api/badge?name=test-learning-experience-platform&revision=true)](https://argocd-server-labs-ci-cd.apps.who.emea-2.rht-labs.com/applications/test-learning-experience-platform)
+
+[![Staging App Status](https://argocd-server-labs-ci-cd.apps.who.emea-2.rht-labs.com/api/badge?name=learning-experience-platform&revision=true)](https://argocd-server-labs-ci-cd.apps.who.emea-2.rht-labs.com/applications/learning-experience-platform)
+
 ## Project setup
 ```
 npm install
