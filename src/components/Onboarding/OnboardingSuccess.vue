@@ -17,7 +17,7 @@
       </div>
     </template>
     <template v-slot:right-section>
-      <div class="ob-success h-100">
+      <div class="ob-success h-100 w-100">
         <div class="h-100 ob-skills__success" v-if="step == 3">
           <div class="d-flex h-100">
             <h2 class="ob-interest__content">
