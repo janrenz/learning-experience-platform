@@ -45,8 +45,8 @@
                       label="Level of Education"
                       placeholder="Select level of education"
                       :dropdownArr="educationArr"
-                      :showError="!form.levelOfEducation && isSave"
-                      v-model="form.levelOfEducation"
+                      :showError="!form.level && isSave"
+                      v-model="form.level"
                       @click="addEducation"
                     />
                   </b-col>
@@ -56,8 +56,8 @@
                       label="Field of study"
                       placeholder="Field of study"
                       :required="true"
-                      :showError="!form.fieldOfStudy && isSave"
-                      v-model="form.fieldOfStudy"
+                      :showError="!form.field_of_study && isSave"
+                      v-model="form.field_of_study"
                     />
                   </b-col>
                 </b-row>
@@ -77,7 +77,12 @@
             </div>
           </div>
           <div class="ob-ed__cta">
-            <b-button class="mr-4 ob-btn">Skip</b-button>
+            <b-button
+              class="mr-4 ob-btn"
+              v-if="allProfile.education && allProfile.education.length"
+              @click="isCompleted = true"
+              >Skip</b-button
+            >
             <b-button
               class="mr-3 ob-btn ob-btn-primary"
               @click="submitEducationalBg"
@@ -92,7 +97,12 @@
             </h2>
             <div class="ob-list__sec">
               <b-row>
-                <b-col md="6" class="mb-3" v-for="(e, i) in [1, 2, 3]" :key="i">
+                <b-col
+                  md="6"
+                  class="mb-3"
+                  v-for="(e, i) in allProfile.education"
+                  :key="i"
+                >
                   <b-card class="h-100">
                     <b-row class="h-100">
                       <b-col md="8" class="pr-0 h-100">
@@ -100,13 +110,15 @@
                           align="left"
                           class="card-content__right h-100"
                         >
-                          <p class="card-label">Harvard University</p>
-                          <b-card-title>Master degree</b-card-title>
+                          <p class="card-label">{{ e.school }}</p>
+                          <b-card-title>{{ e.level }}</b-card-title>
                           <b-card-text>
                             <p class="card-study mb-1">
-                              Infection Prevention
+                              {{ e.field_of_study }}
                             </p>
-                            <p class="card-speciality mb-0">Anaesthesia</p>
+                            <p class="card-speciality mb-0">
+                              {{ e.speciality }}
+                            </p>
                           </b-card-text>
                         </b-card-body>
                       </b-col>
@@ -161,23 +173,37 @@ export default {
       form: {
         school: "",
         country: "",
-        levelOfEducation: null,
-        fieldOfStudy: "",
+        level: null,
+        field_of_study: "",
         speciality: ""
       },
-      educationArr: ["Novice", "Intermediate", "Master"],
+      educationArr: [
+        "Doctorate (PHD or MD)",
+        "Masters (MS)",
+        "Bachelors (BS)",
+        "High School (HS)",
+        "Other"
+      ],
       currentStep: 0,
       isSave: false
     };
   },
   computed: {
-    ...mapGetters(["allTopics"]),
+    ...mapGetters(["allProfile"]),
     isFilled() {
       let bool = true;
       Object.keys(this.form).forEach(f => {
         if (!this.form[f]) bool = false;
       });
       return bool;
+    }
+  },
+  watch: {
+    allProfile: {
+      handler(v) {
+        if (v.education && v.education.length) this.isCompleted = true;
+      },
+      deep: true
     }
   },
   mounted() {
@@ -189,24 +215,27 @@ export default {
     },
     submitEducationalBg() {
       if (this.isFilled) {
-        // this.$store
-        //   .dispatch("updateProfile", {
-        //     keycloak_id: this.$keycloak.idTokenParsed.sub,
-        //     interests: this.selectedTopics,
-        //   })
-        //   .then(() => {
-        //     this.isCompleted = true;
-        //   });
-        this.isSave = false;
-        this.resetForm();
-        this.currentStep = 2;
-        this.isCompleted = true;
+        let education = [];
+        if (this.allProfile.education && this.allProfile.education.length)
+          education = this.allProfile.education;
+        education.push(this.form);
+        this.$store
+          .dispatch("updateProfile", {
+            keycloak_id: this.$keycloak.idTokenParsed.sub,
+            education: education
+          })
+          .then(() => {
+            this.isSave = false;
+            this.resetForm();
+            this.currentStep = 2;
+            this.isCompleted = true;
+          });
       } else {
         this.isSave = true;
       }
     },
     addEducation(e) {
-      this.form.levelOfEducation = e;
+      this.form.level = e;
     },
     addNewEducation() {
       this.isCompleted = false;
