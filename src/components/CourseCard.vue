@@ -1,5 +1,5 @@
 <template>
-  <div class="course-card">
+  <div class="course-card" @click="$emit('click', course)">
     <b-card no-body class="overflow-hidden text-left" :id="index">
       <b-row class="h-100">
         <b-col class="h-100">
@@ -98,7 +98,7 @@ export default {
       height: 40%;
       .row {
         display: flex;
-        align-self: center;
+        align-items: center;
       }
     }
     .courses-card__right {
