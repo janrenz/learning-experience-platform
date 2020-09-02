@@ -4,7 +4,8 @@
       <template v-slot:right-section>
         <div class="cd-main" v-if="currentCourse">
           <h3>{{ currentCourse.title }}</h3>
-          <p>{{ currentCourse.text }}</p>
+          <p>{{ currentCourse.description }}</p>
+          <p>{{ getDuration }}</p>
         </div>
       </template>
     </UserLayout>
@@ -21,6 +22,10 @@ export default {
     ...mapGetters(["allCourses"]),
     currentCourse() {
       return this.allCourses.find(c => c.id == this.$route.params.id);
+    },
+    getDuration() {
+      let d = Number(this.currentCourse.duration_seconds);
+      return `${d / 60}m`;
     }
   },
   mounted() {
