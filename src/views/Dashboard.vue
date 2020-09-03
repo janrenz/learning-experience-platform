@@ -269,6 +269,9 @@ export default {
       .course-card {
         .card {
           height: 250px;
+          .card-title {
+            height: calc(100% - 10px);
+          }
         }
       }
     }
