@@ -36,18 +36,7 @@
                 <b-col md="8" class="courses-card__left">
                   <b-card-text>
                     <p class="card__reviews">
-                      <img
-                        :src="
-                          require(`@/assets/images/${
-                            a == 5 ? 'star.svg' : 'star-filled.svg'
-                          }`)
-                        "
-                        v-for="a in [1, 2, 3, 4, 5]"
-                        :key="a"
-                        class="mr-1"
-                        width="12"
-                        height="12"
-                      />
+                      <Rating :rating-arr="ratingArr" />
                       123 Reviews
                     </p>
                     <p class="card__time">
@@ -75,12 +64,19 @@
 </template>
 
 <script>
+import Rating from "@/components/WrapperComponents/Rating";
 export default {
   name: "CourseCard",
   props: {
     course: Object,
     index: String,
     showChar: Number
+  },
+  components: { Rating },
+  data() {
+    return {
+      ratingArr: [1, 2, 3, 4, 5]
+    };
   },
   methods: {
     cardTitle(title) {
