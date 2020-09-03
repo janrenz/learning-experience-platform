@@ -79,14 +79,14 @@ export default {
   name: "CourseCard",
   props: {
     course: Object,
-    index: String
+    index: String,
+    showChar: Number
   },
   methods: {
     cardTitle(title) {
-      let cTitle = "",
-        showChar = 67;
-      if (title.length > showChar) {
-        let c = title.substr(0, showChar);
+      let cTitle = "";
+      if (title.length > this.showChar) {
+        let c = title.substr(0, this.showChar);
         cTitle = c + '<span class="moreellipses">...&nbsp;</span>';
       } else cTitle = title;
       return cTitle;
@@ -161,8 +161,8 @@ export default {
         line-height: 30px;
         letter-spacing: 0.15px;
         color: rgba(0, 0, 0, 0.87);
-        overflow: hidden;
-        height: calc(100% - 15px);
+        // overflow: hidden;
+        // height: calc(100% - 15px);
       }
       .card__reviews {
         font-size: 12px;
