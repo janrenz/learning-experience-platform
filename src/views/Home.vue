@@ -48,6 +48,7 @@
                         :key="index"
                         :course="c"
                         :index="`course-card-${index}`"
+                        :showChar="65"
                       ></CourseCard>
                     </div>
                   </b-tab>
@@ -197,11 +198,10 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.$store.dispatch("getAllCourses");
+      this.$store.dispatch("getAllCourses").then(() => {
+        this.initiateSlider(".slider-0");
+      });
     });
-    setTimeout(() => {
-      this.initiateSlider(".slider-0");
-    }, 500);
   },
   methods: {
     initiateSlider(container) {

@@ -95,6 +95,7 @@
                         :course="c"
                         :index="`course-card-${index}`"
                         @click="onCard(c)"
+                        :showChar="60"
                       ></CourseCard>
                     </div>
                   </b-tab>
@@ -156,11 +157,10 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.$store.dispatch("getAllCourses");
+      this.$store.dispatch("getAllCourses").then(() => {
+        this.initiateSlider(".slider-0");
+      });
     });
-    setTimeout(() => {
-      this.initiateSlider(".slider-0");
-    }, 500);
   },
   computed: {
     ...mapGetters(["allCourses", "allAuth"])
@@ -269,6 +269,9 @@ export default {
       .course-card {
         .card {
           height: 250px;
+          // .card-title {
+          //   height: calc(100% - 10px);
+          // }
         }
       }
     }

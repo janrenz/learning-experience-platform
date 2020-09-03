@@ -6,10 +6,14 @@
           <b-card-body class="h-100">
             <div class="courses-card__sec1">
               <b-row class="h-100">
-                <b-col md="8" class="courses-card__left">
-                  <div>
+                <b-col md="8" class="courses-card__left h-100">
+                  <div class="h-100">
                     <p class="card-label">Category</p>
-                    <b-card-title>{{ course.title }}</b-card-title>
+                    <h4
+                      class="card-title"
+                      :title="course.title"
+                      v-html="cardTitle(course.title)"
+                    ></h4>
                   </div>
                 </b-col>
                 <b-col md="4" class="courses-card__right">
@@ -75,7 +79,18 @@ export default {
   name: "CourseCard",
   props: {
     course: Object,
-    index: String
+    index: String,
+    showChar: Number
+  },
+  methods: {
+    cardTitle(title) {
+      let cTitle = "";
+      if (title.length > this.showChar) {
+        let c = title.substr(0, this.showChar);
+        cTitle = c + '<span class="moreellipses">...&nbsp;</span>';
+      } else cTitle = title;
+      return cTitle;
+    }
   }
 };
 </script>
@@ -146,6 +161,8 @@ export default {
         line-height: 30px;
         letter-spacing: 0.15px;
         color: rgba(0, 0, 0, 0.87);
+        // overflow: hidden;
+        // height: calc(100% - 15px);
       }
       .card__reviews {
         font-size: 12px;
