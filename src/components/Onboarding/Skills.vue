@@ -205,7 +205,7 @@ export default {
         t = this.currentSkill;
       }
       t.active = active;
-      t.rating = "";
+      if (!active) t.rating = "";
       this.$store.commit("SET_SKILL", t, index);
       this.$bvModal.hide("rate-skills-modal");
     },

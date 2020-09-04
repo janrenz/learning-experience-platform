@@ -15,7 +15,9 @@ export default {
   getAllRecommendedCourses({ commit, state }, keycloack_id) {
     // /api/recommendations/
     return axios
-      .get(`${state.config.recommendedCoursesAPI}${keycloack_id}`)
+      .get(
+        `${state.config.recommendedCoursesAPI}/api/recommendations/${keycloack_id}`
+      )
       .then(response => {
         commit("GET_ALL_COURSES", response.data);
       })

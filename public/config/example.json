@@ -9,5 +9,5 @@
   "topicsAPI": "http://localhost:8086",
   "profilesAPI": "http://localhost:3000",
   "skillsAPI": "http://localhost:8086",
-  "recommendedCoursesAPI": "https://test-lxp-recommendation-service-labs-test.apps.who.emea-2.rht-labs.com/api/recommendations/"
+  "recommendedCoursesAPI": "https://test-lxp-recommendation-service-labs-test.apps.who.emea-2.rht-labs.com"
 }
