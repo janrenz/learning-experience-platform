@@ -10,16 +10,27 @@
             <div class="ul-left__menu-content">
               <div class="ul-left__name">
                 <img src="@/assets/images/avatar.svg" alt="" />
-                <label>Julie Harley</label>
+                <label>
+                  {{ allAuth.profile && allAuth.profile.firstName }}
+                  {{ allAuth.profile && allAuth.profile.lastName }}</label
+                >
               </div>
               <ul class="ul-menu__sec">
                 <li
-                  v-for="(a, i) in menuArr"
+                  v-for="(a, i) in menu"
                   :key="i"
                   :class="{ 'ul-menu__name': true, active: a.active }"
+                  @click="navigateTo(a.path)"
                 >
-                  <img :src="a.path" alt="menu" />
+                  <img :src="a.src" alt="menu" />
                   {{ a.name }}
+                  <div v-if="a.hasSubmenu && a.active" class="ul-menu__submenu">
+                    <ul>
+                      <li v-for="(s, i) in a.submenuArr" :key="i">
+                        {{ s.name }}
+                      </li>
+                    </ul>
+                  </div>
                 </li>
               </ul>
               <div class="ul-left__name mb-2">
@@ -74,34 +85,66 @@ import { mapGetters } from "vuex";
 
 export default {
   computed: {
-    ...mapGetters(["allAuth"])
+    ...mapGetters(["allAuth"]),
+    menu() {
+      let arr = JSON.parse(JSON.stringify(this.menuArr));
+      arr.forEach(a => {
+        a.active = false;
+        if (this.$route.name.indexOf(a.name) != -1) a.active = true;
+      });
+      return arr;
+    }
   },
   data() {
     return {
       menuArr: [
         {
-          path: require("@/assets/images/dashboard.svg"),
+          src: require("@/assets/images/dashboard.svg"),
           name: "Dashboard",
-          active: true
+          active: false,
+          hasSubmenu: false,
+          path: "/dashboard"
         },
         {
-          path: require("@/assets/images/calendar.svg"),
+          src: require("@/assets/images/calendar.svg"),
           name: "Courses",
-          active: false
+          active: false,
+          hasSubmenu: true,
+          path: "",
+          submenuArr: [
+            {
+              name: "My learning",
+              path: "/"
+            },
+            {
+              name: "All courses",
+              path: "/course-details"
+            }
+          ]
         },
         {
-          path: require("@/assets/images/message.svg"),
+          src: require("@/assets/images/message.svg"),
           name: "Messages",
-          active: false
+          active: false,
+          hasSubmenu: false,
+          path: ""
         },
         {
-          path: require("@/assets/images/calendar.svg"),
+          src: require("@/assets/images/calendar.svg"),
           name: "Calendar",
-          active: false
+          active: false,
+          hasSubmenu: false,
+          path: ""
         }
       ],
       search: ""
     };
+  },
+  methods: {
+    navigateTo(path) {
+      if (path == "/dashboard")
+        this.$router.push({ path: path }).catch(() => {});
+    }
   }
 };
 </script>
@@ -135,14 +178,32 @@ export default {
           height: calc(100% - 100px);
           li {
             margin-bottom: 15%;
+            cursor: pointer;
+            .ul-menu__submenu {
+              ul {
+                list-style: none;
+                padding-left: 33%;
+                margin-top: 7%;
+                li {
+                  margin-bottom: 7%;
+                  text-transform: initial;
+                  font-size: 12px;
+                  line-height: 21px;
+                  display: flex;
+                  align-items: center;
+                  letter-spacing: 0.5px;
+                  color: rgba(0, 0, 0, 0.6);
+                }
+              }
+            }
           }
         }
 
         .ul-menu__name {
-          text-transform: uppercase;
           color: #757575;
           &.active {
             color: #000000;
+            text-transform: uppercase;
           }
         }
         img {

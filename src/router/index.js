@@ -22,7 +22,7 @@ const routes = [
   },
   {
     path: "/course-detail/:id",
-    name: "Course Detail",
+    name: "Courses Detail",
     component: () => import("../views/CourseDetail.vue")
   }
 ];
