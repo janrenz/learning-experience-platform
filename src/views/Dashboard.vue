@@ -83,7 +83,7 @@
                     :active="tab.active"
                     v-for="(tab, index) in tabs"
                     :key="index"
-                    @click="initiateSlider(`.slider-${index}`)"
+                    @click="getCourses(index)"
                   >
                     <div
                       :class="`slider-${index} slider`"
@@ -141,7 +141,7 @@ export default {
       sliderItems: 3,
       tabs: [
         {
-          name: "RecomMended Courses",
+          name: "Recommended Courses",
           active: true
         },
         {
@@ -156,11 +156,22 @@ export default {
     };
   },
   mounted() {
-    this.$nextTick(() => {
-      this.$store.dispatch("getAllCourses").then(() => {
-        this.initiateSlider(".slider-0");
+    if (
+      this.$keycloak &&
+      this.$keycloak.idTokenParsed &&
+      this.$keycloak.idTokenParsed.sub
+    ) {
+      this.$nextTick(() => {
+        this.$store
+          .dispatch(
+            "getAllRecommendedCourses",
+            this.$keycloak.idTokenParsed.sub
+          )
+          .then(() => {
+            this.initiateSlider(".slider-0");
+          });
       });
-    });
+    } else this.$router.push({ name: "Home" });
   },
   computed: {
     ...mapGetters(["allCourses", "allAuth"])
@@ -191,6 +202,16 @@ export default {
     },
     onCard(c) {
       this.$router.push({ path: `course-detail/${c.id}` });
+    },
+    getCourses(index) {
+      if (index == 0)
+        this.$store.dispatch("getAllRecommendedCourses").then(() => {
+          this.initiateSlider(`.slider-${index}`);
+        });
+      else
+        this.$store.dispatch("getAllCourses").then(() => {
+          this.initiateSlider(`.slider-${index}`);
+        });
     }
   }
 };
@@ -267,6 +288,10 @@ export default {
         padding-left: 0;
       }
       .course-card {
+        visibility: hidden;
+        &.tns-item {
+          visibility: visible;
+        }
         .card {
           height: 250px;
           .card-title {
