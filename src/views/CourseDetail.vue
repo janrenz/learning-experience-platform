@@ -48,12 +48,42 @@
                   </div>
                 </b-col>
                 <b-col class="cd-sec__footer">
-                  <b-button class="ob-btn ob-btn-primary mr-3"
+                  <b-button
+                    class="ob-btn ob-btn-primary mr-3"
+                    v-b-modal.enroll-modal
                     >Enroll now ➞
                   </b-button>
                   <b-button class="ob-btn" disabled>Save for later</b-button>
                 </b-col>
               </b-row>
+              <b-modal id="enroll-modal" centered size="lg">
+                <template v-slot:modal-header>
+                  <div></div>
+                </template>
+                <div class="cd-enroll__div">
+                  <div class="cd-enroll__title">
+                    <img src="@/assets/images/success.svg" alt="" />
+                    <h5>Revolutionizing lifelong learning in health.</h5>
+                  </div>
+                  <p class="cd-enroll__message fw-500">
+                    You’ve been successfully enrolled in the course!
+                  </p>
+                  <p class="cd-enroll__message">
+                    An acknowledgement email has been sent to you. Courses will
+                    be available from May 2021. We’ll let you know once your
+                    course is ready.
+                  </p>
+                </div>
+                <template v-slot:modal-footer>
+                  <div>
+                    <b-button
+                      class="btn-secondary"
+                      @click="$bvModal.hide('enroll-modal')"
+                      >Close</b-button
+                    >
+                  </div>
+                </template>
+              </b-modal>
             </div>
             <b-row class="m-0 mt-4">
               <b-col md="9" class="cd-content pl-0">
@@ -558,6 +588,64 @@ export default {
     + .breadcrumb-item {
       &::before {
         content: ">";
+      }
+    }
+  }
+}
+// modal
+
+#enroll-modal {
+  .modal-dialog {
+    max-width: 750px;
+  }
+  .modal-header {
+    border: none;
+  }
+  .modal-footer {
+    justify-content: center;
+    border: none;
+    padding: 4% 9%;
+    .btn {
+      font-size: 14px;
+      line-height: 16px;
+      border: none;
+      padding: 10px 0;
+      width: 130px;
+      &.btn-secondary {
+        background: #d7d5d5;
+        color: #757575;
+      }
+      &.btn-primary {
+        background: #757575;
+        color: #ffffff;
+      }
+    }
+  }
+  .modal-body {
+    padding: 4% 9% 0;
+    .cd-enroll__div {
+      .cd-enroll__title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5%;
+        h5 {
+          font-weight: 200;
+          font-size: 40px;
+          line-height: 47px;
+          letter-spacing: 1.25px;
+          color: #000000;
+          margin-left: 5%;
+        }
+      }
+      .cd-enroll__message {
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.2px;
+        color: rgba(0, 0, 0, 0.87);
+        text-align: center;
+        &.fw-500 {
+          font-weight: 500;
+        }
       }
     }
   }
