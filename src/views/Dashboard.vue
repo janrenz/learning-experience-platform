@@ -269,9 +269,27 @@ export default {
       .course-card {
         .card {
           height: 250px;
-          // .card-title {
-          //   height: calc(100% - 10px);
-          // }
+          .card-title {
+            height: calc(100% - 10px);
+          }
+        }
+      }
+    }
+  }
+}
+@media all and (min-width: 990px) and (max-width: 1270px) {
+  .db-bottom {
+    .db-bottom__profile {
+      .db-learning__exp {
+        .card-title {
+          margin-bottom: 4px;
+        }
+      }
+    }
+    .slider {
+      .course-card {
+        .card-title {
+          height: calc(100% - 28px) !important;
         }
       }
     }
