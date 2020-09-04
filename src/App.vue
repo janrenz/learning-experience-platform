@@ -21,14 +21,14 @@
   padding: 30px;
 }
 .btn.ob-btn {
-  background: #d7d5d5 !important;
+  background: #fff !important;
   border: none;
-  padding: 10px 36px;
+  padding: 10px 16px;
   text-align: center;
   letter-spacing: 1.25px;
   text-transform: uppercase;
-  color: #757575;
-  font-size: 14px;
+  color: #0057e0;
+  font-size: 16px;
   line-height: 16px;
   font-weight: 500;
   &.disabled {
