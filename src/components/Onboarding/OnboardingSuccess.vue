@@ -19,7 +19,7 @@
     <template v-slot:right-section>
       <div class="ob-success h-100 w-100">
         <div class="h-100 ob-skills__success" v-if="step == 3">
-          <div class="d-flex h-100">
+          <div class="d-flex ob-content__div">
             <h2 class="ob-interest__content">
               Well done you have setup your skills, now we’d like to know what
               your learning interests are!
@@ -33,13 +33,13 @@
             >
           </div>
         </div>
-        <div class="h-100" v-else>
-          <div class="d-flex h-100">
+        <div class="h-100 ob-skills__success" v-else>
+          <div class="d-flex ob-content__div">
             <img src="@/assets/images/success.svg" alt="success" />
             <h2 class="ob-interest__content">Begin your learning</h2>
           </div>
           <div
-            class="ob-success__footer align-items-end justify-content-end d-flex"
+            class="ob-success__footer align-items-center justify-content-end d-flex"
           >
             <b-button class="ob-btn ob-btn-primary" @click="onStartLearning"
               >Start Learning</b-button
@@ -71,9 +71,17 @@ export default {
 }
 .ob-success {
   .ob-skills__success {
+    display: flex;
+    flex-wrap: wrap;
     h2,
     .ob-success__footer {
       padding: 0 5%;
+    }
+    .ob-content__div {
+      height: calc(100% - 100px);
+    }
+    .ob-success__footer {
+      height: 100px;
     }
   }
   .d-flex {

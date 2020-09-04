@@ -28,7 +28,7 @@
               class="ob-btn__pill"
             >
               {{ t.name }}
-              <span> <b-icon icon="plus" style="color:#828282"></b-icon></span>
+              <span> <b-icon icon="plus" style="color:#0057E0"></b-icon></span>
             </b-button>
             <b-modal id="rate-skills-modal" centered>
               <template v-slot:modal-header>
@@ -71,11 +71,11 @@
               </div>
               <template v-slot:modal-footer>
                 <div>
-                  <b-button class="mr-3 btn-secondary" @click="onCancel"
+                  <b-button class="mr-3 ob-btn" @click="onCancel"
                     >Cancel</b-button
                   >
                   <b-button
-                    class="btn-primary"
+                    class="ob-btn ob-btn-primary"
                     @click="addSkill(true)"
                     :disabled="currentSkill.rating == ''"
                     >Add</b-button
@@ -238,21 +238,12 @@ export default {
     justify-content: center;
     border: none;
     margin-bottom: 80px;
-    padding: 0.75rem 80px;
+    // padding: 0.75rem 80px;
     .btn {
       font-size: 14px;
       line-height: 16px;
       border: none;
-      padding: 10px 0;
-      width: 130px;
-      &.btn-secondary {
-        background: #d7d5d5;
-        color: #757575;
-      }
-      &.btn-primary {
-        background: #757575;
-        color: #ffffff;
-      }
+      width: 100px;
     }
   }
   .modal-body {
@@ -266,8 +257,8 @@ export default {
       .ob-btn__pill {
         height: 22px;
         margin: 0 0 20px;
-        background: #757575;
-        color: #f2f2f2;
+        background: #0057e0 !important;
+        color: #fff !important;
       }
       .ob-skills__dd {
         background: rgba(0, 0, 0, 0.04);
@@ -284,15 +275,14 @@ export default {
           width: 100%;
           .btn {
             background: transparent;
-            color: #9e9e9e;
-            border: none;
+            color: rgba(158, 158, 158, 0.54);
             text-align: left;
             padding-left: 0;
-            opacity: 0.54;
             font-size: 16px;
             line-height: 24px;
             letter-spacing: 0.15px;
             box-shadow: none;
+            border: none;
             &.dropdown-toggle-split {
               text-align: right;
               opacity: 1;
@@ -300,6 +290,7 @@ export default {
             label {
               display: inline-block;
               font-size: 16px;
+              color: #25282b;
             }
             .ob-dd__icon {
               position: absolute;

@@ -31,7 +31,7 @@
               >
                 {{ t.name }}
                 <span>
-                  <b-icon icon="plus" style="color:#828282"></b-icon
+                  <b-icon icon="plus" style="color:#0057E0"></b-icon
                 ></span>
               </b-button>
             </div>
@@ -158,7 +158,7 @@ export default {
     font-weight: bold;
     font-size: 32px;
     line-height: 37px;
-    color: #000000;
+    color: #25282b;
     margin-bottom: 20%;
     &.w-40 {
       width: 40%;
@@ -169,7 +169,7 @@ export default {
     font-weight: normal;
     font-size: 18px;
     line-height: 21px;
-    color: #000000;
+    color: #52575c;
   }
   .ob-interes__main {
     height: calc(100% - 50px);
@@ -180,12 +180,19 @@ export default {
     .ob-interest__sc {
       font-size: 14px;
       line-height: 16px;
-      color: #757575;
+      color: #52575c;
     }
     .ob-interest__selected {
+      p {
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.1px;
+        color: #52575c;
+      }
       .btn {
-        background: #757575;
-        color: #f2f2f2;
+        background: #0057e0 !important;
+        color: #fff !important;
+        font-weight: 500;
         &.ob-interest__btn-hover {
           background: #a0a0a0;
         }

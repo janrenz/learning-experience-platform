@@ -16,8 +16,8 @@
                 to working people.
               </p> -->
               <div>
-                <b-button class="ob-btn mr-4" @click="signup">login</b-button>
-                <b-button class="ob-btn" @click="signup">signup</b-button>
+                <b-button class="ob-btn mr-4" @click="signUp">login</b-button>
+                <b-button class="ob-btn" @click="signUp">signup</b-button>
               </div>
             </div>
           </b-col>
@@ -195,7 +195,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["allCourses"])
+    ...mapGetters(["allCourses", "allConfig"])
   },
   mounted() {
     this.$nextTick(() => {

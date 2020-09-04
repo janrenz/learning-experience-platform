@@ -31,28 +31,44 @@
   font-size: 16px;
   line-height: 16px;
   font-weight: 500;
+  outline: none;
+
   &.disabled {
     color: #c4c4c4 !important;
     background: rgba(117, 117, 117, 0.2) !important;
     opacity: 1;
   }
-  &.active,
+  &:active,
   &:hover,
   &:focus {
-    color: #757575;
+    color: #0057e0 !important;
     box-shadow: none;
+    background: #fff !important;
+    border: none !important;
   }
   &.ob-btn-primary {
-    background: #757575 !important;
-    color: #f2f2f2;
+    background: #0057e0 !important;
+    color: #fff;
+    &:active,
+    &:hover,
+    &:focus {
+      color: #fff !important;
+    }
     &.disabled {
-      background: rgba(117, 117, 117, 0.2) !important;
-      color: #c4c4c4 !important;
+      opacity: 0.5;
+      // color: #fff !important;
+      // background: #a0a4a8 !important;
     }
   }
   &.ob-btn-outline {
     background: transparent !important;
-    border: 1px solid #757575;
+    border: 1px solid #0057e0;
+    &:active,
+    &:hover,
+    &:focus {
+      background: #c5deff !important;
+      border: 1px solid #0057e0 !important;
+    }
   }
 }
 </style>

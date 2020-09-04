@@ -4,7 +4,6 @@
       <b-row class="h-100">
         <b-col cols="4" class="h-100 p-0">
           <div class="ob-left__div h-100">
-            <p class="ob-left__title">Onboarding</p>
             <slot name="left-section"></slot>
             <div class="ob-left__loader">
               <b-progress

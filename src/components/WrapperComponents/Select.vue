@@ -92,7 +92,7 @@ export default {
         label {
           display: inline-block;
           font-size: 16px;
-          color: #757575;
+          color: #25282b;
           &.placeholder {
             color: rgba(158, 158, 158, 0.54);
           }
