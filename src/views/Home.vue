@@ -319,23 +319,6 @@ export default {
 .ld-sec__tabs {
   margin: 5% 0;
   position: relative;
-  #custom-controls {
-    position: absolute;
-    top: 60%;
-    width: 100%;
-    & > div {
-      position: absolute;
-      .b-icon {
-        cursor: pointer;
-      }
-      &.text-left {
-        left: -40px;
-      }
-      &.text-right {
-        right: -40px;
-      }
-    }
-  }
   .tabs {
     .nav-tabs {
       border-bottom: none;
@@ -365,6 +348,23 @@ export default {
           outline: none;
         }
       }
+    }
+  }
+}
+#custom-controls {
+  position: absolute;
+  top: 60%;
+  width: 100%;
+  & > div {
+    position: absolute;
+    .b-icon {
+      cursor: pointer;
+    }
+    &.text-left {
+      left: -40px;
+    }
+    &.text-right {
+      right: -40px;
     }
   }
 }

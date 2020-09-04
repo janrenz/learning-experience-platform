@@ -157,8 +157,8 @@ export default {
         line-height: 30px;
         letter-spacing: 0.15px;
         color: rgba(0, 0, 0, 0.87);
-        // overflow: hidden;
-        // height: calc(100% - 15px);
+        overflow: hidden;
+        height: calc(100% - 15px);
       }
       .card__reviews {
         font-size: 12px;

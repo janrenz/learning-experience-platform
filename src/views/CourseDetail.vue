@@ -2,7 +2,7 @@
   <div class="h-100">
     <UserLayout>
       <template v-slot:right-section>
-        <b-col>
+        <b-col class="cd-course__detail">
           <div class="cd-main" v-if="currentCourse">
             <div>
               <b-breadcrumb :items="breadcrumbs"></b-breadcrumb>
@@ -148,37 +148,45 @@
                 </b-button>
               </b-col>
             </b-row>
-            <b-row class="m-0 mt-4">
+            <b-row class="m-0 mt-4 cd-review">
               <b-col>
                 <h5>Learner reviews</h5>
                 <b-row class="m-0">
-                  <b-col md="3">
-                    <div>
+                  <b-col
+                    md="2"
+                    class="d-flex align-items-center justify-content-center"
+                  >
+                    <div class="cd-review__avg">
                       <h3>4.0</h3>
                       <Rating :rating-arr="ratingArr" />
                       <p>Course Rating</p>
                     </div>
                   </b-col>
-                  <b-col md="9">
-                    <div class="slider">
-                      <div class="review-card">
-                        <b-card
-                          title="Card title"
-                          sub-title="Card subtitle"
-                          v-for="(c, index) in reviewArr"
-                          :key="index"
-                        >
-                          <b-card-text>
-                            Some quick example text to build on the
-                            <em>card title</em> and make up the bulk of the
-                            card's content.
-                          </b-card-text>
-
-                          <b-card-text
-                            >After the course, I am confident I can bring major
-                            changes to my hospital system!</b-card-text
-                          >
-                        </b-card>
+                  <b-col md="10">
+                    <div
+                      class="slider"
+                      data-slick='{"slidesToShow": 3, "slidesToScroll": 3}'
+                    >
+                      <ReviewCard
+                        v-for="(c, index) in reviewArr"
+                        :key="index"
+                      />
+                    </div>
+                    <div id="custom-controls" v-show="slider">
+                      <div class="text-left" @click="slideTo('prev')">
+                        <b-icon
+                          icon="chevron-left"
+                          scale="2"
+                          v-if="currentSlide != 0"
+                        ></b-icon>
+                      </div>
+                      <div class="text-right">
+                        <b-icon
+                          icon="chevron-right"
+                          scale="2"
+                          @click="slideTo('next')"
+                          v-if="allCourses.length > currentSlide + sliderItems"
+                        ></b-icon>
                       </div>
                     </div>
                   </b-col>
@@ -196,10 +204,11 @@
 import { mapGetters } from "vuex";
 import UserLayout from "@/components/Layout/UserLayout";
 import Rating from "@/components/WrapperComponents/Rating.vue";
+import ReviewCard from "@/components/ReviewCard.vue";
 import { tns } from "tiny-slider/src/tiny-slider";
 
 export default {
-  components: { UserLayout, Rating },
+  components: { UserLayout, Rating, ReviewCard },
   data() {
     return {
       breadcrumbs: [
@@ -218,7 +227,9 @@ export default {
       ],
       ratingArr: [1, 2, 3, 4, 5],
       reviewArr: [1, 2, 3, 4, 5],
-      sliderItems: 3
+      slider: "",
+      sliderItems: 3,
+      currentSlide: 0
     };
   },
   computed: {
@@ -238,8 +249,9 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      this.$store.dispatch("getAllCourses");
-      this.initiateSlider();
+      this.$store.dispatch("getAllCourses").then(() => {
+        this.initiateSlider();
+      });
     });
   },
   methods: {
@@ -322,11 +334,6 @@ export default {
       border-radius: 4px;
       padding: 3% 0;
       h5 {
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 24px;
-        letter-spacing: 0.2px;
-        color: rgba(0, 0, 0, 0.87);
         margin-bottom: 20px;
         padding: 0 3%;
       }
@@ -355,7 +362,7 @@ export default {
               border-radius: 50%;
               display: inline-block;
               position: absolute;
-              left: -3.8%;
+              left: -25px;
               top: 5px;
               background: #fff;
               border: 3px solid #ffffff;
@@ -494,6 +501,47 @@ export default {
       }
     }
   }
+  .cd-review {
+    #custom-controls {
+      top: 45%;
+      .text-right {
+        right: 5px;
+      }
+      .text-left {
+        left: -30px;
+      }
+      > div {
+        font-size: 12px;
+      }
+    }
+    .cd-review__avg {
+      h3 {
+        font-weight: bold;
+        font-size: 50px;
+        line-height: 59px;
+        letter-spacing: 1.25px;
+        color: #000000;
+        margin-bottom: 0;
+      }
+      p {
+        font-size: 10px;
+        line-height: 12px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.87);
+        margin-top: 4px;
+      }
+    }
+  }
+}
+.cd-course__detail {
+  h5 {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.2px;
+    color: rgba(0, 0, 0, 0.87);
+  }
 }
 .breadcrumb {
   background: transparent;
@@ -510,6 +558,18 @@ export default {
     + .breadcrumb-item {
       &::before {
         content: ">";
+      }
+    }
+  }
+}
+@media all and (min-width: 990px) and (max-width: 1170px) {
+  .cd-course__detail {
+    .cd-author__sec {
+      .cd-author__name {
+        img {
+          width: 50px;
+          height: 50px;
+        }
       }
     }
   }
