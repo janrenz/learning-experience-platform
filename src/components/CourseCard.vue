@@ -20,11 +20,12 @@
                   <div class="card-placeholder__div">
                     <div>
                       <b-card-img
-                        :src="require('@/assets/images/placeholder.svg')"
+                        :src="
+                          require('@/assets/images/course-illustration.svg')
+                        "
                         alt="disney"
                         class="rounded-0"
                         width="46"
-                        height="46"
                       ></b-card-img>
                     </div>
                   </div>
@@ -134,7 +135,7 @@ export default {
         & > div {
           width: 74px;
           height: 74px;
-          background: linear-gradient(0deg, #e5e5e5, #e5e5e5);
+          background: #dceaff;
           display: flex;
           align-items: center;
           border-radius: 4px;
@@ -143,13 +144,13 @@ export default {
     }
     .courses-card__left {
       .card-label {
-        font-weight: normal;
-        font-size: 10px;
+        font-weight: 500;
+        font-size: 13px;
         line-height: 12px;
-        letter-spacing: 1.5px;
+        letter-spacing: 0.2px;
         text-transform: uppercase;
-        color: rgba(0, 0, 0, 0.87);
-        margin-bottom: 4px;
+        color: #0057e0;
+        margin-bottom: 10px;
       }
       .card-title {
         font-weight: 600;
@@ -162,22 +163,21 @@ export default {
       }
       .card__reviews {
         font-size: 12px;
-        line-height: 15px;
-        letter-spacing: 0.4px;
-        color: rgba(0, 0, 0, 0.54);
+        line-height: 16px;
+        letter-spacing: 0.2px;
+        color: #52575c;
       }
       .card__time {
         font-size: 12px;
-        line-height: 15px;
-        letter-spacing: 0.4px;
-        color: rgba(0, 0, 0, 0.54);
+        line-height: 16px;
+        letter-spacing: 0.2px;
+        color: #52575c;
         margin-bottom: 0;
         span {
-          font-size: 10px;
-          line-height: 12px;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-          color: rgba(0, 0, 0, 0.87);
+          font-size: 11px;
+          line-height: 14px;
+          letter-spacing: 0.2px;
+          color: #52575c;
           display: block;
           margin-bottom: 4px;
         }

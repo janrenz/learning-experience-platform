@@ -56,9 +56,6 @@ export default {
   props: ["step"],
   components: { OnboardingLayout },
   methods: {
-    onStartLearning() {
-      this.$router.push({ name: "Dashboard" });
-    },
     onSkillsComplete() {
       this.$emit("skillsSubmitted");
     }
@@ -83,18 +80,19 @@ export default {
     .ob-success__footer {
       height: 100px;
     }
+    h2 {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 42px;
+      color: #000;
+      padding: 0 30% 0 5%;
+    }
   }
   .d-flex {
     justify-content: center;
     align-items: center;
     width: 100%;
-  }
-  h2 {
-    display: inline-block;
-    font-weight: bold;
-    font-size: 32px;
-    line-height: 37px;
-    color: #000;
   }
 }
 </style>

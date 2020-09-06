@@ -345,15 +345,15 @@ export default {
       .nav-link {
         border: none;
         font-weight: 500;
-        font-size: 14px;
-        line-height: 16px;
+        font-size: 15px;
+        line-height: 18px;
         text-align: center;
         letter-spacing: 1.25px;
-        text-transform: uppercase;
-        color: rgba(0, 0, 0, 0.6);
+        // text-transform: uppercase;
+        color: #a0a4a8;
         &.active {
           background: transparent;
-          color: #000000;
+          color: #0057e0;
           &::after {
             content: "";
             border-bottom: 2px solid;
