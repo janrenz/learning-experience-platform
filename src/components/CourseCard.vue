@@ -102,11 +102,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.course-card {
+  background: #ffffff;
+}
 .card {
   background: #ffffff;
-  border: 1px solid #e5e5e5;
-  box-sizing: border-box;
+  background: #ffffff;
+  box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
+  border: none;
   height: 230px;
   margin-right: 10px;
   .card-body {
