@@ -162,14 +162,9 @@ export default {
       this.$keycloak.idTokenParsed.sub
     ) {
       this.$nextTick(() => {
-        this.$store
-          .dispatch(
-            "getAllRecommendedCourses",
-            this.$keycloak.idTokenParsed.sub
-          )
-          .then(() => {
-            this.initiateSlider(".slider-0");
-          });
+        this.$store.dispatch("getAllCourses").then(() => {
+          this.initiateSlider(".slider-0");
+        });
       });
     } else this.$router.push({ name: "Home" });
   },
@@ -202,16 +197,6 @@ export default {
     },
     onCard(c) {
       this.$router.push({ path: `course-detail/${c.id}` });
-    },
-    getCourses(index) {
-      if (index == 0)
-        this.$store.dispatch("getAllRecommendedCourses").then(() => {
-          this.initiateSlider(`.slider-${index}`);
-        });
-      else
-        this.$store.dispatch("getAllCourses").then(() => {
-          this.initiateSlider(`.slider-${index}`);
-        });
     }
   }
 };
