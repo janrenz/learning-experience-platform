@@ -6,7 +6,7 @@
           <div class="ob-left__div h-100">
             <slot name="left-section"></slot>
             <div class="ob-left__loader">
-              <b-progress
+              <!-- <b-progress
                 height="6px"
                 :value="progressValue"
                 variant="secondary"
@@ -16,7 +16,19 @@
                 {{ progressValue }}% completed ({{ step - 1 }}/{{
                   total_steps
                 }})
-              </p>
+              </p> -->
+              <ul>
+                <li
+                  v-for="(o, i) in onboardingSteps"
+                  :key="i"
+                  :class="{ active: o.active }"
+                >
+                  {{ o.name }}
+                  <span v-if="o.isCompleted">
+                    <img src="@/assets/images/check.svg" alt="" />
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
         </b-col>
@@ -35,7 +47,24 @@ export default {
   props: ["step"],
   data() {
     return {
-      total_steps: 3
+      total_steps: 3,
+      onboardingSteps: [
+        {
+          name: "education",
+          active: true,
+          isCompleted: false
+        },
+        {
+          name: "skills",
+          active: false,
+          isCompleted: false
+        },
+        {
+          name: "interests",
+          active: false,
+          isCompleted: false
+        }
+      ]
     };
   },
   computed: {
@@ -49,7 +78,7 @@ export default {
 .ob-container {
   .ob-left__div {
     background: rgba(196, 196, 196, 0.13);
-    padding: 80px 16%;
+    padding: 12% 16%;
     text-align: left;
 
     .ob-left__title {
@@ -68,6 +97,27 @@ export default {
       font-size: 12px;
       line-height: 16px;
       color: #c4c4c4;
+    }
+    .ob-left__loader {
+      height: 25%;
+      display: flex;
+      align-items: flex-end;
+      ul {
+        list-style: none;
+        padding-left: 0;
+        li {
+          font-weight: 500;
+          font-size: 12px;
+          line-height: 16px;
+          letter-spacing: 1.25px;
+          text-transform: uppercase;
+          color: #a0a4a8;
+          margin-bottom: 6px;
+          &.active {
+            color: #0043ac;
+          }
+        }
+      }
     }
   }
   .ob-right__div {
