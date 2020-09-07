@@ -3,17 +3,14 @@
     <b-card>
       <div class="review__name">
         <img src="@/assets/images/avatar.svg" alt="" />
-        <p class="ml-2 d-inline-block">Erik Hencier</p>
+        <p class="ml-2 d-inline-block">{{ review.name }}</p>
       </div>
       <b-card-text>
         <Rating :rating-arr="ratingArr" />
-        <span class="review__date">dd.mm.yy</span>
+        <span class="review__date">{{ review.date }}</span>
       </b-card-text>
 
-      <b-card-text
-        >After the course, I am confident I can bring major changes to my
-        hospital system!</b-card-text
-      >
+      <b-card-text>{{ review.review }}</b-card-text>
     </b-card>
   </div>
 </template>
@@ -21,6 +18,7 @@
 import Rating from "@/components/WrapperComponents/Rating.vue";
 
 export default {
+  props: ["review"],
   components: { Rating },
   data() {
     return {
@@ -32,8 +30,18 @@ export default {
 <style lang="scss" scoped>
 .review-card {
   display: inline-block;
+  height: 200px;
+  background: #ffffff;
   .card {
     margin-right: 10px;
+    height: 100%;
+    background: #fff;
+    border: none;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    .card-body {
+      padding: 16px;
+    }
     .review__name {
       p {
         font-weight: 500;

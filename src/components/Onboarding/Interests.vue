@@ -112,7 +112,7 @@
           </div>
         </b-col>
         <b-col md="5">
-          <div class="h-100 d-flex align-items-center">
+          <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="ob-success__content">
               <h2 class="ob-interest__title">Onboarding completed!</h2>
               <p>Begin your learning now!</p>
@@ -267,6 +267,17 @@ export default {
       font-size: 18px;
       line-height: 24px;
       letter-spacing: 0.2px;
+    }
+  }
+}
+@media all and (min-width: 990px) and (max-width: 1250px) {
+  .ob-success {
+    .ob-success__div {
+      .ob-success__img {
+        img {
+          width: 450px;
+        }
+      }
     }
   }
 }

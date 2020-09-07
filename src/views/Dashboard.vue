@@ -4,9 +4,9 @@
       <template v-slot:right-section>
         <b-col class="h-100 db-bottom">
           <b-row class="db-bottom__profile">
-            <b-col cols="6" class="pl-0 db-learning__exp">
-              <div class="h-100">
-                <b-card class="h-100">
+            <b-col cols="7" class="pl-0 db-learning__exp">
+              <div class="h-100 db-acheivement">
+                <!-- <b-card class="h-100">
                   <b-row class="h-100">
                     <b-col md="8" class="pr-0 h-100">
                       <b-card-body
@@ -45,12 +45,21 @@
                       </b-card-body>
                     </b-col>
                   </b-row>
-                </b-card>
+                </b-card> -->
+                <h5>My Achievements ></h5>
+                <b-row>
+                  <b-col md="4" v-for="(a, i) in acheivementArr" :key="i">
+                    <div class="db-acheivement__div">
+                      <label>{{ a.title }}</label>
+                      <p>{{ a.description }}</p>
+                    </div>
+                  </b-col>
+                </b-row>
               </div>
             </b-col>
-            <b-col cols="6" class="p-0 db-complete__profile">
+            <b-col cols="5" class="db-complete__profile">
               <div class="h-100">
-                <b-card class="h-100">
+                <!-- <b-card class="h-100">
                   <b-row class="h-100">
                     <b-col md="8" class="pr-0 h-100">
                       <b-card-body
@@ -70,7 +79,28 @@
                     </b-col>
                     <b-col md="4"> </b-col>
                   </b-row>
-                </b-card>
+                </b-card> -->
+                <h5>Messages ></h5>
+                <b-row class="db-message" v-for="(m, i) in messageArr" :key="i">
+                  <b-col md="8">
+                    <b-media tag="li">
+                      <template v-slot:aside>
+                        <b-img
+                          :src="require('@/assets/images/avatar.svg')"
+                          width="40"
+                          alt="placeholder"
+                        ></b-img>
+                      </template>
+                      <h5 class="mt-0 mb-1">{{ m.name }}</h5>
+                      <p class="mb-0">
+                        {{ m.text }}
+                      </p>
+                    </b-media>
+                  </b-col>
+                  <b-col md="2" class="p-0">
+                    <label>{{ m.date }}</label>
+                  </b-col>
+                </b-row>
               </div>
             </b-col>
           </b-row>
@@ -152,6 +182,49 @@ export default {
           name: "New courses availble",
           active: false
         }
+      ],
+      acheivementArr: [
+        {
+          title: "Learning time",
+          description: "0 min"
+        },
+        {
+          title: "Courses completed",
+          description: "0"
+        },
+        {
+          title: "Level ",
+          description: "Beginner"
+        },
+        {
+          title: "Reviews shared",
+          description: "0"
+        },
+        {
+          title: "Team mates",
+          description: "0"
+        },
+        {
+          title: "Top Distinguitions",
+          description: "0"
+        }
+      ],
+      messageArr: [
+        {
+          name: "Rebecca Moore",
+          text: "Thank you. See you later!",
+          date: "29 Apr"
+        },
+        {
+          name: "Franz Ferdinand",
+          text: "You: It should be pretty simple.",
+          date: "28 Apr"
+        },
+        {
+          name: "Lindsey Stroud",
+          text: "It’s fine",
+          date: "27 Apr"
+        }
       ]
     };
   },
@@ -224,7 +297,17 @@ export default {
 <style lang="scss">
 .db-bottom {
   .db-bottom__profile {
-    padding: 2% 3% 4% 3%;
+    padding: 4% 3%;
+    h5 {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      letter-spacing: 0.1px;
+      color: #0043ac;
+      margin-bottom: 20px;
+    }
     .card-body {
       padding: 1rem;
       &.card-content__right {
@@ -271,6 +354,65 @@ export default {
     .db-learning__exp {
       .card-title {
         height: calc(100% - 100px);
+      }
+      .db-acheivement {
+        .db-acheivement__div {
+          background: #ffffff;
+          box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+          padding: 16px 15px;
+          margin-bottom: 20px;
+          label {
+            font-size: 11px;
+            line-height: 14px;
+            letter-spacing: 0.2px;
+            color: #52575c;
+            display: block;
+            text-align: left;
+          }
+          p {
+            margin-bottom: 0;
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 26px;
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.2px;
+            color: #25282b;
+          }
+        }
+      }
+    }
+    .db-complete__profile {
+      padding: 0 0 0 5%;
+      h5 {
+        margin-bottom: 26px;
+      }
+      .db-message {
+        margin-bottom: 20px;
+        .media-body {
+          text-align: left;
+          h5 {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0.1px;
+            color: rgba(0, 0, 0, 0.87);
+          }
+          p {
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: 0.2px;
+            color: #a0a4a8;
+          }
+        }
+        label {
+          font-size: 12px;
+          line-height: 15px;
+          text-align: right;
+          letter-spacing: 0.4px;
+          color: #52575c;
+        }
       }
     }
   }

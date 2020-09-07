@@ -250,9 +250,6 @@ export default {
 <style lang="scss">
 .ob-ed {
   text-align: left;
-  .h-75 {
-    height: 75%;
-  }
   .ob-ed__title {
     font-weight: bold;
     font-size: 32px;

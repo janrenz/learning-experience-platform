@@ -66,7 +66,7 @@
                 </template>
                 <div class="cd-enroll__div">
                   <div class="cd-enroll__title">
-                    <img src="@/assets/images/success.svg" alt="" />
+                    <img src="@/assets/images/enroll-success.svg" alt="" />
                     <h5>Revolutionizing lifelong learning in health.</h5>
                   </div>
                   <p class="cd-enroll__message fw-500">
@@ -81,7 +81,7 @@
                 <template v-slot:modal-footer>
                   <div>
                     <b-button
-                      class="btn-secondary"
+                      class="ob-btn ob-btn-primary"
                       @click="$bvModal.hide('enroll-modal')"
                       >Close</b-button
                     >
@@ -95,17 +95,13 @@
                   <h5>Course Contents</h5>
                   <div class="cd-content__timeline">
                     <ul class="cd-timeline__ul">
-                      <li v-for="(a, i) in [1, 3, 4, 5, 6]" :key="i">
+                      <li v-for="(a, i) in courseModules" :key="i">
                         <div class="cd-timeline__circle">
                           <span></span>
                         </div>
                         <div class="cd-timeline__content">
-                          <p>Course Introduction</p>
-                          <span
-                            >A brief description of the course’s background,
-                            learning objectives, and what the learner should
-                            know prior to beginning the following modules</span
-                          >
+                          <p>{{ a.title }}</p>
+                          <span>{{ a.description }}</span>
                         </div>
                       </li>
                     </ul>
@@ -214,6 +210,7 @@
                       <ReviewCard
                         v-for="(c, index) in reviewArr"
                         :key="index"
+                        :review="c"
                       />
                     </div>
                     <div id="custom-controls" v-show="slider">
@@ -270,10 +267,51 @@ export default {
         }
       ],
       ratingArr: [1, 2, 3, 4, 5],
-      reviewArr: [1, 2, 3, 4, 5],
       slider: "",
       sliderItems: 3,
-      currentSlide: 0
+      currentSlide: 0,
+      courseModules: [
+        {
+          title: "Introduction",
+          description:
+            "A brief description of the course’s background, learning objectives, and what the learner should know prior to beginning the following modules...."
+        },
+        {
+          title: "Pre-Assessment",
+          description:
+            "A brief multiple-choice questionairre on the course’s domain to serve as a baseline assessment for the learner’s current understanding and potential skills gap...."
+        },
+        {
+          title: "Module 1",
+          description:
+            "The first module provides learning content in digestible form capturing the learner’s attention..."
+        },
+        {
+          title: "Module 2",
+          description:
+            "The second modules provides learning content in digestible form"
+        }
+      ],
+      reviewArr: [
+        {
+          name: "Erik Hencier",
+          data: "02.02.2020",
+          review:
+            "After the course, I am confident I can bring major changes to my hospital system!"
+        },
+        {
+          name: "Beatriz Dionisio",
+          data: "12.04.2020",
+          review:
+            "The course content was well presented and I appreciated the interactive assessments."
+        },
+        {
+          name: "Vineel Chandra",
+          data: "22.01.2020",
+          review:
+            "I highly recommend this course to anyone starting out in their career."
+        }
+      ]
     };
   },
   computed: {
@@ -520,9 +558,8 @@ export default {
     }
   }
   .cd-certificate {
-    background: #fbfbfb;
-    border: 1px solid #e5e5e5;
-    box-sizing: border-box;
+    background: #ffffff;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     padding: 4%;
     .media-body {
@@ -635,14 +672,6 @@ export default {
       border: none;
       padding: 10px 0;
       width: 130px;
-      &.btn-secondary {
-        background: #d7d5d5;
-        color: #757575;
-      }
-      &.btn-primary {
-        background: #757575;
-        color: #ffffff;
-      }
     }
   }
   .modal-body {
@@ -651,14 +680,18 @@ export default {
       .cd-enroll__title {
         display: flex;
         align-items: center;
-        margin-bottom: 5%;
+        margin-bottom: 1%;
+        flex-wrap: wrap;
+        text-align: center;
+        justify-content: center;
         h5 {
           font-weight: 200;
-          font-size: 40px;
-          line-height: 47px;
+          font-size: 32px;
+          line-height: 42px;
           letter-spacing: 1.25px;
-          color: #000000;
+          color: #0057e0;
           margin-left: 5%;
+          padding: 0 12%;
         }
       }
       .cd-enroll__message {

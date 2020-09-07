@@ -310,7 +310,7 @@ export default {
     }
     .ul-right__bottom {
       height: 70%;
-      background: #ffffff;
+      background: #fafafa;
       overflow: hidden auto;
     }
   }
