@@ -13,9 +13,14 @@ route: true
 # custom end point injected by config map. This is likely to changed
 config_map: '{
   "SSO": {
-    "url": "https://keycloak-keycloak.apps.who.emea-2.rht-labs.com/auth",
+    "url": "https://sso-keycloak-template.apps.who.emea-2.rht-labs.com/auth",
     "realm": "myrealm",
     "clientId": "myclient",
-    "redirectUri" : "http://localhost:8080"
-  }
+    "redirectUri" : "https://test-learning-experience-platform-labs-test.apps.who.emea-2.rht-labs.com/onboarding"
+  },
+  "coursesAPI": "https://test-lxp-course-service-labs-test.apps.who.emea-2.rht-labs.com",
+  "topicsAPI": "https://test-lxp-course-topic-service-labs-test.apps.who.emea-2.rht-labs.com",
+  "profilesAPI": "https://test-lxp-profile-service-labs-test.apps.who.emea-2.rht-labs.com",
+  "skillsAPI": "https://test-lxp-skill-service-labs-test.apps.who.emea-2.rht-labs.com",
+  "recommendedCoursesAPI": "https://test-lxp-recommendation-service-labs-test.apps.who.emea-2.rht-labs.com"
 }'
