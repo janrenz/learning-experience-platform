@@ -1,6 +1,11 @@
 <template>
-  <div class="course-card" @click="$emit('click', course)">
-    <b-card no-body class="overflow-hidden text-left" :id="index">
+  <div class="course-card">
+    <b-card
+      no-body
+      class="overflow-hidden text-left"
+      :id="index"
+      @click="onCardClick"
+    >
       <b-row class="h-100">
         <b-col class="h-100">
           <b-card-body class="h-100">
@@ -87,6 +92,9 @@ export default {
         cTitle = c + '<span class="moreellipses">...&nbsp;</span>';
       } else cTitle = title;
       return cTitle;
+    },
+    onCardClick() {
+      this.$emit("click", this.course);
     }
   }
 };
