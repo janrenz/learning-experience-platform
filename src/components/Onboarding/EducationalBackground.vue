@@ -3,7 +3,7 @@
     <OnboardingLayout :step="currentStep">
       <template v-slot:left-section>
         <div class="h-75">
-          <h2 class="ob-ed__title">Education Background</h2>
+          <h2 class="ob-ed__title mt-1 mb-5">Education Background</h2>
           <p class="ob-ed__content">
             Providing your educational background will help our interests and
             course suggestions in the following steps
@@ -257,7 +257,7 @@ export default {
     font-weight: bold;
     font-size: 32px;
     line-height: 37px;
-    color: #000000;
+    color: #25282b;
     margin-bottom: 20%;
     margin: 5% 0;
     display: flex;
@@ -270,7 +270,7 @@ export default {
     font-weight: normal;
     font-size: 18px;
     line-height: 30px;
-    color: #000000;
+    color: #52575c;
   }
   .ob-ed__main {
     height: calc(100% - 50px);
@@ -308,14 +308,14 @@ export default {
 
 .ob-btn__pill.btn.btn-info {
   margin: 5px;
-  color: rgb(130, 130, 130);
   font-size: 10px;
   line-height: 0;
   font-weight: 500;
-  background: rgb(239, 239, 239);
   border: none;
   padding: 4px 12px;
   text-transform: uppercase;
+  background: #dceaff !important;
+  color: #0057e0 !important;
   span {
     font-weight: 600;
     font-size: 11px;
@@ -346,12 +346,12 @@ export default {
       padding: 0 10% 0 0;
     }
     .card-label {
-      font-weight: normal;
-      font-size: 10px;
+      font-weight: 600;
+      font-size: 13px;
       line-height: 12px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: rgba(0, 0, 0, 0.87);
+      color: #0057e0;
       margin-bottom: 4px;
     }
     .card-title {
@@ -379,7 +379,7 @@ export default {
       }
     }
     .card-placeholder {
-      background: linear-gradient(0deg, #e5e5e5, #e5e5e5);
+      background: #dceaff;
       display: flex;
       align-items: center;
       border-radius: 4px;

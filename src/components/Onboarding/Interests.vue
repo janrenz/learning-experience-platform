@@ -31,7 +31,7 @@
               >
                 {{ t.name }}
                 <span>
-                  <b-icon icon="plus" style="color:#828282"></b-icon
+                  <b-icon icon="plus" style="color:#0057E0"></b-icon
                 ></span>
               </b-button>
             </div>
@@ -96,18 +96,44 @@
         </div>
       </template>
     </OnboardingLayout>
-    <OnboardingSuccess v-else :step="step + 1"></OnboardingSuccess>
+    <div v-else class="h-100">
+      <b-row class="p-5 m-0 h-100 ob-success">
+        <b-col md="7">
+          <div class="h-100 ob-success__div">
+            <div class="mb-3">
+              <img src="@/assets/images/whoa-logo-blue.svg" alt="" />
+            </div>
+            <div class="ob-success__img">
+              <img
+                src="@/assets/images/illustration-onboarding-completed.svg"
+                alt=""
+              />
+            </div>
+          </div>
+        </b-col>
+        <b-col md="5">
+          <div class="h-100 d-flex align-items-center">
+            <div class="ob-success__content">
+              <h2 class="ob-interest__title">Onboarding completed!</h2>
+              <p>Begin your learning now!</p>
+              <b-button class="ob-btn ob-btn-primary" @click="onStartLearning"
+                >Start Learning</b-button
+              >
+            </div>
+          </div>
+        </b-col>
+      </b-row>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import OnboardingLayout from "../Layout/OnboardingLayout";
-import OnboardingSuccess from "../Onboarding/OnboardingSuccess";
 
 export default {
   props: ["step"],
-  components: { OnboardingLayout, OnboardingSuccess },
+  components: { OnboardingLayout },
   data() {
     return {
       isCompleted: false
@@ -144,6 +170,9 @@ export default {
         .then(() => {
           this.isCompleted = true;
         });
+    },
+    onStartLearning() {
+      this.$router.push({ name: "Dashboard" });
     }
   }
 };
@@ -158,7 +187,7 @@ export default {
     font-weight: bold;
     font-size: 32px;
     line-height: 37px;
-    color: #000000;
+    color: #25282b;
     margin-bottom: 20%;
     &.w-40 {
       width: 40%;
@@ -169,7 +198,7 @@ export default {
     font-weight: normal;
     font-size: 18px;
     line-height: 21px;
-    color: #000000;
+    color: #52575c;
   }
   .ob-interes__main {
     height: calc(100% - 50px);
@@ -180,14 +209,21 @@ export default {
     .ob-interest__sc {
       font-size: 14px;
       line-height: 16px;
-      color: #757575;
+      color: #52575c;
     }
     .ob-interest__selected {
+      p {
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.1px;
+        color: #52575c;
+      }
       .btn {
-        background: #757575;
-        color: #f2f2f2;
+        background: #0057e0 !important;
+        color: #fff !important;
+        font-weight: 500;
         &.ob-interest__btn-hover {
-          background: #a0a0a0;
+          background: #4488f4 !important;
         }
       }
     }
@@ -205,31 +241,33 @@ export default {
     }
   }
 }
-
-.ob-btn__pill.btn.btn-info {
-  margin: 5px;
-  color: rgb(130, 130, 130);
-  font-size: 10px;
-  line-height: 0;
-  font-weight: 500;
-  background: rgb(239, 239, 239);
-  border: none;
-  padding: 4px 12px;
-  text-transform: uppercase;
-  span {
-    font-weight: 600;
-    font-size: 11px;
-    display: inline-block;
-    padding-left: 5px;
+.ob-success {
+  .ob-success__div {
+    background: #dceaff;
+    border-radius: 72px;
+    padding: 5%;
+    width: 85%;
+    .ob-success__img {
+      padding-left: 25%;
+    }
   }
-  &:active {
-    background: #efefef;
-    color: rgb(130, 130, 130);
-  }
-  &.active,
-  &:hover,
-  &:focus {
-    box-shadow: none !important;
+  .ob-success__content {
+    h2 {
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 42px;
+      color: #000000;
+      letter-spacing: 0.1px;
+      margin-bottom: 5%;
+      width: 90%;
+    }
+    p {
+      margin-bottom: 9%;
+      color: #52575c;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: 0.2px;
+    }
   }
 }
 </style>

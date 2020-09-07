@@ -39,7 +39,9 @@
                 <b-col md="4" class="h-100">
                   <div class="card-placeholder__div">
                     <b-card-img
-                      :src="require('@/assets/images/placeholder.svg')"
+                      :src="
+                        require('@/assets/images/illustration-ipc-course.svg')
+                      "
                       alt="disney"
                       class="rounded-0"
                       width="200"
@@ -53,7 +55,9 @@
                     v-b-modal.enroll-modal
                     >Enroll now ➞
                   </b-button>
-                  <b-button class="ob-btn" disabled>Save for later</b-button>
+                  <b-button class="ob-btn ob-btn-primary" disabled
+                    >Save for later</b-button
+                  >
                 </b-col>
               </b-row>
               <b-modal id="enroll-modal" centered size="lg">
@@ -133,8 +137,18 @@
                     <span>Instructor since 2020</span>
                   </div>
                   <div class="cd-author__contact">
-                    <img src="@/assets/images/email.svg" alt="" class="mr-3" />
-                    <img src="@/assets/images/message.svg" alt="" />
+                    <div class="mr-3">
+                      <b-icon
+                        icon="envelope-fill"
+                        style="color:#0057E0;font-size:22px"
+                      ></b-icon>
+                    </div>
+                    <div>
+                      <b-icon
+                        icon="chat-left-text-fill"
+                        style="color:#0057E0;font-size:22px"
+                      ></b-icon>
+                    </div>
                   </div>
                 </div>
               </b-col>
@@ -145,7 +159,7 @@
                   <b-media left-align vertical-align="center">
                     <template v-slot:aside>
                       <b-img
-                        :src="require('@/assets/images/success.svg')"
+                        :src="require('@/assets/images/certificate.svg')"
                         width="80"
                         alt="placeholder"
                       ></b-img>
@@ -315,16 +329,17 @@ export default {
   padding: 2% 3%;
   text-align: left;
   .cd-main__sec {
-    background: #f3f3f3;
+    background: #ffffff;
     border-radius: 4px;
     padding: 4%;
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
     .cd-sec__category {
       font-weight: 500;
       font-size: 18px;
       line-height: 24px;
       letter-spacing: 0.2px;
-      color: #000000;
-      margin-bottom: 24px;
+      color: #0057e0;
+      margin-bottom: 10px;
     }
     h3 {
       font-weight: 500;
@@ -338,7 +353,7 @@ export default {
       font-size: 18px;
       line-height: 24px;
       letter-spacing: 0.2px;
-      color: #000000;
+      color: #52575c;
       margin-bottom: 6%;
     }
     .cd-sec__additional {
@@ -359,7 +374,9 @@ export default {
     height: 500px;
     .cd-content__sec,
     .cd-author__sec {
-      border: 1px solid #e5e5e5;
+      background: #ffffff;
+      box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
       box-sizing: border-box;
       border-radius: 4px;
       padding: 3% 0;
@@ -377,7 +394,7 @@ export default {
           list-style: none;
           &::before {
             content: "";
-            background: #e1e1e1;
+            background: #0057e0;
             top: 10px;
             bottom: 0;
             position: absolute;
@@ -396,11 +413,11 @@ export default {
               top: 5px;
               background: #fff;
               border: 3px solid #ffffff;
-              box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25);
+              box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.1);
               span {
                 width: 10px;
                 height: 10px;
-                background: #545454;
+                background: #1debce;
                 border-radius: 50%;
                 display: inline-block;
                 position: absolute;
@@ -421,7 +438,7 @@ export default {
                 font-size: 16px;
                 line-height: 24px;
                 letter-spacing: 0.1px;
-                color: rgba(0, 0, 0, 0.54);
+                color: #52575c;
                 margin-bottom: 3%;
                 display: inline-block;
               }
@@ -446,31 +463,36 @@ export default {
         h5 {
           margin: 6% 0 2%;
           padding: 0;
+          color: #25282b;
         }
         p {
           font-size: 12px;
           line-height: 16px;
           text-align: center;
           letter-spacing: 0.2px;
-          color: #000000;
-          margin-bottom: 18%;
+          color: #52575c;
+          padding-bottom: 10%;
+          border-bottom: 1px solid #e8e8e8;
+          margin: 0 10%;
         }
       }
       .cd-author__des {
+        margin-top: 10%;
         p {
-          font-weight: 500;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 18px;
+          text-align: center;
+          letter-spacing: 0.1px;
+          color: #0057e0;
+          margin: 0 5% 8%;
+        }
+        span {
           font-size: 16px;
           line-height: 24px;
           text-align: center;
           letter-spacing: 0.1px;
-          color: rgba(0, 0, 0, 0.87);
-        }
-        span {
-          font-size: 14px;
-          line-height: 22px;
-          text-align: center;
-          letter-spacing: 0.1px;
-          color: rgba(0, 0, 0, 0.54);
+          color: #52575c;
         }
       }
       .cd-author__review {
@@ -486,11 +508,13 @@ export default {
       }
       .cd-author__contact {
         margin-top: 10%;
-        img {
+        div {
+          display: inline-block;
           border: 1px solid #e5e5e5;
           box-sizing: border-box;
           border-radius: 4px;
-          padding: 3%;
+          padding: 0 3%;
+          font-size: 18px;
         }
       }
     }
@@ -507,13 +531,13 @@ export default {
         font-size: 32px;
         line-height: 42px;
         letter-spacing: 0.1px;
-        color: #000000;
+        color: #0057e0;
       }
       p {
         font-size: 16px;
         line-height: 24px;
         letter-spacing: 0.1px;
-        color: #000000;
+        color: #52575c;
       }
       .ob-btn__pill {
         font-weight: 500;
@@ -524,8 +548,8 @@ export default {
         text-align: center;
         letter-spacing: 1.25px;
         text-transform: uppercase;
-        color: #828282;
-        background: #efefef;
+        color: #fff;
+        background: #0057e0;
         border: none;
         margin-right: 10px;
       }
@@ -550,7 +574,7 @@ export default {
         font-size: 50px;
         line-height: 59px;
         letter-spacing: 1.25px;
-        color: #000000;
+        color: #0057e0;
         margin-bottom: 0;
       }
       p {
@@ -558,7 +582,7 @@ export default {
         line-height: 12px;
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        color: rgba(0, 0, 0, 0.87);
+        color: #52575c;
         margin-top: 4px;
       }
     }
@@ -567,10 +591,10 @@ export default {
 .cd-course__detail {
   h5 {
     font-weight: 500;
-    font-size: 18px;
-    line-height: 24px;
+    font-size: 20px;
+    line-height: 26px;
     letter-spacing: 0.2px;
-    color: rgba(0, 0, 0, 0.87);
+    color: #0057e0;
   }
 }
 .breadcrumb {

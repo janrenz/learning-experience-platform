@@ -19,7 +19,7 @@
     <template v-slot:right-section>
       <div class="ob-success h-100 w-100">
         <div class="h-100 ob-skills__success" v-if="step == 3">
-          <div class="d-flex h-100">
+          <div class="d-flex ob-content__div">
             <h2 class="ob-interest__content">
               Well done you have setup your skills, now we’d like to know what
               your learning interests are!
@@ -33,13 +33,13 @@
             >
           </div>
         </div>
-        <div class="h-100" v-else>
-          <div class="d-flex h-100">
+        <div class="h-100 ob-skills__success" v-else>
+          <div class="d-flex ob-content__div">
             <img src="@/assets/images/success.svg" alt="success" />
             <h2 class="ob-interest__content">Begin your learning</h2>
           </div>
           <div
-            class="ob-success__footer align-items-end justify-content-end d-flex"
+            class="ob-success__footer align-items-center justify-content-end d-flex"
           >
             <b-button class="ob-btn ob-btn-primary" @click="onStartLearning"
               >Start Learning</b-button
@@ -56,9 +56,6 @@ export default {
   props: ["step"],
   components: { OnboardingLayout },
   methods: {
-    onStartLearning() {
-      this.$router.push({ name: "Dashboard" });
-    },
     onSkillsComplete() {
       this.$emit("skillsSubmitted");
     }
@@ -71,22 +68,31 @@ export default {
 }
 .ob-success {
   .ob-skills__success {
+    display: flex;
+    flex-wrap: wrap;
     h2,
     .ob-success__footer {
       padding: 0 5%;
+    }
+    .ob-content__div {
+      height: calc(100% - 100px);
+    }
+    .ob-success__footer {
+      height: 100px;
+    }
+    h2 {
+      display: inline-block;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 42px;
+      color: #000;
+      padding: 0 30% 0 5%;
     }
   }
   .d-flex {
     justify-content: center;
     align-items: center;
     width: 100%;
-  }
-  h2 {
-    display: inline-block;
-    font-weight: bold;
-    font-size: 32px;
-    line-height: 37px;
-    color: #000;
   }
 }
 </style>

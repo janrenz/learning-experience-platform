@@ -12,6 +12,20 @@ export default {
         console.error("Oops something went wrong", err);
       });
   },
+  getAllRecommendedCourses({ commit, state }, keycloack_id) {
+    // /api/recommendations/
+    return axios
+      .get(
+        `${state.config.recommendedCoursesAPI}/api/recommendations/${keycloack_id}`
+      )
+      .then(response => {
+        commit("GET_ALL_COURSES", response.data);
+      })
+      .catch(err => {
+        // TODO - Error handling :)
+        console.error("Oops something went wrong", err);
+      });
+  },
   getAllTopics({ commit, state }) {
     return axios
       .get(`${state.config.topicsAPI}/api/course-topics`)

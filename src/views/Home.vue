@@ -1,28 +1,30 @@
 <template>
   <div class="ld-page h-100">
     <b-container fluid class="p-0 h-100">
-      <NavBar></NavBar>
+      <!-- <NavBar></NavBar> -->
       <div class="ld-page__sec">
-        <b-row>
-          <b-col>
+        <b-row class="ld-page__one">
+          <b-col class="d-flex justify-content-center align-items-center">
             <div class="ld-sec__one-left">
-              <h1>Revolutionizing lifelong learning in health.</h1>
-              <p>
+              <div>
+                <img src="@/assets/images/whoa-logo-white.svg" alt="" />
+              </div>
+              <h1>Welcome to WHO Academy</h1>
+              <p>Revolutionizing lifelong learning in health.</p>
+              <!-- <p>
                 New and more effective methods of conveying knowledge and skills
                 to working people.
-              </p>
+              </p> -->
               <div>
-                <b-button class="ob-btn mr-3">login</b-button>
-                <b-button class="ob-btn">signup</b-button>
+                <b-button class="ob-btn mr-4" @click="signUp">login</b-button>
+                <b-button class="ob-btn" @click="signUp">signup</b-button>
               </div>
             </div>
           </b-col>
           <b-col class="ld-sec__one-right">
             <img
-              src="@/assets/images/placeholder.svg"
+              src="@/assets/images/illustration-welcome.svg"
               alt="placeholder"
-              width="339"
-              height="339"
             />
           </b-col>
         </b-row>
@@ -150,14 +152,13 @@
 <script>
 // @ is an alias to /src
 import CourseCard from "@/components/CourseCard.vue";
-import NavBar from "@/components/NavBar.vue";
+// import NavBar from "@/components/NavBar.vue";
 import { mapGetters } from "vuex";
 import { tns } from "tiny-slider/src/tiny-slider";
 
 export default {
   name: "Home",
   components: {
-    NavBar,
     CourseCard
   },
   data() {
@@ -194,7 +195,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["allCourses"])
+    ...mapGetters(["allCourses", "allConfig"])
   },
   mounted() {
     this.$nextTick(() => {
@@ -224,6 +225,17 @@ export default {
       let slider_info;
       if (this.slider) slider_info = this.slider.getInfo();
       this.currentSlide = slider_info ? slider_info.index : 0;
+    },
+    signUp() {
+      this.$keycloak.login({
+        redirectUri: this.allConfig.SSO.redirectUri,
+        action: "register"
+      });
+    },
+    logOut() {
+      this.$keycloak.logout({
+        redirectUri: window.location.origin
+      });
     }
   }
 };
@@ -232,33 +244,39 @@ export default {
 .ld-page {
   z-index: 0;
   .ld-page__sec {
-    height: calc(100% - 65px);
+    // height: calc(100% - 65px);
+    height: 100%;
     overflow: hidden auto;
-    .ld-sec__one-left {
-      padding: 25% 13%;
-      text-align: left;
-      h1 {
-        font-weight: bold;
-        font-size: 40px;
-        line-height: 47px;
-        letter-spacing: 1.25px;
-        color: #000000;
+    // padding: 4% 1.2%;
+    .ld-page__one {
+      background: #0057e0;
+      padding-top: 2%;
+      .ld-sec__one-left {
+        padding: 21%;
+        text-align: left;
+        h1 {
+          font-weight: bold;
+          font-size: 52px;
+          line-height: 64px;
+          letter-spacing: 1.25px;
+          margin: 15% 0 5%;
+          color: #fff;
+        }
+        p {
+          font-weight: normal;
+          font-size: 26px;
+          line-height: 32px;
+          letter-spacing: 1.25px;
+          color: #fff;
+          margin-bottom: 45px;
+        }
       }
-      p {
-        font-weight: normal;
-        font-size: 20px;
-        line-height: 26px;
-        letter-spacing: 1.25px;
-        color: #000000;
-        margin-bottom: 45px;
+      .ld-sec__one-right {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-    }
-    .ld-sec__one-right {
-      padding: 0;
-      background: #efefef;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
     .ld-sec__two {
       background: #faf8f8;
@@ -327,15 +345,15 @@ export default {
       .nav-link {
         border: none;
         font-weight: 500;
-        font-size: 14px;
-        line-height: 16px;
+        font-size: 15px;
+        line-height: 18px;
         text-align: center;
         letter-spacing: 1.25px;
-        text-transform: uppercase;
-        color: rgba(0, 0, 0, 0.6);
+        // text-transform: uppercase;
+        color: #a0a4a8;
         &.active {
           background: transparent;
-          color: #000000;
+          color: #0057e0;
           &::after {
             content: "";
             border-bottom: 2px solid;

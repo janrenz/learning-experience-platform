@@ -4,7 +4,7 @@
       <b-row class="h-100">
         <b-col cols="3" class="h-100 p-0 ul-left">
           <div class="ul-left__logo">
-            <img src="@/assets/images/whoa-logo.svg" alt="" width="140" />
+            <img src="@/assets/images/whoa-logo-white.svg" alt="" width="140" />
           </div>
           <div class="ul-left__menu">
             <div class="ul-left__menu-content">
@@ -51,24 +51,31 @@
                     {{ allAuth.profile && allAuth.profile.lastName }} !
                   </h2>
                   <p class="ul-top__content">
-                    Happy to have you on board, start learning now!
+                    Happy to have you on board, you can start learning now!
                   </p>
                   <p class="ul-top__subcontent">Explore courses ➞</p>
                 </div>
               </b-col>
-              <b-col cols="6" class="h-100 p-0 ul-top__search">
-                <img src="@/assets/images/search.svg" alt="search" width="20" />
-                <div>
+              <b-col cols="6" class="h-100 p-0 ul-top__right">
+                <div class="ul-top__illustration">
+                  <img src="@/assets/images/illustration-header.png" alt="" />
+                </div>
+                <div class="ul-top__search">
+                  <img
+                    src="@/assets/images/search.svg"
+                    alt="search"
+                    width="20"
+                    class="mt-1 mr-3"
+                  />
                   <b-form-input
                     v-model="search"
                     placeholder="Search"
                   ></b-form-input>
+                  <b-icon
+                    icon="bell"
+                    style="color:#fff;font-size:22px;"
+                  ></b-icon>
                 </div>
-                <img
-                  src="@/assets/images/notification.svg"
-                  alt="notification"
-                  width="16"
-                />
               </b-col>
             </b-row>
             <b-row class="ul-right__bottom">
@@ -153,7 +160,7 @@ export default {
   .ul-left {
     .ul-left__logo {
       padding: 7% 10%;
-      background: #efefef;
+      background: #0057e0;
       height: 30%;
       text-align: left;
     }
@@ -200,10 +207,11 @@ export default {
         }
 
         .ul-menu__name {
-          color: #757575;
+          color: #52575c;
           &.active {
-            color: #000000;
+            color: #0057e0;
             text-transform: uppercase;
+            font-weight: bold;
           }
         }
         img {
@@ -225,61 +233,76 @@ export default {
   }
 }
 .ul-right {
-  background: #efefef;
+  background: #0057e0;
   margin-left: -20px;
   .ul-right__div {
     z-index: 0;
     .ul-right__top {
       height: 30%;
-      background: #efefef;
+      background: #0057e0;
       margin-right: -20px;
       padding: 3%;
+      position: relative;
       .ul-top__content {
         display: flex;
         align-items: center;
         h2 {
-          font-size: 30px;
-          line-height: 21px;
+          font-weight: 500;
+          font-size: 32px;
+          line-height: 42px;
           letter-spacing: 0.1px;
-          color: #000000;
+          color: #ffffff;
           margin-bottom: 20px;
         }
         .ul-top__content {
           margin-bottom: 25px;
-          font-size: 16px;
-          line-height: 21px;
+          font-size: 18px;
+          line-height: 24px;
           letter-spacing: 0.1px;
-          color: #000000;
+          color: #ffffff;
         }
         .ul-top__subcontent {
           font-weight: 500;
-          font-size: 14px;
-          line-height: 16px;
+          font-size: 16px;
+          line-height: 18px;
           letter-spacing: 1.25px;
           text-transform: uppercase;
-          color: #000000;
+          color: #ffffff;
           margin-bottom: 0;
         }
       }
-      .ul-top__search {
-        text-align: right;
-        & > div {
-          width: 50%;
+      .ul-top__right {
+        display: flex;
+        align-items: flex-start;
+        .ul-top__illustration {
           display: inline-block;
+          img {
+            position: absolute;
+            bottom: -18%;
+          }
+        }
+        .ul-top__search {
           margin: 0 15px 0 10px;
+          display: flex;
+          align-items: center;
+          position: absolute;
+          right: 0;
           input.form-control {
             display: inline-block;
             background: transparent;
             border: none;
-            border-bottom: 1px solid #000;
+            border-bottom: 1px solid #fff;
             border-radius: 0;
-            color: #757575;
+            color: #fff;
             padding: 0.25rem 0.75rem 0.25rem 0;
             font-size: 14px;
             line-height: 24px;
             letter-spacing: 0.15px;
             &:focus {
               box-shadow: none;
+            }
+            &::placeholder {
+              color: #fff;
             }
           }
         }

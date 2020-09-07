@@ -65,7 +65,7 @@ export default {
       }
       input {
         letter-spacing: 0.15px;
-        color: #757575;
+        color: #25282b;
         font-size: 16px;
         border: 0;
         background: transparent;

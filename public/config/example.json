@@ -3,10 +3,11 @@
     "url": "https://sso-keycloak-template.apps.who.emea-2.rht-labs.com/auth",
     "realm": "myrealm",
     "clientId": "myclient",
-    "redirectUri" : "http://localhost:8080/onboarding"
+    "redirectUri": "http://localhost:8080/onboarding"
   },
   "coursesAPI": "http://localhost:8086",
   "topicsAPI": "http://localhost:8086",
   "profilesAPI": "http://localhost:3000",
-  "skillsAPI": "http://localhost:8086"
+  "skillsAPI": "http://localhost:8086",
+  "recommendedCoursesAPI": "https://test-lxp-recommendation-service-labs-test.apps.who.emea-2.rht-labs.com"
 }
