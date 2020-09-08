@@ -240,7 +240,7 @@ pipeline {
                         }
                     }
                     when {
-                        expression { GIT_BRANCH ==~ /(.*master)/ }
+                        expression { GIT_BRANCH.startsWith("master") }
                     }
                     steps {
                         echo '### Commit new image tag to git ###'
