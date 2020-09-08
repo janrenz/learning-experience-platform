@@ -15,6 +15,7 @@ pipeline {
         // Job name contains the branch eg ds-app-feature%2Fjenkins-123
         JOB_NAME = "${JOB_NAME}".replace("%2F", "-").replace("/", "-")
         GIT_SSL_NO_VERIFY = true
+        SYSTEM_TEST_BRANCH = "master-who-int"
 
         // Credentials bound in OpenShift
         GIT_CREDS = credentials("${OPENSHIFT_BUILD_NAMESPACE}-git-auth")
@@ -256,7 +257,7 @@ pipeline {
                             git config --global push.default simple
 
                             git add ${ARGOCD_CONFIG_REPO_PATH}
-                            git commit -m "🚀 AUTOMATED COMMIT - Deployment new app version ${VERSION} 🚀" || rc=$?
+                            git commit -m "🚀 AUTOMATED COMMIT - Deployment of ${APP_NAME} at version ${VERSION} 🚀" || rc=$?
                             git remote set-url origin  https://${GIT_CREDS_USR}:${GIT_CREDS_PSW}@${ARGOCD_CONFIG_REPO}
                             git push -u origin ${ARGOCD_CONFIG_REPO_BRANCH}
 
@@ -334,13 +335,13 @@ pipeline {
                 }
             }
             when {
-                expression { GIT_BRANCH ==~ /(.*master)/ }
+                expression { GIT_BRANCH.startsWith("master") }
             }
             steps {
                 sh  '''
                     echo "TODO - Run tests"               
                 '''
-                build job: 'system-tests/master', parameters: [[$class: 'StringParameterValue', name: 'APP_NAME', value: "${APP_NAME}" ],[$class: 'StringParameterValue', name: 'VERSION', value: "${VERSION}"]], wait: false
+                build job: "system-tests/${SYSTEM_TEST_BRANCH}", parameters: [[$class: 'StringParameterValue', name: 'APP_NAME', value: "${APP_NAME}" ],[$class: 'StringParameterValue', name: 'VERSION', value: "${VERSION}"]], wait: false
             }
         }
     }
