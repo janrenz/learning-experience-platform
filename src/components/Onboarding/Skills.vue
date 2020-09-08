@@ -28,7 +28,7 @@
               class="ob-btn__pill"
             >
               {{ t.name }}
-              <span> <b-icon icon="plus" style="color:#0057E0"></b-icon></span>
+              <span> <b-icon icon="plus" style="color:#0043AC"></b-icon></span>
             </b-button>
             <b-modal id="rate-skills-modal" centered>
               <template v-slot:modal-header>
@@ -257,7 +257,7 @@ export default {
       .ob-btn__pill {
         height: 22px;
         margin: 0 0 20px;
-        background: #0057e0 !important;
+        background: #0043ac !important;
         color: #fff !important;
       }
       .ob-skills__dd {

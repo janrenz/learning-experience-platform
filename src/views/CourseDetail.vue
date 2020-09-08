@@ -136,13 +136,13 @@
                     <div class="mr-3">
                       <b-icon
                         icon="envelope-fill"
-                        style="color:#0057E0;font-size:22px"
+                        style="color:#0043AC;font-size:22px"
                       ></b-icon>
                     </div>
                     <div>
                       <b-icon
                         icon="chat-left-text-fill"
-                        style="color:#0057E0;font-size:22px"
+                        style="color:#0043AC;font-size:22px"
                       ></b-icon>
                     </div>
                   </div>
@@ -376,7 +376,7 @@ export default {
       font-size: 18px;
       line-height: 24px;
       letter-spacing: 0.2px;
-      color: #0057e0;
+      color: #0043ac;
       margin-bottom: 10px;
     }
     h3 {
@@ -432,7 +432,7 @@ export default {
           list-style: none;
           &::before {
             content: "";
-            background: #0057e0;
+            background: #0043ac;
             top: 10px;
             bottom: 0;
             position: absolute;
@@ -522,7 +522,7 @@ export default {
           line-height: 18px;
           text-align: center;
           letter-spacing: 0.1px;
-          color: #0057e0;
+          color: #0043ac;
           margin: 0 5% 8%;
         }
         span {
@@ -568,7 +568,7 @@ export default {
         font-size: 32px;
         line-height: 42px;
         letter-spacing: 0.1px;
-        color: #0057e0;
+        color: #0043ac;
       }
       p {
         font-size: 16px;
@@ -586,7 +586,7 @@ export default {
         letter-spacing: 1.25px;
         text-transform: uppercase;
         color: #fff;
-        background: #0057e0;
+        background: #0043ac;
         border: none;
         margin-right: 10px;
       }
@@ -611,7 +611,7 @@ export default {
         font-size: 50px;
         line-height: 59px;
         letter-spacing: 1.25px;
-        color: #0057e0;
+        color: #0043ac;
         margin-bottom: 0;
       }
       p {
@@ -631,7 +631,7 @@ export default {
     font-size: 20px;
     line-height: 26px;
     letter-spacing: 0.2px;
-    color: #0057e0;
+    color: #0043ac;
   }
 }
 .breadcrumb {
@@ -689,7 +689,7 @@ export default {
           font-size: 32px;
           line-height: 42px;
           letter-spacing: 1.25px;
-          color: #0057e0;
+          color: #0043ac;
           margin-left: 5%;
           padding: 0 12%;
         }
