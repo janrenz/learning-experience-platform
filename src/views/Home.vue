@@ -389,14 +389,14 @@ export default {
 @media all and (min-width: 991px) and (max-width: 1250px) {
   .ld-page {
     .ld-sec__one-left {
-      padding: 150px 95px;
+      padding-right: 13% !important;
     }
-    .ld-sec__one-right {
-      img {
-        width: 260px;
-        height: 260px;
-      }
-    }
+    // .ld-sec__one-right {
+    //   img {
+    //     width: 260px;
+    //     height: 260px;
+    //   }
+    // }
     .ld-sec__tabs .tabs .nav-tabs {
       width: calc(100% - 80px);
     }
