@@ -31,7 +31,7 @@
               >
                 {{ t.name }}
                 <span>
-                  <b-icon icon="plus" style="color:#0057E0"></b-icon
+                  <b-icon icon="plus" style="color:#0043AC"></b-icon
                 ></span>
               </b-button>
             </div>
@@ -203,6 +203,7 @@ export default {
   .ob-interes__main {
     height: calc(100% - 50px);
     overflow: hidden auto;
+    width: 100%;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -219,7 +220,7 @@ export default {
         color: #52575c;
       }
       .btn {
-        background: #0057e0 !important;
+        background: #0043ac !important;
         color: #fff !important;
         font-weight: 500;
         &.ob-interest__btn-hover {

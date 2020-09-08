@@ -161,7 +161,7 @@ export default {
         line-height: 12px;
         letter-spacing: 0.2px;
         text-transform: uppercase;
-        color: #0057e0;
+        color: #0043ac;
         margin-bottom: 10px;
       }
       .card-title {

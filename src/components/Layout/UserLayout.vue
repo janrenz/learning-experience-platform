@@ -1,6 +1,10 @@
 <template>
   <div class="h-100">
-    <b-container fluid class="ul-container h-100">
+    <b-container
+      fluid
+      class="ul-container h-100"
+      :class="{ 'ul-container__scrolled': isScrolled }"
+    >
       <b-row class="h-100">
         <b-col cols="3" class="h-100 p-0 ul-left">
           <div class="ul-left__logo">
@@ -58,7 +62,7 @@
               </b-col>
               <b-col cols="6" class="h-100 p-0 ul-top__right">
                 <div class="ul-top__illustration">
-                  <img src="@/assets/images/illustration-header.png" alt="" />
+                  <img src="@/assets/images/illustration-header.svg" alt="" />
                 </div>
                 <div class="ul-top__search">
                   <img
@@ -144,23 +148,70 @@ export default {
           path: ""
         }
       ],
-      search: ""
+      search: "",
+      isScrolled: false
     };
+  },
+  mounted() {
+    document
+      .getElementsByClassName("ul-right__bottom")[0]
+      .addEventListener("scroll", this.handleScroll);
   },
   methods: {
     navigateTo(path) {
       if (path == "/dashboard")
         this.$router.push({ path: path }).catch(() => {});
+    },
+    handleScroll(e) {
+      if (e.target.scrollTop > 40) this.isScrolled = true;
+      else this.isScrolled = false;
     }
   }
 };
 </script>
 <style lang="scss" scoped>
 .ul-container {
+  &.ul-container__scrolled {
+    .ul-left {
+      .ul-left__logo {
+        height: 25%;
+      }
+      .ul-left__menu {
+        height: 75%;
+      }
+    }
+    .ul-right {
+      .ul-right__top {
+        height: 25%;
+        padding: 2%;
+        .ul-top__content {
+          h2 {
+            font-size: 28px;
+            margin-bottom: 2%;
+          }
+          .ul-top__content {
+            font-size: 16px;
+            margin-bottom: 3%;
+          }
+          .ul-top__subcontent {
+            font-size: 14px;
+          }
+        }
+        .ul-top__illustration {
+          img {
+            bottom: -14% !important;
+          }
+        }
+      }
+      .ul-right__bottom {
+        height: 75%;
+      }
+    }
+  }
   .ul-left {
     .ul-left__logo {
       padding: 7% 10%;
-      background: #0057e0;
+      background: #0043ac;
       height: 30%;
       text-align: left;
     }
@@ -209,7 +260,7 @@ export default {
         .ul-menu__name {
           color: #52575c;
           &.active {
-            color: #0057e0;
+            color: #0043ac;
             text-transform: uppercase;
             font-weight: bold;
           }
@@ -233,13 +284,13 @@ export default {
   }
 }
 .ul-right {
-  background: #0057e0;
+  background: #0043ac;
   margin-left: -20px;
   .ul-right__div {
     z-index: 0;
     .ul-right__top {
       height: 30%;
-      background: #0057e0;
+      background: #0043ac;
       margin-right: -20px;
       padding: 3%;
       position: relative;
@@ -252,10 +303,10 @@ export default {
           line-height: 42px;
           letter-spacing: 0.1px;
           color: #ffffff;
-          margin-bottom: 20px;
+          margin-bottom: 4%;
         }
         .ul-top__content {
-          margin-bottom: 25px;
+          margin-bottom: 5%;
           font-size: 18px;
           line-height: 24px;
           letter-spacing: 0.1px;
@@ -278,7 +329,7 @@ export default {
           display: inline-block;
           img {
             position: absolute;
-            bottom: -18%;
+            bottom: -19%;
           }
         }
         .ul-top__search {
@@ -318,6 +369,34 @@ export default {
 @media all and (min-width: 990px) and (max-width: 1100px) {
   .ul-container .ul-left .ul-left__menu .ul-left__menu-content {
     padding: 10% 15%;
+  }
+}
+@media all and (min-width: 990px) and (max-width: 1230px) {
+  .ul-right {
+    .ul-right__div {
+      .ul-right__top {
+        padding: 2%;
+        .ul-top__content {
+          h2 {
+            font-size: 28px;
+            margin-bottom: 2%;
+          }
+          .ul-top__content {
+            font-size: 16px;
+            margin-bottom: 3%;
+          }
+          .ul-top__subcontent {
+            font-size: 14px;
+          }
+        }
+        .ul-top__right {
+          .ul-top__illustration img {
+            width: 160px;
+            bottom: -14%;
+          }
+        }
+      }
+    }
   }
 }
 </style>
