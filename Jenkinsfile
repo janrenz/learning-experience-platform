@@ -10,7 +10,7 @@ pipeline {
         // Config repo managed by ArgoCD details
         ARGOCD_CONFIG_REPO = "github.com/WHOAcademy/lxp-config.git"
         ARGOCD_CONFIG_REPO_PATH = "lxp-deployment/values-test.yaml"
-        ARGOCD_CONFIG_REPO_BRANCH = "master"
+        ARGOCD_CONFIG_REPO_BRANCH = "who-int"
         
         // Job name contains the branch eg ds-app-feature%2Fjenkins-123
         JOB_NAME = "${JOB_NAME}".replace("%2F", "-").replace("/", "-")
