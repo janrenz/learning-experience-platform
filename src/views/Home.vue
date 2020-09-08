@@ -249,7 +249,7 @@ export default {
     overflow: hidden auto;
     // padding: 4% 1.2%;
     .ld-page__one {
-      background: #0057e0;
+      background: #0043ac;
       padding-top: 2%;
       .ld-sec__one-left {
         padding: 21%;
@@ -353,7 +353,7 @@ export default {
         color: #a0a4a8;
         &.active {
           background: transparent;
-          color: #0057e0;
+          color: #0043ac;
           &::after {
             content: "";
             border-bottom: 2px solid;

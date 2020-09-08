@@ -312,7 +312,7 @@ export default {
   padding: 4px 12px;
   text-transform: uppercase;
   background: #dceaff !important;
-  color: #0057e0 !important;
+  color: #0043ac !important;
   span {
     font-weight: 600;
     font-size: 11px;
@@ -348,7 +348,7 @@ export default {
       line-height: 12px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: #0057e0;
+      color: #0043ac;
       margin-bottom: 4px;
     }
     .card-title {

@@ -23,11 +23,11 @@
 .btn.ob-btn {
   background: #fff !important;
   border: none;
-  padding: 10px 16px;
+  padding: 10px 20px;
   text-align: center;
   letter-spacing: 1.25px;
   text-transform: uppercase;
-  color: #0057e0;
+  color: #0043ac;
   font-size: 16px;
   line-height: 16px;
   font-weight: 500;
@@ -41,13 +41,13 @@
   &:active,
   &:hover,
   &:focus {
-    color: #0057e0 !important;
+    color: #0043ac !important;
     box-shadow: none;
     background: #fff !important;
     border: none !important;
   }
   &.ob-btn-primary {
-    background: #0057e0 !important;
+    background: #0043ac !important;
     color: #fff;
     &:active,
     &:hover,
@@ -62,12 +62,12 @@
   }
   &.ob-btn-outline {
     background: transparent !important;
-    border: 1px solid #0057e0;
+    border: 1px solid #0043ac;
     &:active,
     &:hover,
     &:focus {
       background: #c5deff !important;
-      border: 1px solid #0057e0 !important;
+      border: 1px solid #0043ac !important;
     }
   }
 }

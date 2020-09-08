@@ -58,7 +58,7 @@
               </b-col>
               <b-col cols="6" class="h-100 p-0 ul-top__right">
                 <div class="ul-top__illustration">
-                  <img src="@/assets/images/illustration-header.png" alt="" />
+                  <img src="@/assets/images/illustration-header.svg" alt="" />
                 </div>
                 <div class="ul-top__search">
                   <img
@@ -160,7 +160,7 @@ export default {
   .ul-left {
     .ul-left__logo {
       padding: 7% 10%;
-      background: #0057e0;
+      background: #0043ac;
       height: 30%;
       text-align: left;
     }
@@ -209,7 +209,7 @@ export default {
         .ul-menu__name {
           color: #52575c;
           &.active {
-            color: #0057e0;
+            color: #0043ac;
             text-transform: uppercase;
             font-weight: bold;
           }
@@ -233,13 +233,13 @@ export default {
   }
 }
 .ul-right {
-  background: #0057e0;
+  background: #0043ac;
   margin-left: -20px;
   .ul-right__div {
     z-index: 0;
     .ul-right__top {
       height: 30%;
-      background: #0057e0;
+      background: #0043ac;
       margin-right: -20px;
       padding: 3%;
       position: relative;
@@ -278,7 +278,7 @@ export default {
           display: inline-block;
           img {
             position: absolute;
-            bottom: -18%;
+            bottom: -19%;
           }
         }
         .ul-top__search {
