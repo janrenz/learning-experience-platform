@@ -251,7 +251,6 @@ export default {
   },
   methods: {
     initiateSlider(container) {
-      if (this.slider) this.slider.destroy();
       this.slider = tns({
         container: container,
         items: this.sliderItems,

@@ -203,6 +203,7 @@ export default {
   .ob-interes__main {
     height: calc(100% - 50px);
     overflow: hidden auto;
+    width: 100%;
     &::-webkit-scrollbar {
       display: none;
     }
