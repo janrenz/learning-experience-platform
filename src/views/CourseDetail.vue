@@ -73,7 +73,7 @@
                     You’ve been successfully enrolled in the course!
                   </p>
                   <p class="cd-enroll__message">
-                    An acknowledgement email has been sent to you. Courses will
+                    An akcknowledgement email has been sent to you. Courses will
                     be available from May 2021. We’ll let you know once your
                     course is ready.
                   </p>
