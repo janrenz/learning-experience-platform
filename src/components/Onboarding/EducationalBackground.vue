@@ -345,7 +345,7 @@ export default {
     .card-label {
       font-weight: 600;
       font-size: 13px;
-      line-height: 12px;
+      line-height: 15px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: #0043ac;
